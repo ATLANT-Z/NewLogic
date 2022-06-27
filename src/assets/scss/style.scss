@@ -8,7 +8,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	color: $color-text;
+	color: $color-bg-black;
 	max-width: 100vw;
 
 	@include scrollbarStyle(8px);
