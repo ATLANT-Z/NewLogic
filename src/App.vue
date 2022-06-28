@@ -20,7 +20,8 @@
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
-    <PublicOfferComponent></PublicOfferComponent>
+    <!-- <PublicOfferComponent></PublicOfferComponent> -->
+    <DeliveryComponent></DeliveryComponent>
   </main>
 </template>
 
@@ -31,6 +32,7 @@ import AboutCompanyComponent from "./components/AboutCompany.vue";
 import PrivacyPolicyComponent from "./components/PrivacyPolicy.vue";
 import WarrantyComponent from "./components/Warranty.vue";
 import PublicOfferComponent from "./components/PublicOffer.vue";
+import DeliveryComponent from "./components/Delivery.vue";
 
 @Options({
   components: {
@@ -39,6 +41,7 @@ import PublicOfferComponent from "./components/PublicOffer.vue";
     PrivacyPolicyComponent,
     WarrantyComponent,
     PublicOfferComponent,
+    DeliveryComponent
   },
 })
 export default class App extends Vue {}
