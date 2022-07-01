@@ -4,7 +4,7 @@
     <div class="category-catalog__w">
       <div class="category-catalog__item category-card">
         <a class="category-card__link" href="#">
-          <img class="category-card__img" src="https://logicpower.ua/storage/1903113/12258_1.jpg" alt=""/>
+          <img class="category-card__img" src="https://logicpower.ua/storage/1903113/12258_1.jpg" alt="" />
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -185,7 +185,7 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class CategoryCatalogComponent extends Vue {}
+export default class CategoryCatalogComponent extends Vue { }
 </script>
 
 <style lang="scss">
@@ -216,6 +216,7 @@ export default class CategoryCatalogComponent extends Vue {}
       margin-bottom: 0;
     }
   }
+
   &__w {
     --gap: 16px;
     @extend %width-main;
@@ -295,6 +296,7 @@ export default class CategoryCatalogComponent extends Vue {}
       padding-bottom: 24px;
     }
   }
+
   &__title {
     @include fontUnify(20, 30);
     text-transform: uppercase;
@@ -305,6 +307,7 @@ export default class CategoryCatalogComponent extends Vue {}
       letter-spacing: 0.02em;
     }
   }
+
   &__text {
     @include fontUnify;
     text-align: center;
@@ -318,6 +321,7 @@ export default class CategoryCatalogComponent extends Vue {}
       display: none;
     }
   }
+
   &__link {
     width: 100%;
 
@@ -349,6 +353,48 @@ export default class CategoryCatalogComponent extends Vue {}
 
       gap: 16px;
     }
+
+    &>h2 {
+      @include fontUnify(42, 50, 700);
+      text-transform: uppercase;
+
+      @include mobile {
+        @include fontUnify(20, 30);
+        text-align: center;
+      }
+    }
+
+    &>div>h4 {
+      @include fontUnify(32, 42, 600);
+      letter-spacing: 0.02em;
+
+      margin-bottom: 24px;
+
+      @include mobile {
+        @include fontUnify(20, 28);
+        text-align: center;
+
+        margin-bottom: 16px;
+      }
+    }
+
+    &>div>ul {
+      list-style: disc;
+
+      padding-left: 18px;
+    }
+
+    &>div>p,
+    &>div>ul>li {
+      @include fontUnify(20, 28);
+      letter-spacing: 0.02em;
+
+      @include mobile {
+        @include fontUnify;
+
+        margin-bottom: 24px;
+      }
+    }
   }
 
   &__line {
@@ -362,70 +408,71 @@ export default class CategoryCatalogComponent extends Vue {}
     }
   }
 
-  &__title {
-    @include fontUnify(42, 50, 700);
-    text-transform: uppercase;
+  // &__title {
+  //   @include fontUnify(42, 50, 700);
+  //   text-transform: uppercase;
 
-    @include mobile {
-      @include fontUnify(20, 30);
-      text-align: center;
-    }
-  }
+  //   @include mobile {
+  //     @include fontUnify(20, 30);
+  //     text-align: center;
+  //   }
+  // }
 
-  &__info {
-    @include fontUnify(20, 28);
-    letter-spacing: 0.02em;
+  // &__info {
+  //   @include fontUnify(20, 28);
+  //   letter-spacing: 0.02em;
 
-    @include mobile {
-      @include fontUnify;
+  //   @include mobile {
+  //     @include fontUnify;
 
-      margin-bottom: 24px;
-    }
-  }
-  &__info-text {
-    margin-bottom: 16px;
+  //     margin-bottom: 24px;
+  //   }
+  // }
 
-    @include mobile {
-      margin-bottom: 4px;
-    }
-  }
+  // &__info-text {
+  //   margin-bottom: 16px;
 
-  &__info-list {
-    list-style: disc;
+  //   @include mobile {
+  //     margin-bottom: 4px;
+  //   }
+  // }
 
-    padding-left: 18px;
-  }
+  // &__info-list {
+  //   list-style: disc;
 
-  &__goal {
-    @include mobile {
-      margin-bottom: 24px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
+  //   padding-left: 18px;
+  // }
 
-  &__goal-title {
-    @include fontUnify(32, 42, 600);
-    letter-spacing: 0.02em;
+  // &__goal {
+  //   @include mobile {
+  //     margin-bottom: 24px;
 
-    margin-bottom: 24px;
+  //     &:last-child {
+  //       margin-bottom: 0;
+  //     }
+  //   }
 
-    @include mobile {
-      @include fontUnify(20, 28);
-      text-align: center;
+  // &__goal-title {
+  //   @include fontUnify(32, 42, 600);
+  //   letter-spacing: 0.02em;
 
-      margin-bottom: 16px;
-    }
-  }
+  //   margin-bottom: 24px;
 
-  &__goal-text {
-    @include fontUnify(20, 28);
-    letter-spacing: 0.02em;
+  //   @include mobile {
+  //     @include fontUnify(20, 28);
+  //     text-align: center;
 
-    @include mobile {
-      @include fontUnify;
-    }
-  }
+  //     margin-bottom: 16px;
+  //   }
+  // }
+
+  // &__goal-text {
+  //   @include fontUnify(20, 28);
+  //   letter-spacing: 0.02em;
+
+  //   @include mobile {
+  //     @include fontUnify;
+  //   }
+  // }
 }
 </style>

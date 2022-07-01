@@ -21,7 +21,8 @@
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
-    <DeliveryComponent></DeliveryComponent>
+    <!-- <DeliveryComponent></DeliveryComponent> -->
+    <NewsArticleComponent></NewsArticleComponent>
   </main>
 </template>
 
@@ -33,6 +34,7 @@ import PrivacyPolicyComponent from "./components/PrivacyPolicy.vue";
 import WarrantyComponent from "./components/Warranty.vue";
 import PublicOfferComponent from "./components/PublicOffer.vue";
 import DeliveryComponent from "./components/Delivery.vue";
+import NewsArticleComponent from "./components/NewsArticle.vue";
 
 @Options({
   components: {
@@ -41,7 +43,8 @@ import DeliveryComponent from "./components/Delivery.vue";
     PrivacyPolicyComponent,
     WarrantyComponent,
     PublicOfferComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    NewsArticleComponent,
   },
 })
 export default class App extends Vue {}
@@ -55,12 +58,23 @@ export default class App extends Vue {}
 </style>
 
 <style lang="scss">
+main {
+  width: 100%;
+}
+
 .banner {
   position: relative;
   height: 560px;
   width: 100%;
 
   background-color: black;
+
+  margin-bottom: 80px;
+  
+  @include mobile {
+    height: 254px;
+    margin-bottom: 48px;
+  }
 
   &__img-w {
     height: 100%;
@@ -77,6 +91,7 @@ export default class App extends Vue {}
     @include absoluteGrow();
     display: flex;
     justify-content: center;
+    @extend %padding-wrp;
 
     background: linear-gradient(
       180deg,
@@ -97,13 +112,22 @@ export default class App extends Vue {}
     justify-content: flex-end;
     gap: 24px;
 
-    padding: 16px 0 64px;
+    padding-bottom: 64px;
 
-    color: white;
+    color: #ffffff;
+
+    @include mobile {
+      padding-bottom: 32px;
+    }
   }
 
   &__title {
-    @include font30;
+    @include fontUnify(42, 50, 700);
+    text-transform: uppercase;
+
+    @include mobile {
+      @include fontUnify(24, 34, 700);
+    }
   }
 
   &__text {

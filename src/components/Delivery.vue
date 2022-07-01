@@ -100,36 +100,41 @@
         </div>
         <div class="delivery__post">
           <div class="delivery__post-img-col">
-            <div class="delivery__post-img-w">
-              <img
-                class="delivery__post-img"
-                src="../assets/img/novaPoshta.png"
-                alt=""
-              />
+            <!-- <div class="delivery__post-img-w">
+              <img class="delivery__post-img" src="../assets/img/novaPoshta.png" alt="" />
             </div>
             <div class="delivery__post-img-w">
-              <img
-                class="delivery__post-img"
-                src="../assets/img/ukrPoshta.png"
-                alt=""
-              />
+              <img class="delivery__post-img" src="../assets/img/ukrPoshta.png" alt="" />
             </div>
           </div>
           <div class="delivery__post-img-col">
             <div class="delivery__post-img-w">
-              <img
-                class="delivery__post-img"
-                src="../assets/img/justin.png"
-                alt=""
-              />
+              <img class="delivery__post-img" src="../assets/img/justin.png" alt="" />
             </div>
             <div class="delivery__post-img-w">
-              <img
-                class="delivery__post-img"
-                src="../assets/img/delivery.png"
-                alt=""
-              />
+              <img class="delivery__post-img" src="../assets/img/delivery.png" alt="" />
             </div>
+          </div> -->
+            <img
+              class="delivery__post-img"
+              src="../assets/img/novaPoshta.png"
+              alt=""
+            />
+            <img
+              class="delivery__post-img"
+              src="../assets/img/ukrPoshta.png"
+              alt=""
+            />
+            <img
+              class="delivery__post-img"
+              src="../assets/img/justin.png"
+              alt=""
+            />
+            <img
+              class="delivery__post-img"
+              src="../assets/img/delivery.png"
+              alt=""
+            />
           </div>
         </div>
         <div class="delivery__pickup">
@@ -302,11 +307,12 @@ export default class DeliveryComponent extends Vue {}
 
 <style lang="scss">
 .delivery-payment {
+  @extend %flex-column;
+  align-items: center;
   @extend %padding-wrp;
 
   &__w {
     @extend %flex-column;
-    align-content: center;
     @extend %width-content;
     gap: 40px;
   }
@@ -320,6 +326,10 @@ export default class DeliveryComponent extends Vue {}
   &__title {
     @include fontUnify(42, 50, 700);
     text-align: center;
+
+    @include mobile {
+      @include fontUnify(24, 34, 700);
+    }
   }
 
   &__info-block {
@@ -342,20 +352,28 @@ export default class DeliveryComponent extends Vue {}
   &__info-block-list-item {
   }
 }
+
 .info-block-b {
   @extend %width-content;
   padding: 32px;
   border: 1px solid #393d38;
   border-radius: 8px;
 }
+
 .delivery {
   @extend %flex-column;
   align-content: center;
   gap: 32px;
+
   &__text {
     @include fontUnify(18, 24);
     letter-spacing: 0.02em;
+
+    @include mobile {
+      @include fontUnify;
+    }
   }
+
   &__text-attention {
     color: #e25750;
   }
@@ -370,6 +388,11 @@ export default class DeliveryComponent extends Vue {}
     @include fontUnify(32, 40, 600);
     letter-spacing: 0.02em;
     margin-bottom: 32px;
+
+    @include mobile {
+      @include fontUnify(24, 34);
+      margin-bottom: 0;
+    }
   }
 
   &__pickup {
@@ -380,6 +403,10 @@ export default class DeliveryComponent extends Vue {}
 
   &__pickup-title {
     @include fontUnify(24, 32);
+
+    @include mobile {
+      @include fontUnify(20, 28);
+    }
   }
 
   &__text-free {
@@ -389,21 +416,36 @@ export default class DeliveryComponent extends Vue {}
   &__post {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+
+    @include mobile {
+      justify-content: center;
+    }
   }
 
   &__post-img {
   }
 
   &__post-img-col {
-    @extend %flex-column;
-    justify-content: space-between;
-    gap: 64px;
+    // @extend %flex-column;
+    // justify-content: space-between;
+    // gap: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 36px 108px;
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__pickup-text {
   }
 }
+
 .payment {
   @extend %flex-column;
   align-content: center;
@@ -413,6 +455,12 @@ export default class DeliveryComponent extends Vue {}
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    flex-wrap: wrap;
+
+    @include mobile {
+      justify-content: center;
+      gap: 36px 80px;
+    }
   }
 
   &__info-block-list {

@@ -364,12 +364,13 @@ export default class PrivacyPolicyComponent extends Vue {}
 
 <style lang="scss">
 .privacy-policy {
+  @extend %flex-column;
+  align-items: center;
   @extend %padding-wrp;
 
   &__w {
     @extend %width-content;
     @extend %flex-column;
-    align-items: center;
     gap: 54px;
   }
 
@@ -390,10 +391,12 @@ export default class PrivacyPolicyComponent extends Vue {}
 
     list-style: none;
     counter-reset: li;
+
     & > li > ol {
       padding-top: 16px;
       padding-left: 16px;
     }
+
     @include mobile {
       @include fontUnify;
     }
@@ -406,12 +409,14 @@ export default class PrivacyPolicyComponent extends Vue {}
   &__entepreneur {
     font-weight: 700;
   }
-  
+
   &__text {
     margin-bottom: 16px;
+
     &:last-child {
       margin: 0;
     }
+
     &:before {
       counter-increment: li;
       content: counters(li, ".") ".";

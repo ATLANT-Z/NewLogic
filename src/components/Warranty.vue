@@ -160,18 +160,20 @@ export default class WarrantyComponent extends Vue {}
 
 <style lang="scss">
 .warranty {
+  @extend %flex-column;
+  align-items: center;
   @extend %padding-wrp;
 
   &__w {
     @extend %width-content;
     @extend %flex-column;
-    align-items: center;
     gap: 48px;
   }
 
   &__title {
     @include fontUnify(42, 50, 700);
     text-transform: uppercase;
+    text-align: center;
 
     @include mobile {
       @include fontUnify(24, 34, 700);

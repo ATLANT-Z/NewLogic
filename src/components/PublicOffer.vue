@@ -291,12 +291,13 @@ export default class PublicOfferComponent extends Vue {}
 
 <style lang="scss">
 .public-offer {
+  @extend %flex-column;
+  align-items: center;
   @extend %padding-wrp;
 
   &__w {
     @extend %width-content;
     @extend %flex-column;
-    align-items: center;
     gap: 56px;
   }
 
@@ -343,6 +344,7 @@ export default class PublicOfferComponent extends Vue {}
     @include mobile {
       @include fontUnify;
     }
+
     &::before {
       counter-increment: subsection;
       content: counter(section) "." counter(subsection) ".";

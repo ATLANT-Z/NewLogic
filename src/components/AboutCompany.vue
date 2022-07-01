@@ -78,12 +78,13 @@ export default class AboutCompanyComponent extends Vue {}
 
 <style lang="scss">
 .about-company {
+  @extend %flex-column;
+  align-items: center;
   @extend %padding-wrp;
 
   &__w {
     @extend %width-content;
     @extend %flex-column;
-    align-items: center;
     gap: 48px;
   }
 
