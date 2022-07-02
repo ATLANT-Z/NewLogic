@@ -3,12 +3,12 @@
     <div class="banner__img-w">
       <picture>
         <source
-          srcset="../assets/img/NewsArticleBannerMob.png"
+          srcset="../assets/img/newsArticleBannerMob.png"
           media="(max-width: 680px)"
         />
         <img
           class="banner__img"
-          src="../assets/img/NewsArticleBanner.png"
+          src="../assets/img/newsArticleBanner.png"
           alt=""
         />
       </picture>
@@ -209,32 +209,55 @@ export default class NewsArticleComponent extends Vue {}
   }
 
   &__card-list {
+    @extend %width-main;
+
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    --gap: 16px;
+    gap: Var(--gap);
   }
 
   &__card {
-    width: 100%;
-    max-width: 489px;
-
     @extend %flex-column;
     align-items: center;
 
     background-color: #ffffff;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
+
+    @include set-cart-count-in-row(3);
+
+    @include bigMobile() {
+      @include set-cart-count-in-row(2);
+    }
+
+    @include mobile() {
+      @include set-cart-count-in-row(1);
+    }
   }
 
   &__card-inner {
+    min-height: 304px;
+
     @extend %flex-column;
-    gap: 75px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 
     padding: 16px 32px 32px;
+
+    @include mobile {
+      min-height: 246px;
+
+      padding: 16px;
+    }
   }
 
   &__card-link {
+    width: 100%;
+
     @include fontUnify(18, 24);
     text-align: center;
 
@@ -250,6 +273,8 @@ export default class NewsArticleComponent extends Vue {}
   }
 
   &__card-article-w {
+    width: 100%;
+
     display: flex;
     justify-content: space-between;
 
