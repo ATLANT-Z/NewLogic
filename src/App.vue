@@ -16,14 +16,15 @@
     </div>
   </section> -->
   <main class="site-main">
-    <CategoryCatalogComponent></CategoryCatalogComponent>
+    <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
     <!-- <DeliveryComponent></DeliveryComponent> -->
     <NewsArticleComponent></NewsArticleComponent>
-    <BlogComponent></BlogComponent>
+    <!-- <BlogComponent></BlogComponent> -->
+    <CooperationComponent></CooperationComponent>
   </main>
 </template>
 
@@ -37,6 +38,7 @@ import PublicOfferComponent from "./components/PublicOffer.vue";
 import DeliveryComponent from "./components/Delivery.vue";
 import NewsArticleComponent from "./components/NewsArticle.vue";
 import BlogComponent from "./components/Blog.vue"
+import CooperationComponent from "./components/Cooperation.vue"
 
 @Options({
   components: {
@@ -47,7 +49,8 @@ import BlogComponent from "./components/Blog.vue"
     PublicOfferComponent,
     DeliveryComponent,
     NewsArticleComponent,
-    BlogComponent
+    BlogComponent,
+    CooperationComponent
   },
 })
 export default class App extends Vue {}

@@ -265,9 +265,9 @@ export default class BlogComponent extends Vue {}
     min-height: 304px;
 
     @extend %flex-column;
-    align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    align-items: center;
+    gap: 8px;
 
     padding: 16px 32px 32px;
 
