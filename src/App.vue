@@ -16,15 +16,16 @@
     </div>
   </section> -->
   <main class="site-main">
-    <CategoryCatalogComponent></CategoryCatalogComponent>
+    <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
     <!-- <DeliveryComponent></DeliveryComponent> -->
-    <NewsArticleComponent></NewsArticleComponent>
-    <BlogComponent></BlogComponent>
-    <CooperationComponent></CooperationComponent>
+    <!-- <NewsArticleComponent></NewsArticleComponent> -->
+    <!-- <BlogComponent></BlogComponent> -->
+    <!-- <CooperationComponent></CooperationComponent> -->
+    <InstructionComponent></InstructionComponent>
   </main>
 </template>
 
@@ -37,8 +38,9 @@ import WarrantyComponent from "./components/Warranty.vue";
 import PublicOfferComponent from "./components/PublicOffer.vue";
 import DeliveryComponent from "./components/Delivery.vue";
 import NewsArticleComponent from "./components/NewsArticle.vue";
-import BlogComponent from "./components/Blog.vue"
-import CooperationComponent from "./components/Cooperation.vue"
+import BlogComponent from "./components/Blog.vue";
+import CooperationComponent from "./components/Cooperation.vue";
+import InstructionComponent from "./components/Instruction.vue";
 
 @Options({
   components: {
@@ -50,7 +52,8 @@ import CooperationComponent from "./components/Cooperation.vue"
     DeliveryComponent,
     NewsArticleComponent,
     BlogComponent,
-    CooperationComponent
+    CooperationComponent,
+    InstructionComponent
   },
 })
 export default class App extends Vue {}
@@ -137,9 +140,34 @@ main {
   }
 
   &__text {
+    width: 100%;
+    max-width: 486px;
+
+    @include fontUnify(18, 24);
+    letter-spacing: 0.02em;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__input {
+    width: 100%;
+    max-width: 300px;
+
+    @include fontUnify(12, 16);
+    letter-spacing: 0.02em;
+
+    color: #8A8A8A;
+    background-color: #FFFFFF;
+
+    border-radius: 6px;
+
+    padding: 8px 12px;
+
+    @include mobile {
+      display: none;
+    }
   }
 }
 </style>
