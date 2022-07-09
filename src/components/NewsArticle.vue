@@ -20,9 +20,36 @@
     </div>
   </section>
   <section class="news-article">
+    <div class="news-article__content">
+      <h4 class="news-article__content-title">Содержание</h4>
+      <div>
+        <a class="news-article__content-item" href="#news-article__anchor1"
+          >Что означает «Система защиты остатков склада»?</a
+        >
+      </div>
+      <div>
+        <a class="news-article__content-item" href="#news-article__anchor2">Как это работает?</a>
+      </div>
+      <div>
+        <a class="news-article__content-item" href="#news-article__anchor3"
+          >На какие группы товаров распространяется «Система защиты остатков
+          склада»?</a
+        >
+      </div>
+      <div>
+        <a class="news-article__content-item" href="#news-article__anchor4"
+          >Срок действия программы?</a
+        >
+      </div>
+      <div>
+        <a class="news-article__content-item" href="#news-article__anchor5"
+          >Почему это выгодно нашим клиентам?</a
+        >
+      </div>
+    </div>
     <div class="news-article__w">
       <div class="news-article__info">
-        <h4 class="news-article__info-title">
+        <h4 class="news-article__info-title" id="news-article__anchor1">
           Что означает «Система защиты остатков склада»?
         </h4>
         <p class="news-article__info-text">
@@ -39,7 +66,7 @@
         </p>
       </div>
       <div class="news-article__info">
-        <h4 class="news-article__info-title">Как это работает?</h4>
+        <h4 class="news-article__info-title" id="news-article__anchor2">Как это работает?</h4>
         <p class="news-article__info-text">
           Допустим, вы купили 100 аккумуляторов по цене $20 и до изменения цены
           в сторону уменьшения ($15) успели продать 20 батарей. Мы пересчитаем
@@ -49,7 +76,7 @@
         </p>
       </div>
       <div class="news-article__info">
-        <h4 class="news-article__info-title">
+        <h4 class="news-article__info-title" id="news-article__anchor3">
           На какие группы товаров распространяется «Система защиты остатков
           склада»?
         </h4>
@@ -59,14 +86,14 @@
         </p>
       </div>
       <div class="news-article__info">
-        <h4 class="news-article__info-title">Срок действия программы?</h4>
+        <h4 class="news-article__info-title" id="news-article__anchor4">Срок действия программы?</h4>
         <p class="news-article__info-text">
           Программы защиты остатков склада от LogicPower действует в течение
           одного месяца со дня оформления покупки партии товара.
         </p>
       </div>
       <div class="news-article__info">
-        <h4 class="news-article__info-title">
+        <h4 class="news-article__info-title" id="news-article__anchor5">
           Почему это выгодно нашим клиентам?
         </h4>
         <p class="news-article__info-text">
@@ -156,14 +183,48 @@ export default class NewsArticleComponent extends Vue {}
 .news-article {
   @extend %flex-column;
   align-items: center;
+  gap: 96px;
+
   @extend %padding-wrp;
+  padding-bottom: 80px;
+
+  &__content {
+    @extend %width-content;
+
+    @extend %flex-column;
+    gap: 32px;
+
+    background: #f8f8f8;
+    border-radius: 12px;
+
+    padding: 32px;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__content-title {
+    @include fontUnify(32, 42, 600);
+
+    margin-bottom: 16px;
+  }
+
+  &__content-item {
+    @include fontUnify(20, 28, 500);
+    letter-spacing: 0.02em;
+
+    color: $color-main;
+
+    &:hover {
+      color: $color-main-dark;
+    }
+  }
 
   &__w {
     @extend %width-content;
     @extend %flex-column;
     gap: 48px;
-
-    margin-bottom: 166px;
 
     @include mobile {
       margin-bottom: 64px;

@@ -144,6 +144,7 @@
           </div>
         </div>
       </div>
+      <div class="pagination">1 2 3</div>
     </div>
   </section>
 </template>
@@ -161,6 +162,7 @@ export default class BlogComponent extends Vue {}
   align-items: center;
 
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %width-main;
@@ -196,6 +198,7 @@ export default class BlogComponent extends Vue {}
     @extend %width-content;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     padding-left: 16px;
     padding-right: 16px;
@@ -205,6 +208,11 @@ export default class BlogComponent extends Vue {}
     @include fontUnify(24, 34);
     letter-spacing: 0.02em;
 
+    cursor: pointer;
+
+    &:hover {
+      color: $color-main;
+    }
     @include mobile {
       @include fontUnify;
     }
@@ -320,6 +328,11 @@ export default class BlogComponent extends Vue {}
 }
 
 .active {
+  border: 1px solid #393d38;
+  border-radius: 60px;
+
+  padding: 8px 56px;
+
   color: $color-main;
 }
 </style>

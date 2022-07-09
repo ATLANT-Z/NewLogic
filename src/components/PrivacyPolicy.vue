@@ -366,7 +366,9 @@ export default class PrivacyPolicyComponent extends Vue {}
 .privacy-policy {
   @extend %flex-column;
   align-items: center;
+
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %width-content;

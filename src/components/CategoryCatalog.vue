@@ -167,7 +167,7 @@
             товары, которые обеспечат Ваше оборудование качественным питанием и
             обезопасят его.
           </p>
-          <ul class="category-purpose__info-list">
+          <ol class="category-purpose__info-list">
             <li class="category-purpose__info-list-item">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </li>
@@ -183,7 +183,7 @@
             <li class="category-purpose__info-list-item">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </li>
-          </ul>
+          </ol>
         </div>
         <div class="category-purpose__goal">
           <h4 class="category-purpose__goal-title">Цель компании LogicPower</h4>
@@ -228,6 +228,7 @@ export default class CategoryCatalogComponent extends Vue {}
   gap: 48px;
 
   @extend %padding-wrp;
+  padding-bottom: 80px;
   background-color: $color-bg-grey-white;
 
   @include mobile {
@@ -356,6 +357,9 @@ export default class CategoryCatalogComponent extends Vue {}
     text-align: center;
     letter-spacing: 0.02em;
 
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
     color: $color-main;
   }
 }
@@ -380,7 +384,16 @@ export default class CategoryCatalogComponent extends Vue {}
       gap: 16px;
     }
 
-    & > h2 {
+    & div {
+      @extend %flex-column;
+      gap: 16px;
+
+      @include mobile {
+        gap: 8px;
+      }
+    }
+
+    & h2 {
       @include fontUnify(42, 50, 700);
       text-transform: uppercase;
 
@@ -390,35 +403,37 @@ export default class CategoryCatalogComponent extends Vue {}
       }
     }
 
-    & > div > h4 {
+    & h4 {
       @include fontUnify(32, 42, 600);
       letter-spacing: 0.02em;
 
-      margin-bottom: 24px;
+      margin-bottom: 8px;
 
       @include mobile {
         @include fontUnify(20, 28);
         text-align: center;
-
-        margin-bottom: 16px;
       }
     }
 
-    & > div > ul {
+    & ul {
       list-style: disc;
 
       padding-left: 18px;
     }
 
-    & > div > p,
-    & > div > ul > li {
+    & ol {
+      list-style: decimal;
+
+      padding-left: 24px;
+    }
+
+    & p,
+    & li {
       @include fontUnify(20, 28);
       letter-spacing: 0.02em;
 
       @include mobile {
         @include fontUnify;
-
-        margin-bottom: 24px;
       }
     }
   }

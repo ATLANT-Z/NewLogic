@@ -16,14 +16,14 @@
     </div>
   </section> -->
   <main class="site-main">
-    <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
+    <CategoryCatalogComponent></CategoryCatalogComponent>
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
     <!-- <DeliveryComponent></DeliveryComponent> -->
     <NewsArticleComponent></NewsArticleComponent>
-    <!-- <BlogComponent></BlogComponent> -->
+    <BlogComponent></BlogComponent>
     <CooperationComponent></CooperationComponent>
   </main>
 </template>

@@ -224,6 +224,7 @@ export default class CooperationComponent extends Vue {}
   align-items: center;
 
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %width-main;
@@ -267,9 +268,9 @@ export default class CooperationComponent extends Vue {}
     gap: 24px;
 
     @include mobile {
-        flex-direction: column;
-        align-items: center;
-        gap: 48px;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
     }
   }
 
@@ -418,7 +419,7 @@ export default class CooperationComponent extends Vue {}
   align-items: center;
   gap: 36px;
 
-  @include mobile {
+  @include bigMobile {
     gap: 24px;
   }
 
@@ -429,7 +430,7 @@ export default class CooperationComponent extends Vue {}
     text-align: center;
     text-transform: uppercase;
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify(18, 24);
     }
   }
@@ -439,21 +440,23 @@ export default class CooperationComponent extends Vue {}
 
     display: flex;
     justify-content: center;
-    gap: 110px;
+    gap: 36px;
 
-    @include mobile {
-        flex-direction: column;
-        gap: 48px;
+    @include bigMobile {
+      flex-direction: column;
+      gap: 48px;
     }
   }
 
   &__list {
-    width: 100%;
+    width: 33%;
 
     @extend %flex-column;
     gap: 48px;
 
-    @include mobile {
+    @include bigMobile {
+      width: 100%;
+
       gap: 16px;
     }
   }
@@ -470,8 +473,9 @@ export default class CooperationComponent extends Vue {}
   &__list-item-text {
     @include fontUnify(20, 28);
     letter-spacing: 0.02em;
+    word-break: break-word;
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify(18, 24);
     }
   }
@@ -482,21 +486,20 @@ export default class CooperationComponent extends Vue {}
 
     background-color: #8a8a8a;
 
-    @include mobile {
+    @include bigMobile {
       display: none;
     }
   }
 
   &__list-more {
-    width: 100%;
-    max-width: 597px;
+    width: 35%;
 
     @extend %flex-column;
     align-items: flex-start;
     gap: 36px;
 
-    @include mobile {
-        max-width: none;
+    @include bigMobile {
+      width: 100%;
     }
   }
 
@@ -505,7 +508,7 @@ export default class CooperationComponent extends Vue {}
     letter-spacing: 0.02em;
     text-transform: uppercase;
 
-    @include mobile {
+    @include bigMobile {
       text-align: center;
     }
   }

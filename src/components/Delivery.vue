@@ -309,7 +309,9 @@ export default class DeliveryComponent extends Vue {}
 .delivery-payment {
   @extend %flex-column;
   align-items: center;
+
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %flex-column;
