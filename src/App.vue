@@ -1,20 +1,5 @@
 <template>
   <header></header>
-  <!-- <section class="banner">
-    <div class="banner__img-w">
-      <picture>
-        <source srcset="https://logicpower.ua/images/catalog/Продукция-1.png" media="(max-width: 1280px)">
-        <img class="banner__img" src="https://logicpower.ua/storage/1908309/Banner_LP_15_06.png" alt="">
-      </picture>
-    </div>
-    <div class="banner__content">
-      <div class="banner__content-column">
-        <h3 class="banner__title">Заголовок</h3>
-        <p class="banner__text">текст</p>
-        <input class="banner__input" type="text" value="123" />
-      </div>
-    </div>
-  </section> -->
   <main class="site-main">
     <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
@@ -53,7 +38,7 @@ import InstructionComponent from "./components/Instruction.vue";
     NewsArticleComponent,
     BlogComponent,
     CooperationComponent,
-    InstructionComponent
+    InstructionComponent,
   },
 })
 export default class App extends Vue {}
@@ -79,7 +64,7 @@ main {
   background-color: black;
 
   margin-bottom: 80px;
-  
+
   @include mobile {
     height: 254px;
     margin-bottom: 48px;
@@ -151,22 +136,37 @@ main {
     }
   }
 
+  &__input-w {
+    width: 100%;
+    max-width: 327px;
+
+    position: relative;
+  }
+
   &__input {
     width: 100%;
-    max-width: 300px;
 
-    @include fontUnify(12, 16);
+    @include fontUnify(16, 16);
     letter-spacing: 0.02em;
 
-    color: #8A8A8A;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 
     border-radius: 6px;
 
-    padding: 8px 12px;
+    padding: 16px;
 
-    @include mobile {
-      display: none;
+    &::placeholder {
+      color: $color-text-lighter;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }

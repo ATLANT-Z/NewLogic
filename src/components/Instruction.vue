@@ -20,11 +20,16 @@
           Данный раздел содержит инструкции по настройке оборудования,
           предоставленного нашей компанией.
         </p>
-        <input
-          class="banner__input"
-          type="text"
-          placeholder="Введите код или модель товара"
-        />
+        <div class="banner__input-w">
+          <input
+            class="banner__input"
+            type="text"
+            placeholder="Введите код или модель товара"
+          />
+          <button class="banner__button">
+            <img src="../assets/icons/lensIcon.svg" alt="" />
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -87,6 +92,138 @@
         </div>
       </div>
     </div>
+    <div class="instruction__body">
+      <div class="instruction__body-item">
+        <div class="instruction__body-item-header">
+          <span class="instruction__body-item-header-text">4135</span>
+          <span class="instruction__body-item-header-text"
+            >Аккумуляторы 4-6V (AGM)</span
+          >
+          <span class="instruction__body-item-header-text"
+            >Аккумулятор AGM</span
+          >
+          <span class="instruction__body-item-header-text">LPM 4V - 4 Ah</span>
+          <span class="instruction__body-item-header-text">Развернуть</span>
+        </div>
+        <div class="instruction__body-item-list-w">
+          <div class="instruction__body-item-list-title-w">
+            <span class="instruction__body-item-list-title">Название</span>
+            <span class="instruction__body-item-list-title">Тип файла</span>
+            <span class="instruction__body-item-list-title">Язык</span>
+            <span class="instruction__body-item-list-title">Дата</span>
+            <span class="instruction__body-item-list-title">Загрузка</span>
+          </div>
+          <div class="instruction__body-item-list-line"></div>
+          <ul class="instruction__body-content">
+            <li class="instruction__body-content-item">Паспорт аккумулятора</li>
+            <li class="instruction__body-content-item">pdf</li>
+            <li class="instruction__body-content-item">укр</li>
+            <li class="instruction__body-content-item">07.12.2020</li>
+            <li class="instruction__body-content-item">
+              <a class="instruction__body-content-item-link" href="#"
+                >Скачать</a
+              >
+            </li>
+          </ul>
+          <ul class="instruction__body-content">
+            <li class="instruction__body-content-item">
+              Инструкция по эксплуатации
+            </li>
+            <li class="instruction__body-content-item">pdf</li>
+            <li class="instruction__body-content-item">укр</li>
+            <li class="instruction__body-content-item">07.12.2020</li>
+            <li class="instruction__body-content-item">
+              <a class="instruction__body-content-item-link" href="#"
+                >Скачать</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="instruction__body-mob">
+      <ul class="instruction__body-head-list">
+        <li class="instruction__body-head-item">
+          Название:
+          <span class="instruction__body-head-item-value">Аккумулятор AGM</span>
+        </li>
+        <li class="instruction__body-head-item">
+          Модель:
+          <span class="instruction__body-head-item-value">LPM 4V - 4 Ah</span>
+        </li>
+        <li class="instruction__body-head-item">
+          Код: <span class="instruction__body-head-item-value">4135</span>
+        </li>
+        <li class="instruction__body-head-item">
+          Категория:
+          <span class="instruction__body-head-item-value"
+            >Аккумуляторы 4-6V (AGM)</span
+          >
+        </li>
+      </ul>
+      <div class="instruction__body-content-mob">
+        <div class="instruction__body-content-mob-line"></div>
+        <div class="instruction__body-content-mob-item">
+          <span class="instruction__body-content-mob-item-text"
+            >Паспорт аккумулятора (pdf)</span
+          >
+          <a class="instruction__body-content-mob-item-link" href="#">
+            <img src="../assets/icons/downloadInstrIconMob.svg" alt="" />
+          </a>
+        </div>
+        <div class="instruction__body-content-mob-item">
+          <span class="instruction__body-content-mob-item-text"
+            >Паспорт аккумулятора (pdf)</span
+          >
+          <a class="instruction__body-content-mob-item-link" href="#">
+            <img src="../assets/icons/downloadInstrIconMob.svg" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="instruction__body-roll-mob"></div>
+    </div>
+    <div class="instruction__body-mob">
+      <ul class="instruction__body-head-list">
+        <li class="instruction__body-head-item">
+          Название:
+          <span class="instruction__body-head-item-value">Аккумулятор AGM</span>
+        </li>
+        <li class="instruction__body-head-item">
+          Модель:
+          <span class="instruction__body-head-item-value">LPM 4V - 4 Ah</span>
+        </li>
+        <li class="instruction__body-head-item">
+          Код: <span class="instruction__body-head-item-value">4135</span>
+        </li>
+        <li class="instruction__body-head-item">
+          Категория:
+          <span class="instruction__body-head-item-value"
+            >Аккумуляторы 4-6V (AGM)</span
+          >
+        </li>
+      </ul>
+      <div class="instruction__body-content-mob">
+        <div class="instruction__body-content-mob-line"></div>
+        <div class="instruction__body-content-mob-item">
+          <span class="instruction__body-content-mob-item-text"
+            >Паспорт аккумулятора (pdf)</span
+          >
+          <a class="instruction__body-content-mob-item-link" href="#">
+            <img src="../assets/icons/downloadInstrIconMob.svg" alt="" />
+          </a>
+        </div>
+        <div class="instruction__body-content-mob-item">
+          <span class="instruction__body-content-mob-item-text"
+            >Паспорт аккумулятора (pdf)</span
+          >
+          <a class="instruction__body-content-mob-item-link" href="#">
+            <img src="../assets/icons/downloadInstrIconMob.svg" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="instruction__body-roll-mob"></div>
+    </div>
   </section>
 </template>
 
@@ -101,10 +238,18 @@ export default class InstructionComponent extends Vue {}
 .instruction {
   @extend %flex-column;
   align-items: center;
-  gap: 32px;
+  gap: 48px;
 
   @include fontUnify(20, 28);
   letter-spacing: 0.02em;
+
+  @include mobile {
+    gap: 24px;
+
+    @include fontUnify;
+
+    padding: 0 8px;
+  }
 
   &__head {
     width: 100%;
@@ -113,6 +258,10 @@ export default class InstructionComponent extends Vue {}
     justify-content: center;
 
     background: #d1d1d1;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__head-w {
@@ -134,6 +283,10 @@ export default class InstructionComponent extends Vue {}
     @extend %width-main;
 
     padding: 0 16px;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__body-item {
@@ -229,6 +382,89 @@ export default class InstructionComponent extends Vue {}
 
     &:hover {
       color: $color-main-dark;
+    }
+  }
+
+  &__body-mob {
+    display: none;
+
+    @include mobile {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      background-color: #ffffff;
+      box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+
+      padding: 16px 8px;
+    }
+  }
+
+  &__body-head-list {
+    @extend %flex-column;
+    gap: 16px;
+  }
+
+  &__body-head-item {
+    font-weight: 700;
+  }
+
+  &__body-head-item-value {
+    font-weight: 400;
+  }
+
+  &__body-content-mob {
+    @extend %flex-column;
+    gap: 12px;
+
+    overflow: hidden;
+    max-height: 0;
+
+    @include animAll(1s);
+    &:active {
+      max-height: 100000px;
+    }
+  }
+
+  &__body-content-mob-line {
+    width: 100%;
+    height: 1px;
+    background-color: #d1d1d1;
+  }
+
+  &__body-content-mob-item {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__body-content-mob-item-text {
+  }
+
+  &__body-content-mob-item-link {
+  }
+
+  &__body-roll-mob {
+    width: 12px;
+    height: 12px;
+
+    border-left: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+
+    transform: rotate(135deg);
+
+    align-self: center;
+
+    @include animAll;
+
+    &:active {
+      transform: rotate(315deg);
     }
   }
 }
