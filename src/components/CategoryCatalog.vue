@@ -167,7 +167,7 @@
             товары, которые обеспечат Ваше оборудование качественным питанием и
             обезопасят его.
           </p>
-          <ol class="category-purpose__info-list">
+          <ul class="category-purpose__info-list">
             <li class="category-purpose__info-list-item">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </li>
@@ -183,7 +183,7 @@
             <li class="category-purpose__info-list-item">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </li>
-          </ol>
+          </ul>
         </div>
         <div class="category-purpose__goal">
           <h4 class="category-purpose__goal-title">Цель компании LogicPower</h4>
@@ -229,7 +229,6 @@ export default class CategoryCatalogComponent extends Vue {}
 
   @extend %padding-wrp;
   padding-bottom: 80px;
-  background-color: $color-bg-grey-white;
 
   @include mobile {
     gap: 36px;
@@ -325,7 +324,7 @@ export default class CategoryCatalogComponent extends Vue {}
   }
 
   &__title {
-    @include fontUnify(20, 30);
+    @include fontUnify(20, 30, 600);
     text-transform: uppercase;
     text-align: center;
 
@@ -387,10 +386,6 @@ export default class CategoryCatalogComponent extends Vue {}
     & div {
       @extend %flex-column;
       gap: 16px;
-
-      @include mobile {
-        gap: 8px;
-      }
     }
 
     & h2 {

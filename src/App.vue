@@ -1,16 +1,17 @@
 <template>
   <header></header>
   <main class="site-main">
-    <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
+    <CategoryCatalogComponent></CategoryCatalogComponent>
+    <SubCategoryCatalogComponent></SubCategoryCatalogComponent>
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
     <!-- <DeliveryComponent></DeliveryComponent> -->
-    <!-- <NewsArticleComponent></NewsArticleComponent> -->
-    <!-- <BlogComponent></BlogComponent> -->
+    <!-- <NewsArticleComponent></NewsArticleComponent>
+    <BlogComponent></BlogComponent> -->
     <!-- <CooperationComponent></CooperationComponent> -->
-    <InstructionComponent></InstructionComponent>
+    <!-- <InstructionComponent></InstructionComponent> -->
   </main>
 </template>
 
@@ -26,6 +27,7 @@ import NewsArticleComponent from "./components/NewsArticle.vue";
 import BlogComponent from "./components/Blog.vue";
 import CooperationComponent from "./components/Cooperation.vue";
 import InstructionComponent from "./components/Instruction.vue";
+import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
 
 @Options({
   components: {
@@ -39,6 +41,7 @@ import InstructionComponent from "./components/Instruction.vue";
     BlogComponent,
     CooperationComponent,
     InstructionComponent,
+    SubCategoryCatalogComponent
   },
 })
 export default class App extends Vue {}
@@ -63,7 +66,7 @@ main {
 
   background-color: black;
 
-  margin-bottom: 80px;
+  margin-bottom: 64px;
 
   @include mobile {
     height: 254px;

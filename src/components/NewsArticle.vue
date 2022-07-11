@@ -28,7 +28,9 @@
         >
       </div>
       <div>
-        <a class="news-article__content-item" href="#news-article__anchor2">Как это работает?</a>
+        <a class="news-article__content-item" href="#news-article__anchor2"
+          >Как это работает?</a
+        >
       </div>
       <div>
         <a class="news-article__content-item" href="#news-article__anchor3"
@@ -66,7 +68,9 @@
         </p>
       </div>
       <div class="news-article__info">
-        <h4 class="news-article__info-title" id="news-article__anchor2">Как это работает?</h4>
+        <h4 class="news-article__info-title" id="news-article__anchor2">
+          Как это работает?
+        </h4>
         <p class="news-article__info-text">
           Допустим, вы купили 100 аккумуляторов по цене $20 и до изменения цены
           в сторону уменьшения ($15) успели продать 20 батарей. Мы пересчитаем
@@ -86,7 +90,9 @@
         </p>
       </div>
       <div class="news-article__info">
-        <h4 class="news-article__info-title" id="news-article__anchor4">Срок действия программы?</h4>
+        <h4 class="news-article__info-title" id="news-article__anchor4">
+          Срок действия программы?
+        </h4>
         <p class="news-article__info-text">
           Программы защиты остатков склада от LogicPower действует в течение
           одного месяца со дня оформления покупки партии товара.
@@ -200,7 +206,11 @@ export default class NewsArticleComponent extends Vue {}
     padding: 32px;
 
     @include mobile {
-      display: none;
+      gap: 24px;
+
+      border-radius: 8px;
+
+      padding: 24px;
     }
   }
 
@@ -208,6 +218,12 @@ export default class NewsArticleComponent extends Vue {}
     @include fontUnify(32, 42, 600);
 
     margin-bottom: 16px;
+
+    @include mobile {
+      @include fontUnify(24, 34);
+
+      margin-bottom: 0;
+    }
   }
 
   &__content-item {
@@ -218,6 +234,10 @@ export default class NewsArticleComponent extends Vue {}
 
     &:hover {
       color: $color-main-dark;
+    }
+
+    @include mobile {
+      @include fontUnify;
     }
   }
 
