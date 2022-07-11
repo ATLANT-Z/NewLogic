@@ -377,12 +377,6 @@ export default class SubsubcategoryCatalogComponent extends Vue {}
     align-content: flex-start;
     gap: 48px;
 
-    @include mobile {
-      align-content: center;
-
-      gap: 16px;
-    }
-
     & div {
       @extend %flex-column;
       gap: 16px;
