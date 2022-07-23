@@ -1,17 +1,18 @@
 <template>
   <header></header>
   <main class="site-main">
-    <CategoryCatalogComponent></CategoryCatalogComponent>
-    <SubCategoryCatalogComponent></SubCategoryCatalogComponent>
+    <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
+    <!-- <SubCategoryCatalogComponent></SubCategoryCatalogComponent> -->
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
     <!-- <DeliveryComponent></DeliveryComponent> -->
-    <!-- <NewsArticleComponent></NewsArticleComponent>
-    <BlogComponent></BlogComponent> -->
+    <!-- <NewsArticleComponent></NewsArticleComponent> -->
+    <!-- <BlogComponent></BlogComponent> -->
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
+    <ContactComponent></ContactComponent>
   </main>
 </template>
 
@@ -28,6 +29,7 @@ import BlogComponent from "./components/Blog.vue";
 import CooperationComponent from "./components/Cooperation.vue";
 import InstructionComponent from "./components/Instruction.vue";
 import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
+import ContactComponent from "./components/Contact.vue";
 
 @Options({
   components: {
@@ -41,7 +43,8 @@ import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
     BlogComponent,
     CooperationComponent,
     InstructionComponent,
-    SubCategoryCatalogComponent
+    SubCategoryCatalogComponent,
+    ContactComponent
   },
 })
 export default class App extends Vue {}

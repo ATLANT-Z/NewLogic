@@ -4,11 +4,13 @@
     <div class="category-catalog__w">
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicpower.ua/storage/1903113/12258_1.jpg"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicpower.ua/storage/1903113/12258_1.jpg"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -24,11 +26,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicpower.ua/storage/1903100/30_1.jpg"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicpower.ua/storage/1903113/12258_1.jpg"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -44,11 +48,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -58,11 +64,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -75,11 +83,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -95,11 +105,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -115,11 +127,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -135,11 +149,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -291,9 +307,24 @@ export default class CategoryCatalogComponent extends Vue {}
     @include set-cart-count-in-row(1);
   }
 
-  &__img {
+  &__img-cont {
+    position: relative;
     width: 100%;
-    height: 302px;
+    padding-top: 100%;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
+    @include mobile {
+      padding-top: 60%;
+    }
+  }
+
+  &__img {
+    @include absoluteGrow();
+
+    width: 100%;
+    height: 100%;
 
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -301,10 +332,25 @@ export default class CategoryCatalogComponent extends Vue {}
     object-fit: cover;
     pointer-events: none;
 
-    @include mobile {
-      height: 285px;
-    }
+    // @include mobile {
+    //   height: 285px;
+    // }
   }
+
+  // &__img {
+  //   width: 100%;
+  //   height: 306px;
+
+  //   border-top-left-radius: inherit;
+  //   border-top-right-radius: inherit;
+
+  //   object-fit: cover;
+  //   pointer-events: none;
+
+  //   @include mobile {
+  //     height: 285px;
+  //   }
+  // }
 
   &__info {
     height: 100%;

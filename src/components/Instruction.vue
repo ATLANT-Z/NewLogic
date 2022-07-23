@@ -54,9 +54,16 @@
             >Аккумулятор AGM</span
           >
           <span class="instruction__body-item-header-text">LPM 4V - 4 Ah</span>
-          <span class="instruction__body-item-header-text">Развернуть</span>
+          <span
+            class="instruction__body-item-header-text"
+            @click="isActive = !isActive"
+            >Развернуть</span
+          >
         </div>
-        <div class="instruction__body-item-list-w">
+        <div
+          class="instruction__body-item-list-w"
+          :class="{ active: isActive }"
+        >
           <div class="instruction__body-item-list-title-w">
             <span class="instruction__body-item-list-title">Название</span>
             <span class="instruction__body-item-list-title">Тип файла</span>
@@ -92,6 +99,7 @@
         </div>
       </div>
     </div>
+    <!-- <InstructionRow v-for="(instruction, index) in dataList" :key="index" :instruction='instruction'/> -->
     <div class="instruction__body">
       <div class="instruction__body-item">
         <div class="instruction__body-item-header">
@@ -103,9 +111,16 @@
             >Аккумулятор AGM</span
           >
           <span class="instruction__body-item-header-text">LPM 4V - 4 Ah</span>
-          <span class="instruction__body-item-header-text">Развернуть</span>
+          <span
+            class="instruction__body-item-header-text"
+            @click="isActive = !isActive"
+            >Развернуть</span
+          >
         </div>
-        <div class="instruction__body-item-list-w">
+        <div
+          class="instruction__body-item-list-w"
+          :class="{ active: isActive }"
+        >
           <div class="instruction__body-item-list-title-w">
             <span class="instruction__body-item-list-title">Название</span>
             <span class="instruction__body-item-list-title">Тип файла</span>
@@ -230,18 +245,24 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
-@Options({})
-export default class InstructionComponent extends Vue {}
+@Options({
+  name: "InstructionComponent",
+})
+export default class InstructionComponent extends Vue {
+  isActive: boolean = false;
+}
 </script>
 
 <style lang="scss">
 .instruction {
   @extend %flex-column;
   align-items: center;
-  gap: 48px;
+  gap: 32px;
 
   @include fontUnify(20, 28);
   letter-spacing: 0.02em;
+
+  margin-bottom: 32px;
 
   @include mobile {
     gap: 24px;
@@ -249,6 +270,7 @@ export default class InstructionComponent extends Vue {}
     @include fontUnify;
 
     padding: 0 8px;
+    margin-bottom: 24px;
   }
 
   &__head {
@@ -333,6 +355,32 @@ export default class InstructionComponent extends Vue {}
     border-radius: 8px;
 
     padding: 16px 32px;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+
+    @keyframes toggleDown {
+      0% {
+        max-height: 0;
+      }
+
+      100% {
+        max-height: 100vh;
+      }
+    }
+
+    animation-direction: reverse;
+
+    &.active {
+      max-height: none;
+      visibility: visible;
+
+      animation-name: toggleDown;
+      animation-duration: 0.5s;
+      animation-fill-mode: none;
+      animation-direction: normal;
+      animation-timing-function: ease;
+    }
   }
 
   &__body-item-list-title-w {
