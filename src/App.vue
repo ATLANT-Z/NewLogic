@@ -12,7 +12,9 @@
     <!-- <BlogComponent></BlogComponent> -->
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
-    <ContactComponent></ContactComponent>
+    <!-- <ContactComponent></ContactComponent> -->
+    <!-- <CarouselComponent></CarouselComponent> -->
+    <SliderCategory></SliderCategory>
   </main>
 </template>
 
@@ -30,6 +32,8 @@ import CooperationComponent from "./components/Cooperation.vue";
 import InstructionComponent from "./components/Instruction.vue";
 import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
 import ContactComponent from "./components/Contact.vue";
+import CarouselComponent from "./components/slider/Carousel.vue";
+import SliderCategory from "./components/slider/SliderCategory.vue"
 
 @Options({
   components: {
@@ -44,7 +48,9 @@ import ContactComponent from "./components/Contact.vue";
     CooperationComponent,
     InstructionComponent,
     SubCategoryCatalogComponent,
-    ContactComponent
+    ContactComponent,
+    CarouselComponent,
+    SliderCategory
   },
 })
 export default class App extends Vue {}
