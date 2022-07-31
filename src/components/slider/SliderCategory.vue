@@ -1,20 +1,23 @@
 <template>
-  <div class="category-slider__prod">
-    <div class="category-slider__prod-title-w">
-      <h3 class="category-slider__prod-title">Продукция</h3>
-      <div class="category-slider__prod-line"></div>
+  <div class="category-slider">
+    <div class="category-slider__prod">
+      <div class="category-slider__prod-title-w">
+        <h3 class="category-slider__prod-title">Продукция</h3>
+        <div class="category-slider__prod-line"></div>
+      </div>
+      <Slider></Slider>
     </div>
-    <Slider>
-    </Slider>
+    <Slide></Slide>
   </div>
 </template>
 
 <script>
 import Slider from "./Slider.vue";
+import Slide from "./Slide.vue";
 
 export default {
   name: "SliderCategory",
-  components: { Slider },
+  components: { Slider, Slide },
 };
 </script>
 
@@ -160,7 +163,7 @@ export default {
     width: 100%;
 
     @extend %flex-column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 8px;
 

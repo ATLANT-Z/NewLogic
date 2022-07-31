@@ -9,12 +9,12 @@
       </div>
     </div>
     <ul class="category-slider__prod-list">
-      <Slide
-        v-for="(slide, index) in carouselSlides"
+      <li class="category-slider__prod-item"
+        v-for="(slide, index) in paginationData"
         :key="index"
         :class="{ 'prod-item-active': index + 1 === currentSlide }"
         @click="goToSlide(index)"
-        >{{ slide }}</Slide
+        >{{ slide }}</li
       >
     </ul>
   </div>
@@ -22,13 +22,11 @@
 
 <script>
 import { onMounted, ref } from "vue";
-import Slide from "./Slide.vue";
 
 export default {
-  components: { Slide },
 
   setup() {
-    const carouselSlides = [
+    const paginationData = [
       "Комплектующие для ПК",
       "Литиевые аккумуляторы",
       "ИБП (UPS)",
@@ -70,7 +68,7 @@ export default {
       ).length;
     });
 
-    return { currentSlide, nextSlide, prevSlide, carouselSlides, goToSlide };
+    return { currentSlide, nextSlide, prevSlide, paginationData, goToSlide };
   },
 };
 </script>
