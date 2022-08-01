@@ -113,8 +113,15 @@
           <span class="instruction__body-item-header-text">LPM 4V - 4 Ah</span>
           <span
             class="instruction__body-item-header-text"
+            v-if="!isActive"
             @click="isActive = !isActive"
             >Развернуть</span
+          >
+          <span
+            class="instruction__body-item-header-text"
+            v-if="isActive"
+            @click="isActive = !isActive"
+            >Свернуть</span
           >
         </div>
         <div
