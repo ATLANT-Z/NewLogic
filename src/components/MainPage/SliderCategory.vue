@@ -69,9 +69,6 @@ import { Vue, Options } from "vue-class-component";
   name: "SliderCategoryComponent",
 })
 export default class SliderCategoryComponent extends Vue {
-  // data() {
-  //   return {
-
   declare $refs: {
     leftWrapper: HTMLElement;
     linkListEl: HTMLElement;
@@ -238,6 +235,8 @@ export default class SliderCategoryComponent extends Vue {
     width: 100%;
 
     @extend %flex-column;
+    flex-shrink: 2;
+    flex-grow: 1;
 
     padding: 32px 16px;
     color: #ffffff;
@@ -377,6 +376,8 @@ export default class SliderCategoryComponent extends Vue {
     @extend %flex-column;
     justify-content: flex-start;
     align-items: center;
+    flex-shrink: 1;
+    flex-grow: 2;
 
     background-color: #ffffff;
     overflow: hidden;
@@ -427,6 +428,8 @@ export default class SliderCategoryComponent extends Vue {
     width: 100%;
     max-width: 376px;
 
+    @include flex-container(row, center, center);
+
     @include fontUnify(20, 30, 600);
     text-transform: uppercase;
     color: #ffffff;
@@ -434,6 +437,7 @@ export default class SliderCategoryComponent extends Vue {
     border-radius: 6px;
     background-color: $color-main;
 
+    padding: 8px 0;
     padding: 8px 88px;
 
     cursor: pointer;

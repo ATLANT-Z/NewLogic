@@ -3,14 +3,6 @@
     <div class="main-page__slider-category-block">
       <SliderCategoryComponent></SliderCategoryComponent>
       <div class="main-page__about-company">
-        <!-- <div class="main-page__about-company-title-w"> -->
-        <!-- <div class="main-page__about-company-img-w">
-        <img
-          class="main-page__about-company-img"
-          src="../../assets/img/main-pageAboutCompanyRectangle.png"
-          alt=""
-        />
-      </div> -->
         <div class="main-page__about-company-title-w">
           <h5 class="main-page__about-company-title">О компании</h5>
           <p class="main-page__about-company-text">
@@ -24,7 +16,6 @@
             добиться высокого качества продукции по доступной цене.
           </p>
         </div>
-        <!-- </div> -->
       </div>
     </div>
     <div class="main-page__team-block">
@@ -42,50 +33,59 @@
       </div>
     </div>
     <div class="main-page__b2b-block">
-      <div class="main-page__b2b-logo">
-        <p class="main-page__b2b-logo-title">B2B</p>
+      <div class="main-page__b2b-bgr">
+        <img
+          class="main-page__b2b-bgr-img"
+          src="../../assets/img/mainB2bBckgrnd.png"
+          alt=""
+        />
       </div>
-      <div class="main-page__b2b-heading">
-        <p class="main-page__b2b-heading-title">
-          Удобный портал для заказов и документооборота
-        </p>
-        <p class="main-page__b2b-heading-text">
-          Через личный кабинет В2В портала можно:
-        </p>
+      <div class="main-page__b2b-block-container">
+        <div class="main-page__b2b-logo">
+          <p class="main-page__b2b-logo-title">B2B</p>
+        </div>
+        <div class="main-page__b2b-heading">
+          <p class="main-page__b2b-heading-title">
+            Удобный портал для заказов и документооборота
+          </p>
+          <p class="main-page__b2b-heading-text">
+            Через личный кабинет В2В портала можно:
+          </p>
+        </div>
+        <div class="main-page__b2b-info">
+          <div class="main-page__b2b-info-item">
+            <p class="main-page__b2b-info-text">
+              Browse to find the images that fit your needs and click to
+              download. Use the on-the-fly color image generation to match your
+              brand identity.
+            </p>
+          </div>
+          <div class="main-page__b2b-info-item">
+            <p class="main-page__b2b-info-text">
+              Browse to find the images that fit your needs and click to
+              download. Use the on-the-fly color image generation to match your
+              brand identity.
+            </p>
+          </div>
+          <div class="main-page__b2b-info-item">
+            <p class="main-page__b2b-info-text">
+              Browse to find the images that fit your needs and click to
+              download. Use the on-the-fly color image generation to match your
+              brand identity.
+            </p>
+          </div>
+          <div class="main-page__b2b-info-item">
+            <p class="main-page__b2b-info-text">
+              Browse to find the images that fit your needs and click to
+              download. Use the on-the-fly color image generation to match your
+              brand identity.
+            </p>
+          </div>
+        </div>
+        <a class="main-page__b2b-link" href="https://b2b.logicpower.ua/"
+          >Перейти на B2B</a
+        >
       </div>
-      <div class="main-page__b2b-info">
-        <div class="main-page__b2b-info-item">
-          <p class="main-page__b2b-info-text">
-            Browse to find the images that fit your needs and click to download.
-            Use the on-the-fly color image generation to match your brand
-            identity.
-          </p>
-        </div>
-        <div class="main-page__b2b-info-item">
-          <p class="main-page__b2b-info-text">
-            Browse to find the images that fit your needs and click to download.
-            Use the on-the-fly color image generation to match your brand
-            identity.
-          </p>
-        </div>
-        <div class="main-page__b2b-info-item">
-          <p class="main-page__b2b-info-text">
-            Browse to find the images that fit your needs and click to download.
-            Use the on-the-fly color image generation to match your brand
-            identity.
-          </p>
-        </div>
-        <div class="main-page__b2b-info-item">
-          <p class="main-page__b2b-info-text">
-            Browse to find the images that fit your needs and click to download.
-            Use the on-the-fly color image generation to match your brand
-            identity.
-          </p>
-        </div>
-      </div>
-      <a class="main-page__b2b-link" href="https://b2b.logicpower.ua/"
-        >Перейти на B2B</a
-      >
     </div>
   </section>
 </template>
@@ -104,36 +104,50 @@ export default class MainPageComponent extends Vue {}
 
 <style lang="scss">
 .main-page {
-  @extend %padding-wrp;
-
   //main-page__slider-category-block
   &__slider-category-block {
     @extend %flex-column;
     align-items: center;
     gap: 64px;
 
-    padding: 48px 0 64px 0;
+    padding: 48px 16px 64px;
   }
 
   &__about-company {
-    // position: relative;
     @extend %width-main;
 
     border-radius: 16px;
 
     color: #ffffff;
     background-color: #393d38;
+
+    @include mobile {
+      border-radius: 8px;
+    }
   }
 
   &__about-company-title-w {
-    // position: absolute;
-    // @include setAbs;
+    @include flex-container;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include bigMobile {
+      flex-direction: column;
+    }
+  }
 
-    // border-radius: 16px;
+  &__about-company-title {
+    max-width: 347px;
+    width: 100%;
+    min-height: 270px;
+
+    @include flex-container(row, center, center);
+  }
+
+  &__about-company-title-w {
+    @include flex-container;
+
+    @include bigMobile {
+      flex-direction: column;
+    }
   }
 
   &__about-company-title {
@@ -141,29 +155,42 @@ export default class MainPageComponent extends Vue {}
     letter-spacing: 0.02em;
     text-transform: uppercase;
 
-    max-width: 404px;
-    width: 100%;
-    min-height: 270px;
-
-    clip-path: polygon(0 0, 103% 0%, 66% 100%, 0% 100%);
-    background-color: $color-main;
-    border-radius: 16px;
-  }
-
-  &__about-company-img-w {
-    // position: absolute;
-    // @include setAbs;
-
-    // object-fit: contain;
-  }
-
-  &__about-company-img {
-    border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
+    border-top-left-radius: 16px;
+
+    background-color: $color-main;
+
+    @include bigMobile {
+      max-width: none;
+      min-height: 70px;
+
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 16px;
+    }
+
+    @include mobile {
+      @include fontUnify(22, 26, 600);
+
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+    }
   }
 
   &__about-company-text {
     @extend %width-content;
+    @include flex-container(row, center, center);
+    align-self: center;
+
+    @include fontUnify(20, 28);
+    letter-spacing: 0.02em;
+
+    padding: 16px;
+
+    @include mobile {
+      @include fontUnify;
+
+      padding: 24px 16px;
+    }
 
     @include fontUnify(20, 28);
     letter-spacing: 0.02em;
@@ -174,10 +201,10 @@ export default class MainPageComponent extends Vue {}
     @extend %flex-column;
     align-items: center;
 
-    padding: 64px 0;
+    padding: 64px 16px;
 
     @include mobile {
-      padding: 48px 0;
+      padding: 48px 16px;
     }
   }
 
@@ -189,7 +216,7 @@ export default class MainPageComponent extends Vue {}
     background: linear-gradient(91.75deg, #f36c21 0.14%, #f5821f 99.6%);
     border-radius: 16px;
 
-    padding: 32px 0;
+    padding: 32px 16px;
 
     @include mobile {
       border-radius: 8px;
@@ -208,6 +235,167 @@ export default class MainPageComponent extends Vue {}
 
     @include mobile {
       @include fontUnify;
+    }
+  }
+
+  // main-page__b2b-block
+  &__b2b-block {
+    position: relative;
+
+    @extend %flex-column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 932px;
+
+    padding: 56px 16px;
+  }
+
+  &__b2b-bgr {
+    position: absolute;
+    @include setAbs;
+  }
+
+  &__b2b-bgr-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__b2b-block-container {
+    position: relative;
+
+        @extend %width-main;
+
+    @extend %flex-column;
+    align-items: center;
+    gap: 68px;
+
+    @include mobile {
+      gap: 48px;
+    }
+  }
+
+  &__b2b-logo {
+    max-width: 200px;
+    width: 100%;
+    height: 200px;
+
+    @include flex-container(row, center, center);
+
+    border-radius: 50%;
+    background-color: $color-main;
+
+    @include mobile {
+      max-width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__b2b-logo-title {
+    @include fontUnify(64, 84, 700);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    color: #ffffff;
+
+    @include mobile {
+      @include fontUnify(24, 32, 700);
+    }
+  }
+
+  &__b2b-heading {
+    @extend %flex-column;
+    align-items: center;
+    gap: 32px;
+
+    color: #ffffff;
+  }
+
+  &__b2b-heading-title {
+    @include fontUnify(36, 44, 700);
+    text-align: center;
+    text-transform: uppercase;
+
+    @include mobile {
+      @include fontUnify(22, 26, 600);
+    }
+  }
+
+  &__b2b-heading-text {
+    @include fontUnify(32, 40, 600);
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include mobile {
+      @include fontUnify(16, 20, 700);
+    }
+  }
+
+  &__b2b-info {
+    width: 100%;
+
+    @include flex-container;
+    gap: 32px;
+
+    @include bigMobile {
+      flex-direction: column;
+      align-items: center;
+
+      gap: 24px;
+    }
+  }
+
+  &__b2b-info-item {
+    width: 100%;
+    max-width: 343px;
+    min-height: 237px;
+
+    @extend %flex-column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f3f3f3;
+    border-radius: 8px;
+
+    padding: 16px;
+
+    @include bigMobile {
+      max-width: 643px;
+      min-height: auto;
+    }
+  }
+
+  &__b2b-info-text {
+    @include fontUnify(18, 26, 500);
+    letter-spacing: 0.02em;
+
+    @include mobile {
+      @include fontUnify;
+    }
+  }
+
+  &__b2b-link {
+    width: 100%;
+    max-width: 363px;
+
+    @include flex-container(row, center, center);
+
+    @include fontUnify(20, 30, 600);
+    text-transform: uppercase;
+
+    color: #ffffff;
+    background-color: $color-main;
+    border-radius: 6px;
+
+    padding: 8px 0;
+
+    @include mobile {
+      max-width: 230px;
+    }
+    &:hover {
+      background-color: $color-main-dark;
     }
   }
 }
