@@ -228,7 +228,6 @@ export default class SliderCategoryComponent extends Vue {
 
   border-radius: 16px;
   overflow: hidden;
-  margin: 0 auto;
 
   &__prod {
     max-width: 415px;
@@ -289,6 +288,7 @@ export default class SliderCategoryComponent extends Vue {
     border-radius: 50%;
 
     background-color: #ffffff;
+    transition: 0.2s ease-in-out;
 
     cursor: pointer;
 
@@ -319,6 +319,7 @@ export default class SliderCategoryComponent extends Vue {
     border-radius: 50%;
 
     background-color: #ffffff;
+    transition: 0.2s ease-in-out;
 
     cursor: pointer;
 
@@ -352,7 +353,7 @@ export default class SliderCategoryComponent extends Vue {
     @extend %flex-column;
     gap: 16px;
 
-    @include anim();
+    transition: 0.3s ease-in-out;
 
     transform: translateY(Var(--translate-y));
     z-index: 3;
@@ -388,7 +389,7 @@ export default class SliderCategoryComponent extends Vue {
   &__category-w {
     --translate-y: 0;
     transform: translateY(Var(--translate-y));
-    transition: 0.3s ease-in;
+    transition: 0.3s ease-in-out;
   }
 
   &__category-item-w {
@@ -438,7 +439,7 @@ export default class SliderCategoryComponent extends Vue {
     background-color: $color-main;
 
     padding: 8px 0;
-    padding: 8px 88px;
+    transition: 0.2s ease-in-out;
 
     cursor: pointer;
 

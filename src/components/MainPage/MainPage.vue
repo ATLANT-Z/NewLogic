@@ -390,6 +390,7 @@ export default class MainPageComponent extends Vue {}
     border-radius: 6px;
 
     padding: 8px 0;
+    transition: 0.2s ease-in-out;
 
     @include mobile {
       max-width: 230px;
