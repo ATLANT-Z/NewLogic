@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div v-if="isMobile"></div>
+    <div v-if="isMobile">HELLO</div>
   </div>
 </template>
 
@@ -193,8 +193,8 @@ export default class SliderCategoryComponent extends Vue {
   }
 
   calcIsMobile() {
-    const mobWidth = getComputedStyle(this.$refs.selector)['--mobile-width'];
-    this.isMobile = window.innerWidth <= mobWidth;
+    const mobWidth = getComputedStyle(this.$refs.selector).getPropertyValue('--mobile-width');
+    this.isMobile = window.innerWidth <= parseInt(mobWidth);
   }
 
   onResize() {
@@ -214,7 +214,7 @@ export default class SliderCategoryComponent extends Vue {
 
 <style lang="scss">
 .category-slider-selector {
-  --mobile-width: $mobile-big-width;
+  --mobile-width: #{$mobile-big-width};
 }
 
 .category-slider {

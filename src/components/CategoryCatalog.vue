@@ -291,20 +291,20 @@ export default class CategoryCatalogComponent extends Vue {}
 
   border-radius: 8px;
 
-  @include set-cart-count-in-row(4);
+  @include set-item-count-in-row(4);
 
   @include smallScreen() {
-    @include set-cart-count-in-row(3);
+    @include set-item-count-in-row(3);
   }
 
   @include bigMobile() {
-    @include set-cart-count-in-row(2);
+    @include set-item-count-in-row(2);
   }
 
   @include mobile {
     gap: 16px;
 
-    @include set-cart-count-in-row(1);
+    @include set-item-count-in-row(1);
   }
 
   &__img-cont {

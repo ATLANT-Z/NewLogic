@@ -308,14 +308,14 @@ export default class NewsArticleComponent extends Vue {}
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 
-    @include set-cart-count-in-row(3);
+    @include set-item-count-in-row(3);
 
     @include bigMobile() {
-      @include set-cart-count-in-row(2);
+      @include set-item-count-in-row(2);
     }
 
     @include mobile() {
-      @include set-cart-count-in-row(1);
+      @include set-item-count-in-row(1);
     }
   }
 
