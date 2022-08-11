@@ -16,10 +16,19 @@
             </div>
           </div>
           <div class="category-slider__prod-list-container" ref="leftWrapper">
-            <ul class="category-slider__prod-list" ref="linkListEl"
-              :style="{ '--translate-y': linksTranslateY + 'px' }">
-              <li class="category-slider__prod-item" v-for="(pagination, index) in sliderData" :key="index"
-                :class="{ 'prod-item-active': index === currentSlide }" @click="goToSlide(index)" ref="linkItems">
+            <ul
+              class="category-slider__prod-list"
+              ref="linkListEl"
+              :style="{ '--translate-y': linksTranslateY + 'px' }"
+            >
+              <li
+                class="category-slider__prod-item"
+                v-for="(pagination, index) in sliderData"
+                :key="index"
+                :class="{ 'prod-item-active': index === currentSlide }"
+                @click="goToSlide(index)"
+                ref="linkItems"
+              >
                 {{ pagination.title }}
               </li>
             </ul>
@@ -27,8 +36,15 @@
         </div>
       </div>
       <div class="category-slider__category">
-        <div class="category-slider__category-w" :style="{ '--translate-y': TranslateY + '%' }">
-          <div class="category-slider__category-item-w" v-for="(slide, index) in sliderData" :key="index">
+        <div
+          class="category-slider__category-w"
+          :style="{ '--translate-y': TranslateY + '%' }"
+        >
+          <div
+            class="category-slider__category-item-w"
+            v-for="(slide, index) in sliderData"
+            :key="index"
+          >
             <div class="category-slider__category-img">
               <img :src="require(`../../assets/img/${slide.img}.png`)" alt="" />
             </div>
@@ -37,13 +53,60 @@
               <p class="category-slider__category-description">
                 {{ slide.text }}
               </p>
-              <a :href="`${slide.link}`" class="category-slider__category-link">Перейти в раздел</a>
+              <a :href="`${slide.link}`" class="category-slider__category-link"
+                >Перейти в раздел</a
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="isMobile">HELLO</div>
+    <div v-if="isMobile" class="categoty-list">
+      <h3 class="categoty-list__title">Продукция</h3>
+      <div class="categoty-list__container">
+        <a
+          class="categoty-list__item"
+          v-for="(item, index) in sliderData"
+          :key="index"
+        >
+          <div class="categoty-list__item-img-w">
+            <img
+              class="categoty-list__item-img"
+              :src="require(`../../assets/img/${item.img}.png`)"
+              alt=""
+            />
+          </div>
+          <h4 class="categoty-list__item-title">{{ item.title }}</h4>
+        </a>
+      </div>
+      <a class="categoty-list__link" href="#">
+        <svg
+          class="categoty-list__link-img"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 12C19.1114 14.991 15.7183 18 12 18C8.2817 18 4.88856 14.991 3 12C5.29855 9.15825 7.99163 6 12 6C16.0084 6 18.7015 9.1582 21 12Z"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <!-- <img class="categoty-list__link-img" src="../../assets/icons/mainAllCategoryIcon.svg" alt=""> -->
+        <span class="categoty-list__link-text">Все категории</span>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -58,7 +121,7 @@ export default class SliderCategoryComponent extends Vue {
     leftWrapper: HTMLElement;
     linkListEl: HTMLElement;
     linkItems: HTMLElement[];
-    selector: HTMLElement
+    selector: HTMLElement;
   };
 
   sliderData: any = [
@@ -86,54 +149,54 @@ export default class SliderCategoryComponent extends Vue {
       text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
       link: "logicpower.ua",
     },
-    {
-      img: "sliderPromImg",
-      title: "Комплектующие для ПК",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "google.com",
-    },
-    {
-      img: "sliderPromImg",
-      title: "EGM аккумуляторы",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "logicpower.ua",
-    },
-    {
-      img: "sliderPromImg",
-      title: "Комплектующие для ПК",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "google.com",
-    },
-    {
-      img: "sliderPromImg",
-      title: "EGM аккумуляторы",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "logicpower.ua",
-    },
-    {
-      img: "sliderPromImg",
-      title: "Комплектующие для ПК",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "google.com",
-    },
-    {
-      img: "sliderPromImg",
-      title: "EGM аккумуляторы",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "logicpower.ua",
-    },
-    {
-      img: "sliderPromImg",
-      title: "Комплектующие для ПК",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "google.com",
-    },
-    {
-      img: "sliderPromImg",
-      title: "EGM аккумуляторы",
-      text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
-      link: "logicpower.ua",
-    },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "Комплектующие для ПК",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "google.com",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "EGM аккумуляторы",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "logicpower.ua",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "Комплектующие для ПК",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "google.com",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "EGM аккумуляторы",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "logicpower.ua",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "Комплектующие для ПК",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "google.com",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "EGM аккумуляторы",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "logicpower.ua",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "Комплектующие для ПК",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "google.com",
+    // },
+    // {
+    //   img: "sliderPromImg",
+    //   title: "EGM аккумуляторы",
+    //   text: "Благодаря форме выходного напряжения в виде правильной синусоиды, стабилизаторы удерживают максимально точные показатели напряжения",
+    //   link: "logicpower.ua",
+    // },
   ];
 
   currentSlide: number = 0;
@@ -193,7 +256,9 @@ export default class SliderCategoryComponent extends Vue {
   }
 
   calcIsMobile() {
-    const mobWidth = getComputedStyle(this.$refs.selector).getPropertyValue('--mobile-width');
+    const mobWidth = getComputedStyle(this.$refs.selector).getPropertyValue(
+      "--mobile-width"
+    );
     this.isMobile = window.innerWidth <= parseInt(mobWidth);
   }
 
@@ -212,8 +277,12 @@ export default class SliderCategoryComponent extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .category-slider-selector {
+  width: 100%;
+  @extend %flex-column;
+  align-items: center;
+
   --mobile-width: #{$mobile-big-width};
 }
 
@@ -238,7 +307,8 @@ export default class SliderCategoryComponent extends Vue {
     background-color: #393d38;
   }
 
-  &__prod-title-w {}
+  &__prod-title-w {
+  }
 
   &__prod-title {
     @include fontUnify(42, 50, 700);
@@ -283,6 +353,8 @@ export default class SliderCategoryComponent extends Vue {
     border-radius: 50%;
 
     background-color: #ffffff;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+
     transition: 0.2s ease-in-out;
 
     cursor: pointer;
@@ -315,6 +387,8 @@ export default class SliderCategoryComponent extends Vue {
     border-radius: 50%;
 
     background-color: #ffffff;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+
     transition: 0.2s ease-in-out;
 
     cursor: pointer;
@@ -442,6 +516,105 @@ export default class SliderCategoryComponent extends Vue {
     &:hover {
       background-color: $color-main-dark;
     }
+  }
+}
+
+.categoty-list {
+  --gap: 16px;
+
+  @extend %flex-column;
+  align-items: center;
+  gap: calc(Var(--gap) * 2);
+
+  &__title {
+    @include fontUnify(22, 26, 600);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    width: 100%;
+    max-width: 383px;
+
+    @include flex-container(row, center, center);
+    gap: Var(--gap);
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+
+    padding: 10px 0;
+
+    cursor: pointer;
+
+    transition: 0.2s ease-in-out;
+    &:hover {
+      color: $color-main;
+      fill: $color-main;
+    }
+    &:hover path {
+      stroke: $color-main;
+      transition: 0.2s ease-in-out;
+    }
+  }
+
+  &__link-img path {
+    transition: 0.2s ease-in-out;
+  }
+
+  &__link-text {
+    @include fontUnify(20, 28);
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  &__container {
+    @include flex-container(row, center);
+    flex-wrap: wrap;
+    gap: Var(--gap);
+  }
+
+  &__item {
+    @extend %flex-column;
+    align-items: center;
+    gap: calc(Var(--gap) * 2);
+
+    @include set-item-count-in-row(2);
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+
+    padding: 8px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      color: $color-main;
+    }
+  }
+
+  &__item-img-w {
+    position: relative;
+    width: 100%;
+
+    padding-top: 100%;
+  }
+
+  &__item-img {
+    @include absoluteGrow();
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  &__item-title {
+    @include fontUnify(16, 20, 700);
+    text-align: center;
+    text-transform: uppercase;
+
+    word-break: break-word;
   }
 }
 </style>

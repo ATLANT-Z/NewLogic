@@ -2,7 +2,7 @@
   <header></header>
   <main class="site-main">
     <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
-    <SubCategoryCatalogComponent></SubCategoryCatalogComponent>
+    <!-- <SubCategoryCatalogComponent></SubCategoryCatalogComponent> -->
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
@@ -13,7 +13,7 @@
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
     <!-- <ContactComponent></ContactComponent> -->
-    <MainPageComponent></MainPageComponent>
+    <HomeComponent></HomeComponent>
   </main>
 </template>
 
@@ -31,7 +31,7 @@ import CooperationComponent from "./components/Cooperation.vue";
 import InstructionComponent from "./components/Instruction.vue";
 import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
 import ContactComponent from "./components/Contact.vue";
-import MainPageComponent from "./components/MainPage/MainPage.vue";
+import HomeComponent from "./components/Home/Home.vue";
 
 @Options({
   components: {
@@ -47,7 +47,7 @@ import MainPageComponent from "./components/MainPage/MainPage.vue";
     InstructionComponent,
     SubCategoryCatalogComponent,
     ContactComponent,
-    MainPageComponent,
+    HomeComponent,
   },
 })
 export default class App extends Vue {}

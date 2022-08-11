@@ -310,6 +310,7 @@ export default class CategoryCatalogComponent extends Vue {}
   &__img-cont {
     position: relative;
     width: 100%;
+    
     padding-top: 100%;
 
     border-top-left-radius: inherit;

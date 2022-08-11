@@ -1,6 +1,6 @@
 <template>
   <section class="main-page">
-    <div class="main-page__slider-category-block">
+    <!-- <div class="main-page__slider-category-block">
       <SliderCategoryComponent></SliderCategoryComponent>
       <div class="main-page__about-company">
         <div class="main-page__about-company-title-w">
@@ -86,20 +86,23 @@
           >Перейти на B2B</a
         >
       </div>
-    </div>
+    </div> -->
+    <CooperationSliderComponent></CooperationSliderComponent>
   </section>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import SliderCategoryComponent from "./SliderCategory.vue";
+import CooperationSliderComponent from "./CooperationSlider.vue";
 
 @Options({
   components: {
     SliderCategoryComponent,
+    CooperationSliderComponent
   },
 })
-export default class MainPageComponent extends Vue {}
+export default class HomeComponent extends Vue {}
 </script>
 
 <style lang="scss">
@@ -111,6 +114,10 @@ export default class MainPageComponent extends Vue {}
     gap: 64px;
 
     padding: 48px 16px 64px;
+
+    @include mobile {
+      gap: 48px;
+    }
   }
 
   &__about-company {
