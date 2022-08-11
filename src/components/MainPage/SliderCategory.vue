@@ -1,64 +1,49 @@
 <template>
-  <div class="category-slider">
-    <div class="category-slider__prod">
-      <div class="category-slider__prod-title-w">
-        <h3 class="category-slider__prod-title">Продукция</h3>
-        <div class="category-slider__prod-line"></div>
-      </div>
-      <div class="category-slider__prod-list-w">
-        <div class="category-slider__prod-arrows">
-          <div class="category-slider__prod-arrow-up" @click="prevSlide">
-            <span></span>
+  <div class="category-slider-selector" ref="selector">
+    <div v-if="!isMobile" class="category-slider">
+      <div class="category-slider__prod">
+        <div class="category-slider__prod-title-w">
+          <h3 class="category-slider__prod-title">Продукция</h3>
+          <div class="category-slider__prod-line"></div>
+        </div>
+        <div class="category-slider__prod-list-w">
+          <div class="category-slider__prod-arrows">
+            <div class="category-slider__prod-arrow-up" @click="prevSlide">
+              <span></span>
+            </div>
+            <div class="category-slider__prod-arrow-down" @click="nextSlide">
+              <span></span>
+            </div>
           </div>
-          <div class="category-slider__prod-arrow-down" @click="nextSlide">
-            <span></span>
+          <div class="category-slider__prod-list-container" ref="leftWrapper">
+            <ul class="category-slider__prod-list" ref="linkListEl"
+              :style="{ '--translate-y': linksTranslateY + 'px' }">
+              <li class="category-slider__prod-item" v-for="(pagination, index) in sliderData" :key="index"
+                :class="{ 'prod-item-active': index === currentSlide }" @click="goToSlide(index)" ref="linkItems">
+                {{ pagination.title }}
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="category-slider__prod-list-container" ref="leftWrapper">
-          <ul
-            class="category-slider__prod-list"
-            ref="linkListEl"
-            :style="{ '--translate-y': linksTranslateY + 'px' }"
-          >
-            <li
-              class="category-slider__prod-item"
-              v-for="(pagination, index) in sliderData"
-              :key="index"
-              :class="{ 'prod-item-active': index === currentSlide }"
-              @click="goToSlide(index)"
-              ref="linkItems"
-            >
-              {{ pagination.title }}
-            </li>
-          </ul>
-        </div>
       </div>
-    </div>
-    <div class="category-slider__category">
-      <div
-        class="category-slider__category-w"
-        :style="{ '--translate-y': TranslateY + '%' }"
-      >
-        <div
-          class="category-slider__category-item-w"
-          v-for="(slide, index) in sliderData"
-          :key="index"
-        >
-          <div class="category-slider__category-img">
-            <img :src="require(`../../assets/img/${slide.img}.png`)" alt="" />
-          </div>
-          <div class="category-slider__category-title-w">
-            <h4 class="category-slider__category-title">{{ slide.title }}</h4>
-            <p class="category-slider__category-description">
-              {{ slide.text }}
-            </p>
-            <a :href="`${slide.link}`" class="category-slider__category-link"
-              >Перейти в раздел</a
-            >
+      <div class="category-slider__category">
+        <div class="category-slider__category-w" :style="{ '--translate-y': TranslateY + '%' }">
+          <div class="category-slider__category-item-w" v-for="(slide, index) in sliderData" :key="index">
+            <div class="category-slider__category-img">
+              <img :src="require(`../../assets/img/${slide.img}.png`)" alt="" />
+            </div>
+            <div class="category-slider__category-title-w">
+              <h4 class="category-slider__category-title">{{ slide.title }}</h4>
+              <p class="category-slider__category-description">
+                {{ slide.text }}
+              </p>
+              <a :href="`${slide.link}`" class="category-slider__category-link">Перейти в раздел</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div v-if="isMobile"></div>
   </div>
 </template>
 
@@ -73,6 +58,7 @@ export default class SliderCategoryComponent extends Vue {
     leftWrapper: HTMLElement;
     linkListEl: HTMLElement;
     linkItems: HTMLElement[];
+    selector: HTMLElement
   };
 
   sliderData: any = [
@@ -152,6 +138,7 @@ export default class SliderCategoryComponent extends Vue {
 
   currentSlide: number = 0;
   linksTranslateY: number = 0;
+  isMobile: boolean = false;
 
   get SlideCount() {
     return this.sliderData.length;
@@ -205,22 +192,31 @@ export default class SliderCategoryComponent extends Vue {
     }
   }
 
-  // onResize() {
-  //   this.calcHeight();
-  // }
+  calcIsMobile() {
+    const mobWidth = getComputedStyle(this.$refs.selector)['--mobile-width'];
+    this.isMobile = window.innerWidth <= mobWidth;
+  }
 
-  // mounted() {
-  //   this.onResize();
-  //   window.addEventListener("resize", this.onResize);
-  // }
+  onResize() {
+    this.calcIsMobile();
+  }
 
-  // unmounted() {
-  //   window.removeEventListener("resize", this.onResize);
-  // }
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
+  }
 }
 </script>
 
 <style lang="scss">
+.category-slider-selector {
+  --mobile-width: $mobile-big-width;
+}
+
 .category-slider {
   @include flex-container(row, center);
   @extend %width-main;
@@ -242,8 +238,7 @@ export default class SliderCategoryComponent extends Vue {
     background-color: #393d38;
   }
 
-  &__prod-title-w {
-  }
+  &__prod-title-w {}
 
   &__prod-title {
     @include fontUnify(42, 50, 700);
@@ -304,6 +299,7 @@ export default class SliderCategoryComponent extends Vue {
       border-left: 1px solid black;
 
       transform: rotateZ(45deg) translate(2px, 2px);
+
       &:hover {
         color: $color-main-dark;
       }
