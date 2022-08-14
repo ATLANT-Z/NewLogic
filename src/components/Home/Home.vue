@@ -87,6 +87,7 @@
         >
       </div>
     </div> -->
+    <!-- <SliderCategoryComponent></SliderCategoryComponent> -->
     <CooperationSliderComponent></CooperationSliderComponent>
   </section>
 </template>
@@ -99,7 +100,7 @@ import CooperationSliderComponent from "./CooperationSlider.vue";
 @Options({
   components: {
     SliderCategoryComponent,
-    CooperationSliderComponent
+    CooperationSliderComponent,
   },
 })
 export default class HomeComponent extends Vue {}
@@ -108,6 +109,13 @@ export default class HomeComponent extends Vue {}
 <style lang="scss">
 .main-page {
   //main-page__slider-category-block
+
+  width: 100%;
+
+  @extend %flex-column;
+  justify-content: center;
+  align-items: center;
+
   &__slider-category-block {
     @extend %flex-column;
     align-items: center;
@@ -272,7 +280,7 @@ export default class HomeComponent extends Vue {}
   &__b2b-block-container {
     position: relative;
 
-        @extend %width-main;
+    @extend %width-main;
 
     @extend %flex-column;
     align-items: center;
