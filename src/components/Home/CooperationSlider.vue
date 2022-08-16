@@ -1,49 +1,21 @@
 <template>
   <div class="cooperation-slider">
-    <div
-      class="cooperation-slider__arrow-left"
-      :class="{ disable: currentSlide <= 0 }"
-      @click="prevSlide"
-    >
-      <img
-        class="cooperation-slider__arrow-left-img"
-        src="../../assets/icons/mainNavArrowLeftIcon.svg"
-        alt=""
-      />
+    <div class="cooperation-slider__arrow-left" :class="{ disable: currentSlide <= 0 }" @click="prevSlide">
+      <img class="cooperation-slider__arrow-left-img" src="../../assets/icons/mainNavArrowLeftIcon.svg" alt="" />
     </div>
     <div class="cooperation-slider__w" ref="slideWrap">
-      <div
-        class="cooperation-slider__cont"
-        ref="slidesList"
-        :style="{
-          '--translate-x': translateListX + 'px',
-          '--gap': gapLength + 'px',
-        }"
-      >
-        <div
-          class="cooperation-slider__item"
-          v-for="(item, index) in sliderData"
-          :key="index"
-          ref="slideListItem"
-        >
-          <img
-            class="cooperation-slider__img"
-            :src="require(`../../assets/img/${item.img}.svg`)"
-            alt=""
-          />
+      <div class="cooperation-slider__cont" :style="{
+        '--translate-x': translateListX + 'px',
+        '--gap': gapLength + 'px',
+      }">
+        <div class="cooperation-slider__item" v-for="(item, index) in sliderData" :key="index" ref="slideListItem">
+          <img class="cooperation-slider__img" :src="require(`../../assets/img/${item.img}.svg`)" alt="" />
         </div>
       </div>
     </div>
-    <div
-      class="cooperation-slider__arrow-right"
-      :class="{ disable: slideMaxCount === currentSlide }"
-      @click="nextSlide"
-    >
-      <img
-        class="cooperation-slider__arrow-right-img"
-        src="../../assets/icons/mainNavArrowRightIcon.svg"
-        alt=""
-      />
+    <div class="cooperation-slider__arrow-right" :class="{ disable: slideMaxCount === currentSlide }"
+      @click="nextSlide">
+      <img class="cooperation-slider__arrow-right-img" src="../../assets/icons/mainNavArrowRightIcon.svg" alt="" />
     </div>
   </div>
 </template>
@@ -95,7 +67,6 @@ export default class CooperationSliderComponent extends Vue {
   declare $refs: {
     slideWrap: HTMLElement;
     slideListItem: HTMLElement;
-    slidesList: HTMLElement;
   };
 
   currentSlide: number = 0;
@@ -120,7 +91,6 @@ export default class CooperationSliderComponent extends Vue {
     const slideWrapRect = this.$refs.slideWrap.getBoundingClientRect();
     const slideItemRect =
       this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
-    const slidesListRect = this.$refs.slidesList.getBoundingClientRect();
 
     const slideItemsCount = Math.floor(
       slideWrapRect.width / slideItemRect.width
@@ -160,11 +130,6 @@ export default class CooperationSliderComponent extends Vue {
     this.calcItemsLength();
   }
 
-  widthCont() {
-    const widthContI = this.$refs.slideWrap.getBoundingClientRect();
-    console.log(widthContI);
-  }
-
   onResize() {
     this.calcItemsLength();
   }
@@ -179,11 +144,11 @@ export default class CooperationSliderComponent extends Vue {
   }
 }
 </script>
-<style lang="scss">
+<!-- <style lang="scss">
 body {
   background-color: black !important;
 }
-</style>
+</style> -->
 
 <style lang="scss" scoped>
 .cooperation-slider {
@@ -213,8 +178,7 @@ body {
     }
   }
 
-  &__arrow-left-img {
-  }
+  &__arrow-left-img {}
 
   &__w {
     width: 1290px;
@@ -224,7 +188,6 @@ body {
   &__cont {
     --translate-x: 0;
     --gap: 0;
-    // width: max-content;
 
     @include flex-container;
     gap: Var(--gap);
@@ -261,7 +224,6 @@ body {
     }
   }
 
-  &__arrow-right-img {
-  }
+  &__arrow-right-img {}
 }
 </style>

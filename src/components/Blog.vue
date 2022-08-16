@@ -2,10 +2,7 @@
   <section class="banner">
     <div class="banner__img-w">
       <picture>
-        <source
-          srcset="../assets/img/blogBannerMob.png"
-          media="(max-width: 680px)"
-        />
+        <source srcset="../assets/img/blogBannerMob.png" media="(max-width: 680px)" />
         <img class="banner__img" src="../assets/img/blogBanner.png" alt="" />
       </picture>
     </div>
@@ -30,11 +27,7 @@
       <div class="blog__card-list">
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -53,11 +46,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -76,11 +65,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -99,11 +84,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -122,11 +103,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -153,10 +130,10 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class BlogComponent extends Vue {}
+export default class BlogComponent extends Vue { }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .blog {
   @extend %flex-column;
   align-items: center;
@@ -210,9 +187,19 @@ export default class BlogComponent extends Vue {}
 
     cursor: pointer;
 
+    &.active {
+      border: 1px solid #393d38;
+      border-radius: 60px;
+
+      padding: 8px 56px;
+
+      color: $color-main;
+    }
+
     &:hover {
       color: $color-main;
     }
+
     @include mobile {
       @include fontUnify;
     }
@@ -299,8 +286,7 @@ export default class BlogComponent extends Vue {}
     color: $color-main;
   }
 
-  &__card-article-data {
-  }
+  &__card-article-data {}
 
   &__card-title {
     @include fontUnify(20, 30);
@@ -325,14 +311,5 @@ export default class BlogComponent extends Vue {}
       display: none;
     }
   }
-}
-
-.active {
-  border: 1px solid #393d38;
-  border-radius: 60px;
-
-  padding: 8px 56px;
-
-  color: $color-main;
 }
 </style>

@@ -7,13 +7,14 @@
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
-    <!-- <DeliveryComponent></DeliveryComponent> -->
+    <DeliveryComponent></DeliveryComponent>
     <!-- <NewsArticleComponent></NewsArticleComponent> -->
     <!-- <BlogComponent></BlogComponent> -->
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
     <!-- <ContactComponent></ContactComponent> -->
-    <HomeComponent></HomeComponent>
+    <!-- <HomeComponent></HomeComponent> -->
+    <PopUpLangComponent></PopUpLangComponent>
   </main>
 </template>
 
@@ -32,6 +33,7 @@ import InstructionComponent from "./components/Instruction.vue";
 import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
 import ContactComponent from "./components/Contact.vue";
 import HomeComponent from "./components/Home/Home.vue";
+import PopUpLangComponent from "./components/pop-up/PopUpLang.vue";
 
 @Options({
   components: {
@@ -48,6 +50,7 @@ import HomeComponent from "./components/Home/Home.vue";
     SubCategoryCatalogComponent,
     ContactComponent,
     HomeComponent,
+    PopUpLangComponent,
   },
 })
 export default class App extends Vue {}

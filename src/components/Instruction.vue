@@ -260,7 +260,7 @@ export default class InstructionComponent extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .instruction {
   @extend %flex-column;
   align-items: center;
@@ -286,7 +286,7 @@ export default class InstructionComponent extends Vue {
     display: flex;
     justify-content: center;
 
-    background: #d1d1d1;
+    background-color: $color-bg-grey-lighter;
 
     @include mobile {
       display: none;
@@ -378,7 +378,7 @@ export default class InstructionComponent extends Vue {
 
     animation-direction: reverse;
 
-    &.active {
+    & .active {
       max-height: none;
       visibility: visible;
 
@@ -403,7 +403,7 @@ export default class InstructionComponent extends Vue {
 
   &__body-item-list-line {
     width: 100%;
-    background-color: #d1d1d1;
+    background-color: $color-bg-grey-lighter;
     height: 1px;
   }
 
@@ -487,7 +487,7 @@ export default class InstructionComponent extends Vue {
   &__body-content-mob-line {
     width: 100%;
     height: 1px;
-    background-color: #d1d1d1;
+    background-color: $color-bg-grey-lighter;
   }
 
   &__body-content-mob-item {
