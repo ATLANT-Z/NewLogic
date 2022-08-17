@@ -7,14 +7,14 @@
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
-    <DeliveryComponent></DeliveryComponent>
+    <!-- <DeliveryComponent></DeliveryComponent> -->
     <!-- <NewsArticleComponent></NewsArticleComponent> -->
     <!-- <BlogComponent></BlogComponent> -->
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
     <!-- <ContactComponent></ContactComponent> -->
-    <!-- <HomeComponent></HomeComponent> -->
-    <PopUpLangComponent></PopUpLangComponent>
+    <HomeComponent></HomeComponent>
+    <!-- <PopUpLangComponent></PopUpLangComponent> -->
   </main>
 </template>
 

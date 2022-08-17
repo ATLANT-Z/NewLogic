@@ -38,30 +38,30 @@ export default class CooperationSliderComponent extends Vue {
       id: 3,
       img: "mainCooperationPromIcon",
     },
-    {
-      id: 4,
-      img: "mainCooperationFIcon",
-    },
-    {
-      id: 5,
-      img: "mainCooperationSilpoIcon",
-    },
-    {
-      id: 6,
-      img: "mainCooperationRozetkaIcon",
-    },
-    {
-      id: 7,
-      img: "mainCooperationRozetkaIcon",
-    },
-    {
-      id: 8,
-      img: "mainCooperationRozetkaIcon",
-    },
-    {
-      id: 9,
-      img: "mainCooperationRozetkaIcon",
-    },
+    // {
+    //   id: 4,
+    //   img: "mainCooperationFIcon",
+    // },
+    // {
+    //   id: 5,
+    //   img: "mainCooperationSilpoIcon",
+    // },
+    // {
+    //   id: 6,
+    //   img: "mainCooperationRozetkaIcon",
+    // },
+    // {
+    //   id: 7,
+    //   img: "mainCooperationRozetkaIcon",
+    // },
+    // {
+    //   id: 8,
+    //   img: "mainCooperationRozetkaIcon",
+    // },
+    // {
+    //   id: 9,
+    //   img: "mainCooperationRozetkaIcon",
+    // },
   ];
 
   declare $refs: {
@@ -92,9 +92,12 @@ export default class CooperationSliderComponent extends Vue {
     const slideItemRect =
       this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
 
-    const slideItemsCount = Math.floor(
+    let slideItemsCount = Math.floor(
       slideWrapRect.width / slideItemRect.width
     );
+
+    if (slideItemsCount >= this.SlideCount) slideItemsCount = this.SlideCount
+
 
     this.gapLength =
       (slideWrapRect.width - slideItemsCount * slideItemRect.width) /
@@ -113,6 +116,12 @@ export default class CooperationSliderComponent extends Vue {
       this.translateListX =
         -slideItemRect.width * this.currentSlide -
         this.gapLength * this.currentSlide;
+
+    console.log(slideItemsCount);
+    console.log(this.gapLength);
+    console.log(slideMaxWidth);
+    console.log(this.slideMaxCount);
+
   }
 
   nextSlide() {
