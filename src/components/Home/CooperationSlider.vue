@@ -38,30 +38,30 @@ export default class CooperationSliderComponent extends Vue {
       id: 3,
       img: "mainCooperationPromIcon",
     },
-    // {
-    //   id: 4,
-    //   img: "mainCooperationFIcon",
-    // },
-    // {
-    //   id: 5,
-    //   img: "mainCooperationSilpoIcon",
-    // },
-    // {
-    //   id: 6,
-    //   img: "mainCooperationRozetkaIcon",
-    // },
-    // {
-    //   id: 7,
-    //   img: "mainCooperationRozetkaIcon",
-    // },
-    // {
-    //   id: 8,
-    //   img: "mainCooperationRozetkaIcon",
-    // },
-    // {
-    //   id: 9,
-    //   img: "mainCooperationRozetkaIcon",
-    // },
+    {
+      id: 4,
+      img: "mainCooperationFIcon",
+    },
+    {
+      id: 5,
+      img: "mainCooperationSilpoIcon",
+    },
+    {
+      id: 6,
+      img: "mainCooperationRozetkaIcon",
+    },
+    {
+      id: 7,
+      img: "mainCooperationRozetkaIcon",
+    },
+    {
+      id: 8,
+      img: "mainCooperationRozetkaIcon",
+    },
+    {
+      id: 9,
+      img: "mainCooperationRozetkaIcon",
+    },
   ];
 
   declare $refs: {

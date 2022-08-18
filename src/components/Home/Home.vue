@@ -87,8 +87,8 @@
         >
       </div>
     </div> -->
-    <!-- <SliderCategoryComponent></SliderCategoryComponent> -->
-    <CooperationSliderComponent></CooperationSliderComponent>
+    <SliderCategoryComponent></SliderCategoryComponent>
+    <!-- <CooperationSliderComponent></CooperationSliderComponent> -->
   </section>
 </template>
 
