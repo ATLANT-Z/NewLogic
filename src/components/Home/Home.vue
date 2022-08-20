@@ -1,6 +1,6 @@
 <template>
   <section class="main-page">
-    <!-- <div class="main-page__slider-category-block">
+    <div class="main-page__slider-category-block">
       <SliderCategoryComponent></SliderCategoryComponent>
       <div class="main-page__about-company">
         <div class="main-page__about-company-title-w">
@@ -86,9 +86,83 @@
           >Перейти на B2B</a
         >
       </div>
-    </div> -->
-    <!-- <SliderCategoryComponent></SliderCategoryComponent> -->
-    <CooperationSliderComponent></CooperationSliderComponent>
+    </div>
+    <div class="main-page__coop-block">
+      <div class="main-page__coop-title-w">
+        <h2 class="main-page__coop-title">МЫ СОТРУДНИЧАЕМ:</h2>
+        <p class="main-page__coop--title-text">
+          ТМ LOGICPOWER – 100% ГАРАНТИЯ КАЧЕСТВА ОТ ПРОИЗВОДИТЕЛЯ
+        </p>
+      </div>
+      <CooperationSliderComponent></CooperationSliderComponent>
+    </div>
+    <div class="main-page__news-block">
+      <div class="main-page__news-title-w">
+        <h2 class="main-page__news-title">НОВОСТИ <span>&#38;</span> СТАТЬИ</h2>
+        <p class="main-page__news-title-text">
+          ВСЕ, ЧТО ВАМ НУЖНО ЗНАТЬ О ТЕХНОЛОГИЯХ ОТ LOGICPOWER
+        </p>
+      </div>
+      <div class="main-page__news-card-w">
+        <div class="main-page__news-card">
+          <a class="main-page__news-link" href="#">
+            <div class="main-page__news-card-img-cont">
+              <img
+                class="main-page__news-card-img"
+                src="../../assets/img/mainNewsImg.png"
+                alt=""
+              />
+            </div>
+          </a>
+          <div class="main-page__news-card-info">
+            <h3 class="main-page__news-card-title">Новости</h3>
+            <p class="main-page__news-card-text">
+              Полезная информация о нашей компании, товарах, мероприятиях,
+              акциях и скидках.
+            </p>
+            <a class="main-page__news-link" href="#">перейти</a>
+          </div>
+        </div>
+        <div class="main-page__news-card">
+          <a class="main-page__news-link" href="#">
+            <div class="main-page__news-card-img-cont">
+              <img
+                class="main-page__news-card-img"
+                src="../../assets/img/mainBlogImg.png"
+                alt=""
+              />
+            </div>
+          </a>
+          <div class="main-page__news-card-info">
+            <h3 class="main-page__news-card-title">Блог</h3>
+            <p class="main-page__news-card-text">
+              Обзоры, статьи, консультации специалистов по использованию
+              электрооборудования
+            </p>
+            <a class="main-page__news-link" href="#">перейти</a>
+          </div>
+        </div>
+        <div class="main-page__news-card">
+          <a class="main-page__news-link" href="#">
+            <div class="main-page__news-card-img-cont">
+              <img
+                class="main-page__news-card-img"
+                src="../../assets/img/mainFaqImg.png"
+                alt=""
+              />
+            </div>
+          </a>
+          <div class="main-page__news-card-info">
+            <h3 class="main-page__news-card-title">FAQ</h3>
+            <p class="main-page__news-card-text">
+              Ответы на часто задаваемые вопросы, инструкции по эксплуатации
+              техническая поддержка
+            </p>
+            <a class="main-page__news-link" href="#">перейти</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -114,7 +188,6 @@ export default class HomeComponent extends Vue {}
 
   @extend %flex-column;
   justify-content: center;
-  align-items: center;
 
   &__slider-category-block {
     @extend %flex-column;
@@ -412,6 +485,230 @@ export default class HomeComponent extends Vue {}
     }
     &:hover {
       background-color: $color-main-dark;
+    }
+  }
+
+  // main-page__coop-block
+
+  &__coop-block {
+    min-height: 504px;
+
+    @extend %flex-column;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+
+    padding: 0 16px;
+
+    @include mobile {
+      min-height: 330px;
+
+      gap: 48px;
+    }
+  }
+
+  &__coop-title-w {
+    width: 100%;
+
+    @extend %flex-column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__coop-title {
+    @include fontUnify(40, 48, 600);
+    text-align: center;
+    text-transform: uppercase;
+
+    @include mobile {
+      @include fontUnify(22, 26, 600);
+    }
+  }
+
+  &__coop--title-text {
+    @include fontUnify(20, 30, 600);
+    text-align: center;
+    text-transform: uppercase;
+
+    @include mobile {
+      @include fontUnify(18, 22, 600);
+    }
+  }
+
+  //main-page__news-block
+  &__news-block {
+    width: 100%;
+
+    @extend %flex-column;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+
+    background-color: #ffffff;
+
+    padding: 0 16px;
+
+    @include mobile {
+      gap: 48px;
+    }
+  }
+
+  &__news-title-w {
+    width: 100%;
+
+    @extend %flex-column;
+    align-items: center;
+    gap: 24px;
+
+    padding-top: 64px;
+
+    @include mobile {
+      gap: 16px;
+
+      padding-top: 40px;
+    }
+  }
+
+  &__news-title {
+    @include fontUnify(40, 48, 600);
+    text-align: center;
+    text-transform: uppercase;
+
+    & span {
+      color: $color-main;
+    }
+
+    @include mobile {
+      @include fontUnify(22, 26, 600);
+    }
+  }
+
+  &__news-title-text {
+    @include fontUnify(20, 30, 600);
+    text-align: center;
+    text-transform: uppercase;
+
+    @include mobile {
+      @include fontUnify(18, 22, 500);
+    }
+  }
+
+  &__news-card-w {
+    @extend %width-main;
+
+    @include flex-container(row, center);
+    flex-wrap: wrap;
+
+    --gap: 16px;
+    gap: var(--gap);
+
+    margin-bottom: 64px;
+
+    @include mobile {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__news-card {
+    @extend %flex-column;
+    align-items: center;
+    gap: calc(var(--gap) * 1.5);
+
+    background-color: #ffffff;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+
+    border-radius: 8px;
+
+    @include set-item-count-in-row(3);
+
+    @include bigMobile {
+      @include set-item-count-in-row(2);
+    }
+
+    @include mobile {
+      gap: calc(var(--gap) * 2);
+
+      width: 100%;
+      max-width: 343px;
+    }
+  }
+
+  &__news-link {
+    width: 100%;
+
+    @include fontUnify(18, 24);
+    text-transform: capitalize;
+    text-align: center;
+    letter-spacing: 0.02em;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
+    color: $color-main;
+
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: $color-main-dark;
+    }
+  }
+
+  &__news-card-img-cont {
+    width: 100%;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  &__news-card-img {
+    width: 100%;
+    height: 100%;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
+    pointer-events: none;
+  }
+
+  &__news-card-info {
+    height: 100%;
+
+    @extend %flex-column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 0 10px 20px;
+
+    @include mobile {
+      gap: 16px;
+
+      padding-bottom: 24px;
+    }
+  }
+
+  &__news-card-title {
+    @include fontUnify(20, 30, 600);
+    text-transform: uppercase;
+    text-align: center;
+
+    @include mobile {
+      @include fontUnify(18, 22, 600);
+      letter-spacing: 0.02em;
+    }
+  }
+
+  &__news-card-text {
+    @include fontUnify;
+    text-align: center;
+    letter-spacing: 0.02em;
+
+    color: #8a8a8a;
+
+    @include lineClamp(4);
+
+    @include mobile {
+      @include fontUnify(12, 16);
     }
   }
 }

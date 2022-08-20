@@ -293,11 +293,11 @@ export default class CategoryCatalogComponent extends Vue {}
 
   @include set-item-count-in-row(4);
 
-  @include smallScreen() {
+  @include smallScreen {
     @include set-item-count-in-row(3);
   }
 
-  @include bigMobile() {
+  @include bigMobile {
     @include set-item-count-in-row(2);
   }
 
@@ -310,7 +310,7 @@ export default class CategoryCatalogComponent extends Vue {}
   &__img-cont {
     position: relative;
     width: 100%;
-    
+
     padding-top: 100%;
 
     border-top-left-radius: inherit;
@@ -332,26 +332,7 @@ export default class CategoryCatalogComponent extends Vue {}
 
     object-fit: cover;
     pointer-events: none;
-
-    // @include mobile {
-    //   height: 285px;
-    // }
   }
-
-  // &__img {
-  //   width: 100%;
-  //   height: 306px;
-
-  //   border-top-left-radius: inherit;
-  //   border-top-right-radius: inherit;
-
-  //   object-fit: cover;
-  //   pointer-events: none;
-
-  //   @include mobile {
-  //     height: 285px;
-  //   }
-  // }
 
   &__info {
     height: 100%;
@@ -376,7 +357,7 @@ export default class CategoryCatalogComponent extends Vue {}
     text-align: center;
 
     @include mobile {
-      @include fontUnify(18, 24);
+      @include fontUnify(18, 22, 600);
       letter-spacing: 0.02em;
     }
   }
@@ -407,6 +388,12 @@ export default class CategoryCatalogComponent extends Vue {}
     border-top-right-radius: inherit;
 
     color: $color-main;
+
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: $color-main-dark;
+    }
   }
 }
 

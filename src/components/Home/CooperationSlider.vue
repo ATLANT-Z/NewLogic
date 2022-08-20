@@ -222,8 +222,6 @@ export default class CooperationSliderComponent extends Vue {
 
 <style lang="scss" scoped>
 .cooperation-slider {
-  padding: 80px 16px 0;
-
   @extend %width-main;
 
   @include flex-container(row, space-between, center);
