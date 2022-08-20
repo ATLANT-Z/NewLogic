@@ -425,7 +425,7 @@ export default class SliderCategoryComponent extends Vue {
 
     transition: 0.3s ease-in-out;
 
-    transform: translateY(Var(--translate-y));
+    transform: translateY(var(--translate-y));
     z-index: 3;
   }
 
@@ -458,7 +458,7 @@ export default class SliderCategoryComponent extends Vue {
 
   &__category-w {
     --translate-y: 0;
-    transform: translateY(Var(--translate-y));
+    transform: translateY(var(--translate-y));
     transition: 0.3s ease-in-out;
   }
 
@@ -524,7 +524,7 @@ export default class SliderCategoryComponent extends Vue {
 
   @extend %flex-column;
   align-items: center;
-  gap: calc(Var(--gap) * 2);
+  gap: calc(var(--gap) * 2);
 
   &__title {
     @include fontUnify(22, 26, 600);
@@ -537,7 +537,7 @@ export default class SliderCategoryComponent extends Vue {
     max-width: 383px;
 
     @include flex-container(row, center, center);
-    gap: Var(--gap);
+    gap: var(--gap);
 
     background-color: #ffffff;
     border-radius: 8px;
@@ -571,13 +571,13 @@ export default class SliderCategoryComponent extends Vue {
   &__container {
     @include flex-container(row, center);
     flex-wrap: wrap;
-    gap: Var(--gap);
+    gap: var(--gap);
   }
 
   &__item {
     @extend %flex-column;
     align-items: center;
-    gap: calc(Var(--gap) * 2);
+    gap: calc(var(--gap) * 2);
 
     @include set-item-count-in-row(2);
 

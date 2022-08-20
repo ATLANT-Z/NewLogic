@@ -297,7 +297,7 @@ export default class NewsArticleComponent extends Vue {}
     flex-wrap: wrap;
 
     --gap: 16px;
-    gap: Var(--gap);
+    gap: var(--gap);
   }
 
   &__card {

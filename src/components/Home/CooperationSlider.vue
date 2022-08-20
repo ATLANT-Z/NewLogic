@@ -1,21 +1,52 @@
 <template>
   <div class="cooperation-slider">
-    <div class="cooperation-slider__arrow-left" :class="{ disable: currentSlide <= 0 }" @click="prevSlide">
-      <img class="cooperation-slider__arrow-left-img" src="../../assets/icons/mainNavArrowLeftIcon.svg" alt="" />
+    <div
+      class="cooperation-slider__arrow-left"
+      :class="{ disable: currentSlide <= 0 }"
+      @click="prevSlide"
+    >
+      <img
+        class="cooperation-slider__arrow-left-img"
+        src="../../assets/icons/mainNavArrowLeftIcon.svg"
+        alt=""
+      />
     </div>
     <div class="cooperation-slider__w" ref="slideWrap">
-      <div class="cooperation-slider__cont" :style="{
-        '--translate-x': translateListX + 'px',
-        '--gap': gapLength + 'px',
-      }">
-        <div class="cooperation-slider__item" v-for="(item, index) in sliderData" :key="index" ref="slideListItem">
-          <img class="cooperation-slider__img" :src="require(`../../assets/img/${item.img}.svg`)" alt="" />
+      <div
+        class="cooperation-slider__cont"
+        ref="slideList"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+        :style="{
+          '--translate-x': translateListX + 'px',
+          '--gap': gapLength + 'px',
+        }"
+      >
+        <div
+          class="cooperation-slider__item"
+          v-for="(item, index) in sliderData"
+          :key="index"
+          ref="slideListItem"
+        >
+          <img
+            class="cooperation-slider__img"
+            :src="require(`../../assets/img/${item.img}.svg`)"
+            alt=""
+          />
         </div>
       </div>
     </div>
-    <div class="cooperation-slider__arrow-right" :class="{ disable: slideMaxCount === currentSlide }"
-      @click="nextSlide">
-      <img class="cooperation-slider__arrow-right-img" src="../../assets/icons/mainNavArrowRightIcon.svg" alt="" />
+    <div
+      class="cooperation-slider__arrow-right"
+      :class="{ disable: slideMaxCount === currentSlide }"
+      @click="nextSlide"
+    >
+      <img
+        class="cooperation-slider__arrow-right-img"
+        src="../../assets/icons/mainNavArrowRightIcon.svg"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -67,12 +98,15 @@ export default class CooperationSliderComponent extends Vue {
   declare $refs: {
     slideWrap: HTMLElement;
     slideListItem: HTMLElement;
+    slideList: HTMLElement;
   };
 
   currentSlide: number = 0;
   gapLength: number = 0;
   translateListX: number = 0;
   slideMaxCount: number = 0;
+  startX: number = 0;
+  endX: number = 0;
 
   get SlideCount() {
     return this.sliderData.length;
@@ -83,8 +117,13 @@ export default class CooperationSliderComponent extends Vue {
   }
 
   get TranslateX() {
-    // return this.currentSlide * -this.Step - this.gapLength * this.currentSlide;
-    return -201 * this.currentSlide - this.gapLength * this.currentSlide;
+    const slideItemRect =
+      this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
+
+    return (
+      -slideItemRect.width * this.currentSlide -
+      this.gapLength * this.currentSlide
+    );
   }
 
   calcItemsLength() {
@@ -92,12 +131,9 @@ export default class CooperationSliderComponent extends Vue {
     const slideItemRect =
       this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
 
-    let slideItemsCount = Math.floor(
-      slideWrapRect.width / slideItemRect.width
-    );
+    let slideItemsCount = Math.floor(slideWrapRect.width / slideItemRect.width);
 
-    if (slideItemsCount >= this.SlideCount) slideItemsCount = this.SlideCount
-
+    if (slideItemsCount >= this.SlideCount) slideItemsCount = this.SlideCount;
 
     this.gapLength =
       (slideWrapRect.width - slideItemsCount * slideItemRect.width) /
@@ -116,12 +152,6 @@ export default class CooperationSliderComponent extends Vue {
       this.translateListX =
         -slideItemRect.width * this.currentSlide -
         this.gapLength * this.currentSlide;
-
-    console.log(slideItemsCount);
-    console.log(this.gapLength);
-    console.log(slideMaxWidth);
-    console.log(this.slideMaxCount);
-
   }
 
   nextSlide() {
@@ -139,6 +169,42 @@ export default class CooperationSliderComponent extends Vue {
     this.calcItemsLength();
   }
 
+  handleTouchStart(e) {
+    this.startX = e.touches[0].clientX;
+    this.endX = 0;
+  }
+
+  handleTouchMove(e) {
+    this.endX = e.touches[0].clientX;
+  }
+
+  handleTouchEnd() {
+    const slideItemRect =
+      this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
+    const slideWrapRect = this.$refs.slideWrap.getBoundingClientRect();
+
+    const mobMaxWidth = this.SlideCount * slideItemRect.width;
+
+    const mobGapStr = getComputedStyle(this.$refs.slideList).getPropertyValue(
+      "--mob-gap"
+    );
+    const mobGap = parseFloat(mobGapStr);
+
+    const mobWdithToShow =
+      mobMaxWidth + mobGap * (this.SlideCount - 1) - slideWrapRect.width;
+    console.log(mobWdithToShow);
+
+    if (this.endX < this.startX)
+      this.translateListX -= slideWrapRect.width / 1.2;
+    else if (this.endX > this.startX)
+      this.translateListX += slideWrapRect.width / 1.2;
+
+    if (this.translateListX >= 0) this.translateListX = 0;
+    else if (this.translateListX < -mobWdithToShow) {
+      this.translateListX = -mobWdithToShow;
+    }
+  }
+
   onResize() {
     this.calcItemsLength();
   }
@@ -153,15 +219,10 @@ export default class CooperationSliderComponent extends Vue {
   }
 }
 </script>
-<!-- <style lang="scss">
-body {
-  background-color: black !important;
-}
-</style> -->
 
 <style lang="scss" scoped>
 .cooperation-slider {
-  padding-top: 80px;
+  padding: 80px 16px 0;
 
   @extend %width-main;
 
@@ -181,13 +242,18 @@ body {
     cursor: pointer;
     transition: 0.5s ease;
 
+    @include mobile {
+      display: none;
+    }
+
     &.disable {
       pointer-events: none;
       opacity: 0.2;
     }
   }
 
-  &__arrow-left-img {}
+  &__arrow-left-img {
+  }
 
   &__w {
     width: 1290px;
@@ -197,16 +263,26 @@ body {
   &__cont {
     --translate-x: 0;
     --gap: 0;
+    --mob-gap: 8px;
 
     @include flex-container;
-    gap: Var(--gap);
+    gap: var(--gap);
 
-    transform: translateX(Var(--translate-x));
+    transform: translateX(var(--translate-x));
     transition: 0.3s ease-in-out;
+
+    @include mobile {
+      gap: var(--mob-gap);
+      transition: 0.35s cubic-bezier(0.08, 0.66, 0.22, 1.06);
+    }
   }
 
   &__item {
     min-width: 201px;
+
+    @include mobile {
+      min-width: 150px;
+    }
   }
 
   &__img {
@@ -227,12 +303,17 @@ body {
     cursor: pointer;
     transition: 0.3s ease-in-out;
 
+    @include mobile {
+      display: none;
+    }
+
     &.disable {
       pointer-events: none;
       opacity: 0.2;
     }
   }
 
-  &__arrow-right-img {}
+  &__arrow-right-img {
+  }
 }
 </style>

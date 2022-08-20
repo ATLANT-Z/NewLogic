@@ -273,10 +273,10 @@ export default class CategoryCatalogComponent extends Vue {}
     flex-wrap: wrap;
 
     --gap: 16px;
-    gap: 24px Var(--gap);
+    gap: 24px var(--gap);
 
     @include mobile {
-      gap: Var(--gap);
+      gap: var(--gap);
     }
   }
 }
