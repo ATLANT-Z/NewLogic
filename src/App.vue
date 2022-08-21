@@ -13,8 +13,9 @@
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
     <!-- <ContactComponent></ContactComponent> -->
-    <HomeComponent></HomeComponent>
+    <!-- <HomeComponent></HomeComponent> -->
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
+    <FooterComponent></FooterComponent>
   </main>
 </template>
 
@@ -34,6 +35,7 @@ import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
 import ContactComponent from "./components/Contact.vue";
 import HomeComponent from "./components/Home/Home.vue";
 import PopUpLangComponent from "./components/pop-up/PopUpLang.vue";
+import FooterComponent from "./components/Footer.vue"
 
 @Options({
   components: {
@@ -51,6 +53,7 @@ import PopUpLangComponent from "./components/pop-up/PopUpLang.vue";
     ContactComponent,
     HomeComponent,
     PopUpLangComponent,
+    FooterComponent,
   },
 })
 export default class App extends Vue {}

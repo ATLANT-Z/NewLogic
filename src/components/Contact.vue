@@ -409,7 +409,7 @@ import { Options, Vue } from "vue-class-component";
 export default class ContactComponent extends Vue {}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .banner.contact-ban {
   margin-bottom: 0;
 }
