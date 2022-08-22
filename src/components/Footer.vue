@@ -3,33 +3,50 @@
     <section class="footer__cont">
       <div class="content">
         <div class="content__block">
-          <h3 class="content__title">Продукция</h3>
+          <h4 class="content__title">Продукция</h4>
           <div class="content__block-list-w">
-            <div class="content__block-list">
-              <a class="content__block-list-link" href="#"
-                >Комплекты для резервного питания</a
-              >
-              <a class="content__block-list-link" href="#"
-                >Источники бесперебойного питания</a
-              >
-              <a class="content__block-list-link" href="#">Аккумуляторы AGM</a>
-            </div>
-            <div class="content__block-list">
-              <a class="content__block-list-link" href="#"
-                >Литиевые аккумуляторы</a
-              >
-              <a class="content__block-list-link" href="#"
-                >Альтернативная энергетика</a
-              >
-              <a class="content__block-list-link" href="#"
-                >Стабилизаторы напряжения</a
-              >
-            </div>
+            <ul class="content__block-list">
+              <li class="content__block-list-item">
+                <a class="content__block-list-link" href="#"
+                  >Комплекты для резервного питания</a
+                >
+              </li>
+              <li class="content__block-list-item">
+                <a class="content__block-list-link" href="#"
+                  >Источники бесперебойного питания</a
+                >
+              </li>
+
+              <li class="content__block-list-item">
+                <a class="content__block-list-link" href="#"
+                  >Аккумуляторы AGM</a
+                >
+              </li>
+            </ul>
+            <ul class="content__block-list">
+              <li class="content__block-list-item">
+                <a class="content__block-list-link" href="#"
+                  >Литиевые аккумуляторы</a
+                >
+              </li>
+
+              <li class="content__block-list-item">
+                <a class="content__block-list-link" href="#"
+                  >Альтернативная энергетика</a
+                >
+              </li>
+
+              <li class="content__block-list-item">
+                <a class="content__block-list-link" href="#"
+                  >Стабилизаторы напряжения</a
+                >
+              </li>
+            </ul>
           </div>
           <a class="content__block-list-link" href="#">Перейти в католог</a>
         </div>
         <div class="content__block">
-          <h3 class="content__title">ИНФОРМАЦИЯ</h3>
+          <h4 class="content__title">ИНФОРМАЦИЯ</h4>
           <div class="content__block-list-w">
             <div class="content__block-list">
               <a class="content__block-list-link" href="#">О компании</a>
@@ -55,7 +72,7 @@
         </div>
         <div class="contacts__block">
           <div class="contacts__block-unit">
-            <h3 class="content__title">Контакты</h3>
+            <h4 class="content__title">Контакты</h4>
             <a class="contacts__text" href="tel:0800208941">0 800 208 941</a>
           </div>
           <div class="contacts__block-unit">
@@ -133,8 +150,8 @@
       </div>
       <div class="subscription__block">
         <div class="subscription__block-mailing">
-          <div>
-            <h3 class="subscription__block-title">рассылка</h3>
+          <div class="subscription__block-mailing-info">
+            <h4 class="subscription__block-title">рассылка</h4>
             <p class="subscription__block-text">
               Подпишитесь на рассылку и получайте первыми полезные новости,
               акции, бонусы и скидки. Без спама!
@@ -150,7 +167,7 @@
           </form>
         </div>
         <div class="subscription__block-social">
-          <h3 class="subscription__block-title">Присоединяйтесь</h3>
+          <h4 class="subscription__block-title">Присоединяйтесь</h4>
           <ul class="subscription__block-social-list">
             <li class="subscription__block-social-list-item">
               <a href="" class="subscription__block-social-list-item-link">
@@ -423,6 +440,120 @@ export default class FooterComponent extends Vue {}
     color: #ffffff;
 
     transition: 0.2s ease-in-out;
+  }
+}
+
+.subscription {
+  &__block {
+    width: 100%;
+
+    @include flex-container(row, space-between, center);
+    gap: 16px;
+
+    border-radius: 16px;
+    background-color: $color-main;
+
+    padding: 24px 40px;
+  }
+
+  &__block-mailing {
+    width: 100%;
+
+    @include flex-container(row, flex-start, center);
+    gap: 32px;
+  }
+
+  &__block-mailing-info {
+    width: 100%;
+    max-width: 355px;
+
+    @extend %flex-column;
+    gap: 16px;
+  }
+
+  &__block-title {
+    @include fontUnify(20, 30, 600);
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  &__block-text {
+    @include fontUnify(12, 16);
+    letter-spacing: 0.02em;
+    color: #ffffff;
+  }
+
+  &__block-mailing-form {
+    width: 100%;
+    max-width: 484px;
+
+    @include flex-container(row, center, center);
+  }
+
+  &__block-mailing-input {
+    width: 100%;
+    max-height: 40px;
+
+    border-radius: 6px 0 0 6px;
+
+    background-color: #ffffff;
+
+    padding: 12px 8px;
+
+    &::placeholder {
+      @include fontUnify(12, 16);
+      letter-spacing: 0.02em;
+      color: #8a8a8a;
+    }
+  }
+
+  &__block-mailing-btn {
+    width: 100%;
+    max-width: 183px;
+
+    @include flex-container(row, center, center);
+
+    @include fontUnify(18, 24);
+    letter-spacing: 0.02em;
+    color: #ffffff;
+
+    border-radius: 0 6px 6px 0;
+    background-color: $color-main-dark;
+
+    padding: 8px 0;
+
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__block-social {
+    @extend %flex-column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__block-social-list {
+    @include flex-container(row, center, center);
+    gap: 24px;
+  }
+
+  &__block-social-list-item {
+  }
+
+  &__block-social-list-item-link {
+    font-size: 0;
+    display: inline-block;
+
+    & svg path {
+      transition: 0.2s ease-in-out;
+    }
+
+    &:hover svg {
+      transform: scale(1.1);
+    }
   }
 }
 </style>

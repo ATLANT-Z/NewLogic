@@ -113,11 +113,9 @@ main {
   }
 
   &__content-column {
-    width: 100%;
-    max-width: 1500px;
+    @extend %width-main;
 
-    display: flex;
-    flex-direction: column;
+    @extend %flex-column;
     justify-content: flex-end;
     gap: 24px;
 
