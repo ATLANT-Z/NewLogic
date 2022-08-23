@@ -286,7 +286,7 @@ export default class FooterComponent extends Vue {}
 
   background-color: #393d38;
 
-  padding: 0 16px;
+  @extend %padding-wrp;
   &__cont {
     @extend %width-main;
 

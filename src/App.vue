@@ -13,7 +13,7 @@
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
     <!-- <ContactComponent></ContactComponent> -->
-    <!-- <HomeComponent></HomeComponent> -->
+    <HomeComponent></HomeComponent>
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
     <FooterComponent></FooterComponent>
   </main>

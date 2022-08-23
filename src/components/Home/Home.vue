@@ -498,7 +498,7 @@ export default class HomeComponent extends Vue {}
     justify-content: center;
     gap: 64px;
 
-    padding: 0 16px;
+    @extend %padding-wrp;
 
     @include mobile {
       min-height: 330px;
@@ -546,7 +546,7 @@ export default class HomeComponent extends Vue {}
 
     background-color: #ffffff;
 
-    padding: 0 16px;
+    @extend %padding-wrp;
 
     @include mobile {
       gap: 48px;

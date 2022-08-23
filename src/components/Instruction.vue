@@ -311,7 +311,7 @@ export default class InstructionComponent extends Vue {
   &__body {
     @extend %width-main;
 
-    padding: 0 16px;
+    @extend %padding-wrp;
 
     @include mobile {
       display: none;
