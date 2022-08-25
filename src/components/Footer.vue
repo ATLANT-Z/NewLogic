@@ -10,51 +10,69 @@
           />
         </div>
         <div class="content__block">
-          <h4 class="content__title">Продукция</h4>
-          <div class="content__block-list-w">
-            <ul class="content__block-list">
-              <li class="content__block-list-item">
-                <a class="content__block-list-link" href="#"
-                  >Комплекты для резервного питания</a
-                >
-              </li>
-              <li class="content__block-list-item">
-                <a class="content__block-list-link" href="#"
-                  >Источники бесперебойного питания</a
-                >
-              </li>
-
-              <li class="content__block-list-item">
-                <a class="content__block-list-link" href="#"
-                  >Аккумуляторы AGM</a
-                >
-              </li>
-            </ul>
-            <ul class="content__block-list">
-              <li class="content__block-list-item">
-                <a class="content__block-list-link" href="#"
-                  >Литиевые аккумуляторы</a
-                >
-              </li>
-
-              <li class="content__block-list-item">
-                <a class="content__block-list-link" href="#"
-                  >Альтернативная энергетика</a
-                >
-              </li>
-
-              <li class="content__block-list-item">
-                <a class="content__block-list-link" href="#"
-                  >Стабилизаторы напряжения</a
-                >
-              </li>
-            </ul>
+          <div class="content__title-w" @click="openProdList = !openProdList">
+            <h4 class="content__title">продукция</h4>
+            <div class="content__title-mob-arrow">
+              <img
+                class="content__title-mob-arrow-img"
+                src="../../src/assets/icons/nav-arrow-down.svg"
+                alt=""
+                :class="{ active: openProdList }"
+              />
+            </div>
           </div>
+          <ul class="content__block-list-w" :class="{ active: openProdList }">
+            <ul class="content__block-list">
+            <li class="content__block-list-item">
+              <a class="content__block-list-link" href="#"
+                >Комплекты для резервного питания</a
+              >
+            </li>
+            <li class="content__block-list-item">
+              <a class="content__block-list-link" href="#"
+                >Источники бесперебойного питания</a
+              >
+            </li>
+
+            <li class="content__block-list-item">
+              <a class="content__block-list-link" href="#">Аккумуляторы AGM</a>
+            </li>
+            </ul>
+            <ul class="content__block-list">
+            <li class="content__block-list-item">
+              <a class="content__block-list-link" href="#"
+                >Литиевые аккумуляторы</a
+              >
+            </li>
+
+            <li class="content__block-list-item">
+              <a class="content__block-list-link" href="#"
+                >Альтернативная энергетика</a
+              >
+            </li>
+
+            <li class="content__block-list-item">
+              <a class="content__block-list-link" href="#"
+                >Стабилизаторы напряжения</a
+              >
+            </li>
+            </ul>
+          </ul>
           <a class="content__block-list-link" href="#">Перейти в католог</a>
         </div>
         <div class="content__block">
-          <h4 class="content__title">ИНФОРМАЦИЯ</h4>
-          <div class="content__block-list-w">
+          <div class="content__title-w" @click="openInfoList = !openInfoList">
+            <h4 class="content__title">ИНФОРМАЦИЯ</h4>
+            <div class="content__title-mob-arrow">
+              <img
+                class="content__title-mob-arrow-img"
+                src="../../src/assets/icons/nav-arrow-down.svg"
+                alt=""
+                :class="{ active: openInfoList }"
+              />
+            </div>
+          </div>
+          <div class="content__block-list-w" :class="{ active: openInfoList }">
             <div class="content__block-list">
               <a class="content__block-list-link" href="#">О компании</a>
               <a class="content__block-list-link" href="#">Контакты</a>
@@ -295,11 +313,16 @@
   </footer>
 </template>
 
-<script>
+<script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
-@Options({})
-export default class FooterComponent extends Vue {}
+@Options({
+  name: "FooterComponent",
+})
+export default class FooterComponent extends Vue {
+  openProdList: boolean = false;
+  openInfoList: boolean = false;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -335,7 +358,7 @@ export default class FooterComponent extends Vue {}
   @include flex-container;
   gap: 24px 16px;
 
-  & .content__logo-img-w {
+  & > .content__logo-img-w {
     display: none;
     @include mobile {
       display: block;
@@ -372,7 +395,12 @@ export default class FooterComponent extends Vue {}
     }
   }
 
+  &__title-w {
+    @include flex-container(row, space-between, center);
+  }
+
   &__title {
+    position: relative;
     @include fontUnify(20, 30, 600);
     text-transform: uppercase;
     color: $color-main;
@@ -382,11 +410,32 @@ export default class FooterComponent extends Vue {}
     }
   }
 
+  &__title-mob-arrow {
+    display: none;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &__title-mob-arrow-img {
+    transition: 0.5s ease;
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
+
   &__block-list-w {
     @include flex-container(row, flex-start);
     gap: 8px;
+    // flex-wrap: wrap;
+
+    // max-height: 165px;
+    // width: 100%;
 
     overflow: hidden;
+
+    transition: 0.5s ease;
 
     @include bigMobile {
       flex-direction: column;
@@ -395,6 +444,47 @@ export default class FooterComponent extends Vue {}
     @include mobile {
       max-height: 0;
     }
+
+    &.active {
+      @include mobile {
+        max-height: 100vh;
+      }
+    }
+    // @keyframes toggleDown {
+    //   0% {
+    //     max-height: 0;
+    //   }
+
+    //   100% {
+    //     max-height: 100vh;
+    //   }
+    // }
+
+    // @keyframes toggleUp {
+    //   0% {
+    //     max-height: 100vh;
+    //   }
+
+    //   100% {
+    //     max-height: 0;
+    //   }
+    // }
+
+    //   animation-name: toggleUp;
+    //   animation-duration: 0.5s;
+    //   animation-fill-mode: none;
+    //   animation-direction: normal;
+    //   animation-timing-function: ease-in-out;
+
+    // &.active {
+    //   max-height: none;
+
+    //   animation-name: toggleDown;
+    //   animation-duration: 0.5s;
+    //   animation-fill-mode: none;
+    //   animation-direction: normal;
+    //   animation-timing-function: ease-in-out;
+    // }
   }
 
   &__block-list {
@@ -407,6 +497,11 @@ export default class FooterComponent extends Vue {}
     @include bigMobile {
       max-width: none;
     }
+  }
+
+  &__block-list-item {
+    // width: 100%;
+    // max-width: 200px;
   }
 
   &__block-list-link {
