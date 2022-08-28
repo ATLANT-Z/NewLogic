@@ -1,6 +1,6 @@
 <template>
   <section class="main-page">
-    <div class="main-page__slider-category-block">
+    <!-- <div class="main-page__slider-category-block">
       <SliderCategoryComponent></SliderCategoryComponent>
       <div class="main-page__about-company">
         <div class="main-page__about-company-title-w">
@@ -17,8 +17,9 @@
           </p>
         </div>
       </div>
-    </div>
-    <div class="main-page__team-block">
+    </div> -->
+    <AboutUsSliderComponent></AboutUsSliderComponent>
+    <!-- <div class="main-page__team-block">
       <div class="main-page__team-w">
         <p class="main-page__team-text">
           Команда LogicPower поставила себе новую цель – занять лидирующие
@@ -162,7 +163,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -170,11 +171,13 @@
 import { Options, Vue } from "vue-class-component";
 import SliderCategoryComponent from "./SliderCategory.vue";
 import CooperationSliderComponent from "./CooperationSlider.vue";
+import AboutUsSliderComponent from "./AboutUsSlider.vue"
 
 @Options({
   components: {
     SliderCategoryComponent,
     CooperationSliderComponent,
+    AboutUsSliderComponent
   },
 })
 export default class HomeComponent extends Vue {}

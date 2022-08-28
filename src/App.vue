@@ -15,7 +15,7 @@
     <!-- <ContactComponent></ContactComponent> -->
     <HomeComponent></HomeComponent>
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
-    <FooterComponent></FooterComponent>
+    <!-- <FooterComponent></FooterComponent> -->
   </main>
 </template>
 
