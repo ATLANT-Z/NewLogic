@@ -10,7 +10,7 @@
           />
         </div>
         <div class="content__block">
-          <div class="content__title-w" @click="openProdList = !openProdList">
+          <div class="content__title-w" @click="dropDownProd()">
             <h4 class="content__title">продукция</h4>
             <div class="content__title-mob-arrow">
               <img
@@ -21,47 +21,28 @@
               />
             </div>
           </div>
-          <ul class="content__block-list-w" :class="{ active: openProdList }">
-            <ul class="content__block-list">
-            <li class="content__block-list-item">
-              <a class="content__block-list-link" href="#"
-                >Комплекты для резервного питания</a
+          <div
+            class="content__block-list-w"
+            :class="{ active: openProdList }"
+            :style="{ '--list-height': listHeight + 'px' }"
+          >
+            <ul class="content__block-list" ref="listOfProdItem">
+              <li
+                class="content__block-list-item"
+                v-for="item of prodList"
+                :key="item.id"
+                ref="ProdItem"
               >
-            </li>
-            <li class="content__block-list-item">
-              <a class="content__block-list-link" href="#"
-                >Источники бесперебойного питания</a
-              >
-            </li>
-
-            <li class="content__block-list-item">
-              <a class="content__block-list-link" href="#">Аккумуляторы AGM</a>
-            </li>
+                <a class="content__block-list-link" href="#">
+                  {{ item.title }}</a
+                >
+              </li>
             </ul>
-            <ul class="content__block-list">
-            <li class="content__block-list-item">
-              <a class="content__block-list-link" href="#"
-                >Литиевые аккумуляторы</a
-              >
-            </li>
-
-            <li class="content__block-list-item">
-              <a class="content__block-list-link" href="#"
-                >Альтернативная энергетика</a
-              >
-            </li>
-
-            <li class="content__block-list-item">
-              <a class="content__block-list-link" href="#"
-                >Стабилизаторы напряжения</a
-              >
-            </li>
-            </ul>
-          </ul>
+          </div>
           <a class="content__block-list-link" href="#">Перейти в католог</a>
         </div>
         <div class="content__block">
-          <div class="content__title-w" @click="openInfoList = !openInfoList">
+          <div class="content__title-w" @click="dropDownInfo()">
             <h4 class="content__title">ИНФОРМАЦИЯ</h4>
             <div class="content__title-mob-arrow">
               <img
@@ -72,27 +53,36 @@
               />
             </div>
           </div>
-          <div class="content__block-list-w" :class="{ active: openInfoList }">
-            <div class="content__block-list">
-              <a class="content__block-list-link" href="#">О компании</a>
-              <a class="content__block-list-link" href="#">Контакты</a>
-              <a class="content__block-list-link" href="#">Блог</a>
-              <a class="content__block-list-link" href="#">Оплата и Доставка</a>
-              <a class="content__block-list-link" href="#"
-                >Гарантия и Сервисное обслуживание</a
+          <div
+            class="content__block-list-w"
+            :class="{ active: openInfoList }"
+            :style="{ '--list-height': listInfoHeight + 'px' }"
+          >
+            <div class="content__block-list info" ref="listOfInfoItem">
+              <a
+                class="content__block-list-link"
+                href="#"
+                v-for="item of infoList"
+                :key="item.id"
+                ref="InfoItem"
+                >{{ item.title }}</a
               >
             </div>
-            <div class="content__block-list">
-              <a class="content__block-list-link" href="#"
-                >Политика конфиденциальности</a
-              >
-              <a class="content__block-list-link" href="#"
-                >Договор публичной оферты</a
-              >
-              <a class="content__block-list-link" href="#">Сотрудничество</a>
-              <a class="content__block-list-link" href="#">Инструкции</a>
-              <a class="content__block-list-link" href="#">Форум</a>
-            </div>
+            <!-- <a class="content__block-list-link" href="#">Контакты</a>
+            <a class="content__block-list-link" href="#">Блог</a>
+            <a class="content__block-list-link" href="#">Оплата и Доставка</a>
+            <a class="content__block-list-link" href="#"
+              >Гарантия и Сервисное обслуживание</a
+            >
+            <a class="content__block-list-link" href="#"
+              >Политика конфиденциальности</a
+            >
+            <a class="content__block-list-link" href="#"
+              >Договор публичной оферты</a
+            >
+            <a class="content__block-list-link" href="#">Сотрудничество</a>
+            <a class="content__block-list-link" href="#">Инструкции</a>
+            <a class="content__block-list-link" href="#">Форум</a> -->
           </div>
         </div>
         <div class="contacts__block">
@@ -320,8 +310,82 @@ import { Options, Vue } from "vue-class-component";
   name: "FooterComponent",
 })
 export default class FooterComponent extends Vue {
+  declare $refs: {
+    ProdItem: HTMLElement;
+    listOfProdItem: HTMLElement;
+    listOfInfoItem: HTMLElement;
+    InfoItem: HTMLElement;
+  };
+
+  prodList: any = [
+    { id: 1, title: "Комплекты для резервного питания" },
+    { id: 2, title: "Источники бесперебойного питания" },
+    { id: 3, title: "Аккумуляторы AGM" },
+    { id: 4, title: "Литиевые аккумуляторы" },
+    { id: 5, title: "Альтернативная энергетика" },
+    { id: 6, title: "Стабилизаторы напряжения" },
+    { id: 7, title: "Аккумуляторы SILVER" },
+    { id: 8, title: "Электротранспорт" },
+    { id: 9, title: "Автомобильные аккумуляторы" },
+    { id: 10, title: "Компьютерная периферия" },
+    { id: 11, title: "Компьютерная периферия" },
+  ];
+
+  infoList: any = [
+    { id: 1, title: "О компании" },
+    { id: 2, title: "Контакты" },
+    { id: 3, title: "Блог" },
+    { id: 4, title: "Оплата и Доставка" },
+    { id: 5, title: "Гарантия и Сервисное обслуживание" },
+    { id: 6, title: "Политика конфиденциальности" },
+    { id: 7, title: "Договор публичной оферты" },
+    { id: 8, title: "Сотрудничество" },
+    { id: 9, title: "Инструкции" },
+    { id: 10, title: "Форум" },
+  ];
+
+  listHeight: number = 0;
+  listInfoHeight: number = 0;
   openProdList: boolean = false;
   openInfoList: boolean = false;
+
+  get ProdCount() {
+    return this.prodList.length;
+  }
+
+  get InfoCount() {
+    return this.infoList.length;
+  }
+
+  dropDownProd() {
+    if (innerWidth <= 680) {
+      const itemRect = this.$refs.ProdItem[0].getBoundingClientRect();
+      const listRect = this.$refs.listOfProdItem.getBoundingClientRect();
+
+      if (this.listHeight === 0)
+        this.listHeight =
+          itemRect.height * this.ProdCount +
+          (listRect.height - itemRect.height * this.ProdCount);
+      else this.listHeight = 0;
+
+      this.openProdList = !this.openProdList;
+    }
+  }
+
+  dropDownInfo() {
+    if (innerWidth <= 680) {
+      const itemRect = this.$refs.InfoItem[0].getBoundingClientRect();
+      const listRect = this.$refs.listOfInfoItem.getBoundingClientRect();
+
+      if (this.listInfoHeight === 0)
+        this.listInfoHeight =
+          itemRect.height * this.InfoCount +
+          (listRect.height - itemRect.height * this.InfoCount);
+      else this.listInfoHeight = 0;
+
+      this.openInfoList = !this.openInfoList;
+    }
+  }
 }
 </script>
 
@@ -426,12 +490,15 @@ export default class FooterComponent extends Vue {
   }
 
   &__block-list-w {
-    @include flex-container(row, flex-start);
-    gap: 8px;
-    // flex-wrap: wrap;
+    --list-gap: 8px;
+    --list-height: 0;
 
-    // max-height: 165px;
-    // width: 100%;
+    max-width: 416px;
+    width: 100%;
+
+    @include flex-container(row, flex-start);
+    gap: var(--list-gap);
+    flex-wrap: wrap;
 
     overflow: hidden;
 
@@ -442,74 +509,71 @@ export default class FooterComponent extends Vue {
     }
 
     @include mobile {
-      max-height: 0;
+      max-width: none;
+      height: var(--list-height);
     }
 
     &.active {
       @include mobile {
-        max-height: 100vh;
+        height: var(--list-height);
       }
     }
-    // @keyframes toggleDown {
-    //   0% {
-    //     max-height: 0;
-    //   }
-
-    //   100% {
-    //     max-height: 100vh;
-    //   }
-    // }
-
-    // @keyframes toggleUp {
-    //   0% {
-    //     max-height: 100vh;
-    //   }
-
-    //   100% {
-    //     max-height: 0;
-    //   }
-    // }
-
-    //   animation-name: toggleUp;
-    //   animation-duration: 0.5s;
-    //   animation-fill-mode: none;
-    //   animation-direction: normal;
-    //   animation-timing-function: ease-in-out;
-
-    // &.active {
-    //   max-height: none;
-
-    //   animation-name: toggleDown;
-    //   animation-duration: 0.5s;
-    //   animation-fill-mode: none;
-    //   animation-direction: normal;
-    //   animation-timing-function: ease-in-out;
-    // }
   }
 
   &__block-list {
+    max-height: 200px;
+    max-width: 416px;
     width: 100%;
-    max-width: 200px;
 
-    @extend %flex-column;
-    gap: 16px;
+    @include flex-container(row, flex-start);
+    gap: 8px;
+    flex-wrap: wrap;
 
-    @include bigMobile {
+    overflow: hidden;
+
+    &.info {
+      max-height: none;
+      overflow: visible;
+
+      @include bigMobile {
+        flex-direction: column;
+      }
+    }
+
+    @include mobile {
+      max-height: none;
       max-width: none;
+
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+      overflow: visible;
     }
   }
 
   &__block-list-item {
-    // width: 100%;
-    // max-width: 200px;
+    width: 100%;
+    max-width: 200px;
+
+    @include mobile {
+      max-width: none;
+    }
   }
 
   &__block-list-link {
+    width: 100%;
+    max-width: 200px;
+
     @include fontUnify;
     letter-spacing: 0.02em;
     color: #ffffff;
 
     transition: 0.2s ease-in-out;
+
+    @include mobile {
+      max-width: none;
+    }
+
     &:hover {
       color: $color-main-dark;
     }
