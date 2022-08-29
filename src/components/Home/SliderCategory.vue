@@ -345,10 +345,10 @@ export default class SliderCategoryComponent extends Vue {
   }
 
   &__prod-arrow-up {
-    @include flex-container(row, center, center);
-
     width: 48px;
     height: 48px;
+
+    @include flex-container(row, center, center);
 
     border-radius: 50%;
 
@@ -379,10 +379,10 @@ export default class SliderCategoryComponent extends Vue {
   }
 
   &__prod-arrow-down {
-    @include flex-container(row, center, center);
-
     width: 48px;
     height: 48px;
+
+    @include flex-container(row, center, center);
 
     border-radius: 50%;
 
