@@ -1,5 +1,5 @@
 <template>
-  <div class="slider-about">
+  <div class="slider-about" ref="sliderWidth">
     <div class="slider" ref="sliderWindow">
       <div class="slider__arrows">
         <div class="slider__arrow-left" @click="prevSlide">
@@ -41,12 +41,16 @@
         class="slider__list"
         :style="{ '--list-translateX': translateX + 'px' }"
         ref="slideList"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
       >
         <li
           class="slider__list-item"
           v-for="(slide, index) of sliderData"
           :key="index"
           :class="{ active: index === currentSlide }"
+          :style="{ '--item-width': slideWidth + 'px' }"
           ref="slide"
         >
           <div class="slider__list-item-img-w">
@@ -65,16 +69,37 @@
     </div>
     <div class="pagination">
       <div
+        class="pagination__line"
+        :style="{ '--line-width': lineMobWidth + 'px' }"
+        ref="paginationLine"
+      ></div>
+      <div
+        class="pagination__line-colored"
+        :style="{ '--width-line': lineWidth + 'px' }"
+      ></div>
+      <div
         class="pagination__item"
         v-for="(slide, index) of sliderData"
         :key="index"
-        :class="{ active: index === currentSlide }"
+        ref="paginationItem"
       >
-        <div class="pagination__line"></div>
         <div class="pagination__title-w">
-          <span class="pagination__title">{{ slide.title }}</span>
+          <span
+            class="pagination__title"
+            :class="{
+              active: index === currentSlide,
+            }"
+            >{{ slide.title }}</span
+          >
           <div class="pagination__dot-w">
-            <div class="pagination__dot"></div>
+            <div
+              class="pagination__dot"
+              :class="{
+                active: index === currentSlide,
+                colored: paginationColoredDot(index),
+              }"
+              @click="goToSlide(index)"
+            ></div>
           </div>
         </div>
       </div>
@@ -93,6 +118,9 @@ export default class AboutUsSliderComponent extends Vue {
     slide: HTMLElement;
     slideList: HTMLElement;
     sliderWindow: HTMLElement;
+    paginationLine: HTMLElement;
+    paginationItem: HTMLElement;
+    sliderWidth: HTMLElement;
   };
 
   sliderData: any = [
@@ -116,13 +144,85 @@ export default class AboutUsSliderComponent extends Vue {
       title: "2012 год",
       text: "ТМ LogicPower была зарегистрирована в Украине в феврале 2007 года. Компания начиналась с небольшого арендованного офиса площадью 30 м² и команды из 12 сотрудников. Сегодня компания владеет 2200 квадратными метрами складов европейского образца, с которых ежедневно во все регионы Украины отправляются 1000-чи наименований нашей продукции.",
     },
+    {
+      img: "mainAboutUsImg",
+      title: "2013-2014 год",
+      text: "ТМ LogicPower была зарегистрирована в Украине в феврале 2007 года. Компания начиналась с небольшого арендованного офиса площадью 30 м² и команды из 12 сотрудников. Сегодня компания владеет 2200 квадратными метрами складов европейского образца, с которых ежедневно во все регионы Украины отправляются 1000-чи наименований нашей продукции.",
+    },
+    {
+      img: "mainAboutUsImg",
+      title: "Present",
+      text: "ТМ LogicPower была зарегистрирована в Украине в феврале 2007 года. Компания начиналась с небольшого арендованного офиса площадью 30 м² и команды из 12 сотрудников. Сегодня компания владеет 2200 квадратными метрами складов европейского образца, с которых ежедневно во все регионы Украины отправляются 1000-чи наименований нашей продукции.",
+    },
   ];
 
   currentSlide: number = 0;
   translateX: number = 0;
+  lineWidth: number = 0;
+  slideWidth: number = 0;
+  startX: number = 0;
+  endX: number = 0;
+  lineMobWidth: number = 0;
 
   get SlideCount() {
     return this.sliderData.length;
+  }
+
+  paginationColoredLineWidth() {
+    setTimeout(() => {
+      const paginationItemRect =
+        this.$refs.paginationItem[this.currentSlide].getBoundingClientRect();
+      const lineIndent = paginationItemRect.width / 2;
+
+      this.lineWidth =
+        paginationItemRect.width * this.currentSlide + lineIndent;
+    }, 700);
+  }
+
+  paginationlineMobWidthCalc() {
+    const paginationItemRect =
+      this.$refs.paginationItem[this.currentSlide].getBoundingClientRect();
+
+    this.lineMobWidth = paginationItemRect.width * this.SlideCount;
+  }
+
+  paginationColoredDot(index) {
+    return index <= this.currentSlide;
+  }
+
+  adaptiveSliderWidth() {
+    const sliderWindowRect = this.$refs.sliderWindow.getBoundingClientRect();
+
+    // this.slideWidth = sliderWindowRect.width - 420;
+    this.slideWidth = (sliderWindowRect.width / 100) * 78;
+  }
+
+  translateXWidthTimeOut() {
+    setTimeout(() => {
+      const slideRect =
+        this.$refs.slide[this.currentSlide].getBoundingClientRect();
+      const slideListRect = this.$refs.slideList.scrollWidth;
+      const sliderWindowRect = this.$refs.sliderWindow.getBoundingClientRect();
+
+      if (window.innerWidth <= 1024) {
+        this.translateX =
+          this.currentSlide *
+          (-slideRect.width -
+            (slideListRect - slideRect.width * this.SlideCount) /
+              (this.SlideCount - 1));
+      } else {
+        this.translateX =
+          this.currentSlide *
+            (-slideRect.width -
+              (slideListRect - slideRect.width * this.SlideCount) /
+                (this.SlideCount - 1)) +
+          (sliderWindowRect.width - slideRect.width) / 2;
+      }
+
+      // console.log(slideRect.width);
+      // console.log(slideListRect);
+      // console.log(sliderWindowRect.width);
+    }, 700);
   }
 
   translateXWidth() {
@@ -130,13 +230,34 @@ export default class AboutUsSliderComponent extends Vue {
       this.$refs.slide[this.currentSlide].getBoundingClientRect();
     const slideListRect = this.$refs.slideList.scrollWidth;
     const sliderWindowRect = this.$refs.sliderWindow.getBoundingClientRect();
+    // const observ = new ResizeObserver((entries) => {
+    //   this.translateX =
+    //   this.currentSlide *
+    //     (-slideRect.width -
+    //       (slideListRect - slideRect.width * this.SlideCount) /
+    //         (this.SlideCount - 1)) +
+    //   (sliderWindowRect.width - slideRect.width) / 2;
+    // })
 
-    this.translateX =
-      this.currentSlide *
+    if (window.innerWidth <= 1024) {
+      this.translateX =
+        this.currentSlide *
         (-slideRect.width -
           (slideListRect - slideRect.width * this.SlideCount) /
-            (this.SlideCount - 1)) +
-      (sliderWindowRect.width - slideRect.width) / 2;
+            (this.SlideCount - 1));
+    } else {
+      this.translateX =
+        this.currentSlide *
+          (-slideRect.width -
+            (slideListRect - slideRect.width * this.SlideCount) /
+              (this.SlideCount - 1)) +
+        (sliderWindowRect.width - slideRect.width) / 2;
+    }
+
+    // console.log(slideRect.width);
+    // console.log(slideListRect);
+    // console.log(sliderWindowRect.width);
+    // console.log(observ);
   }
 
   nextSlide() {
@@ -144,6 +265,7 @@ export default class AboutUsSliderComponent extends Vue {
     else this.currentSlide = this.currentSlide + 1;
 
     this.translateXWidth();
+    this.paginationColoredLineWidth();
   }
 
   prevSlide() {
@@ -151,10 +273,55 @@ export default class AboutUsSliderComponent extends Vue {
     else this.currentSlide = this.currentSlide - 1;
 
     this.translateXWidth();
+    this.paginationColoredLineWidth();
+  }
+
+  goToSlide(index) {
+    this.currentSlide = index;
+
+    this.translateXWidth();
+    this.paginationColoredLineWidth();
+  }
+
+  handleTouchStart(e) {
+    this.startX = e.touches[0].clientX;
+    this.endX = 0;
+  }
+
+  handleTouchMove(e) {
+    this.endX = e.touches[0].clientX;
+  }
+
+  handleTouchEnd() {
+    const diffX = this.endX - this.startX;
+
+    if (this.endX < this.startX && diffX < -30) {
+      if (this.currentSlide + 1 >= this.SlideCount)
+        this.currentSlide = this.SlideCount - 1;
+      else this.currentSlide = this.currentSlide + 1;
+    } else if (this.endX > this.startX && diffX > 30) {
+      if (this.currentSlide - 1 < 0) this.currentSlide = 0;
+      else this.currentSlide = this.currentSlide - 1;
+    }
+
+    this.translateXWidth();
+    this.paginationColoredLineWidth();
+  }
+
+  onResize() {
+    this.adaptiveSliderWidth();
+    this.translateXWidthTimeOut();
+    this.paginationColoredLineWidth();
+    this.paginationlineMobWidthCalc();
   }
 
   mounted() {
-    this.translateXWidth();
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
   }
 }
 </script>
@@ -170,18 +337,28 @@ export default class AboutUsSliderComponent extends Vue {
 
   background-color: #d8d8d8;
 
-  padding: 48px 0;
+  padding: 48px 16px;
+
+  @include bigMobile {
+    height: auto;
+
+    padding: 24px 16px;
+  }
 }
 .slider {
   width: 100%;
   max-width: 1920px;
-  height: 660px;
+  height: 620px;
 
   display: flex;
 
   position: relative;
 
   overflow: hidden;
+
+  @include bigMobile {
+    height: auto;
+  }
 
   &__arrows {
     width: 100%;
@@ -194,6 +371,10 @@ export default class AboutUsSliderComponent extends Vue {
     padding: 0 62px;
 
     z-index: 3;
+
+    @include bigMobile {
+      display: none;
+    }
   }
 
   &__arrow-left {
@@ -251,7 +432,8 @@ export default class AboutUsSliderComponent extends Vue {
   }
 
   &__list-item {
-    min-width: 1500px;
+    --item-width: 0;
+    min-width: var(--item-width);
     height: 600px;
 
     @include flex-container;
@@ -267,8 +449,26 @@ export default class AboutUsSliderComponent extends Vue {
 
     transform: scaleY(0.8);
     transition: 0.7s cubic-bezier(0.18, 0.17, 0.74, 0.76);
+
+    @include smallScreen {
+      height: 540px;
+
+      gap: 32px;
+
+      box-shadow: none;
+
+      padding-right: 32px;
+    }
+
+    @include bigMobile {
+      min-width: 100%;
+      height: auto;
+
+      flex-direction: column;
+
+      padding: 0;
+    }
     &.active {
-      // height: 616px;
       transform: scaleY(1);
     }
   }
@@ -281,6 +481,19 @@ export default class AboutUsSliderComponent extends Vue {
 
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
+
+    @include bigMobile {
+      height: 450px;
+
+      box-shadow: none;
+
+      border-top-right-radius: inherit;
+      border-bottom-left-radius: none;
+    }
+
+    @include mobile {
+      height: 350px;
+    }
   }
 
   &__list-item-img {
@@ -292,6 +505,13 @@ export default class AboutUsSliderComponent extends Vue {
 
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
+
+    @include bigMobile {
+      box-shadow: none;
+
+      border-top-right-radius: inherit;
+      border-bottom-left-radius: none;
+    }
   }
 
   &__list-item-info {
@@ -300,60 +520,131 @@ export default class AboutUsSliderComponent extends Vue {
 
     @extend %flex-column;
     gap: 56px;
+
+    @include smallScreen {
+      gap: 28px;
+    }
+
+    @include bigMobile {
+      gap: 8px;
+
+      padding: 0 16px;
+    }
   }
 
   &__list-item-info-title {
     @include fontUnify(64, 80, 500);
     color: $color-main;
+
+    @include smallScreen {
+      @include fontUnify(48, 52, 500);
+    }
+
+    @include bigMobile {
+      @include fontUnify(20, 30, 600);
+    }
   }
 
   &__list-item-info-text {
     @include fontUnify(22, 30, 700);
     letter-spacing: 0.02em;
+
+    @include smallScreen {
+      @include fontUnify(20, 26, 700);
+    }
+
+    @include bigMobile {
+      @include fontUnify;
+
+      height: 200px;
+    }
   }
 }
 .pagination {
   @extend %width-main;
 
+  position: relative;
+
   @include flex-container(row, space-between, center);
+
+  @include bigMobile {
+    max-width: none;
+
+    padding-bottom: 16px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #8a8a8a;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-main;
+    }
+
+    overflow-y: scroll;
+  }
 
   &__item {
     width: 100%;
     min-height: 75px;
+    max-height: 75px;
 
     position: relative;
 
     @include flex-container(row, space-between);
-    &.active .pagination__dot {
-      width: 30px;
-      height: 30px;
 
-      background-color: $color-main;
+    @include bigMobile {
+      min-height: 54px;
+      max-height: 54px;
 
-      border-radius: 50%;
-    }
-
-    &.active .pagination__title {
-      @include fontUnify(24, 34, 700);
-      color: $color-text-dark;
-    }
-
-    &.active .pagination__line {
-      background-color: $color-main;
+      min-width: 114px;
     }
   }
 
   &__line {
+    --line-width: 0;
     height: 4px;
-    width: 150px;
+    width: 100%;
 
     position: absolute;
     bottom: 13px;
     left: 0;
 
     background-color: #a0a0a0;
+    border-radius: 2px;
 
     transition: 0.7s ease;
+    z-index: 5;
+
+    @include bigMobile {
+      width: var(--line-width);
+      bottom: 22px;
+    }
+  }
+
+  &__line-colored {
+    --width-line: 0;
+
+    height: 4px;
+    width: var(--width-line);
+
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+
+    background-color: $color-main;
+    border-radius: 2px;
+
+    transition: 0.7s ease;
+    z-index: 6;
+
+    @include bigMobile {
+      bottom: 22px;
+    }
   }
 
   &__title-w {
@@ -365,20 +656,44 @@ export default class AboutUsSliderComponent extends Vue {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+
+    z-index: 7;
   }
 
   &__title {
     @include fontUnify(24, 34);
     color: #a0a0a0;
 
+    overflow: auto;
+
     transition: 0.7s ease;
+
+    @include bigMobile {
+      @include fontUnify;
+    }
+
+    &.active {
+      @include fontUnify(24, 34, 700);
+      color: $color-text-dark;
+
+      @include bigMobile {
+        @include fontUnify;
+      }
+    }
   }
 
   &__dot-w {
-    width: 30px;
+    width: 56px;
     min-height: 30px;
 
     @include flex-container(row, center, center);
+
+    background-color: #d8d8d8;
+
+    @include bigMobile {
+      width: 24px;
+      min-height: 16px;
+    }
   }
 
   &__dot {
@@ -390,6 +705,28 @@ export default class AboutUsSliderComponent extends Vue {
     border-radius: 50%;
 
     transition: 0.7s ease;
+
+    cursor: pointer;
+
+    @include bigMobile {
+      width: 12px;
+      height: 12px;
+    }
+
+    &.active {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+
+      @include bigMobile {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &.colored {
+      background-color: $color-main;
+    }
   }
 }
 </style>
