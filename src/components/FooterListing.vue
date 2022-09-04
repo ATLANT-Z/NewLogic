@@ -40,8 +40,8 @@ export default class FooterListingComponent extends Vue {
     listOfItem: HTMLElement;
   };
 
-  prodList: any = [
-    { id: 1, title: "Комплекты для резервного питания" },
+  prodList: any[] = [
+    { id: 1, title: "Комплекты для резервного питания"},
     { id: 2, title: "Источники бесперебойного питания" },
     { id: 3, title: "Аккумуляторы AGM" },
     { id: 4, title: "Литиевые аккумуляторы" },

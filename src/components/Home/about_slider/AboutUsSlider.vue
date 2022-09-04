@@ -45,26 +45,15 @@
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd"
       >
-        <li
-          class="slider__list-item"
+        <AboutSliderItem
           v-for="(slide, index) of sliderData"
           :key="index"
           :class="{ active: index === currentSlide }"
           :style="{ '--item-width': slideWidth + 'px' }"
+          :aboutCard="slide"
+          :isMobile="isMobile"
           ref="slide"
-        >
-          <div class="slider__list-item-img-w">
-            <img
-              class="slider__list-item-img"
-              :src="require(`../../assets/img/${slide.img}.png`)"
-              alt=""
-            />
-          </div>
-          <div class="slider__list-item-info">
-            <p class="slider__list-item-info-title">{{ slide.title }}</p>
-            <p class="slider__list-item-info-text">{{ slide.text }}</p>
-          </div>
-        </li>
+        />
       </ul>
     </div>
     <div class="pagination">
@@ -108,14 +97,19 @@
 </template>
 
 <script lang="ts">
+import { AboutCard } from "@/models/view/about_slider";
 import { Options, Vue } from "vue-class-component";
+import AboutSliderItem from "./AboutSliderItem.vue";
 
 @Options({
   name: "AboutUsSliderComponent",
+  components: {
+    AboutSliderItem,
+  },
 })
 export default class AboutUsSliderComponent extends Vue {
   declare $refs: {
-    slide: HTMLElement;
+    slide: AboutSliderItem[];
     slideList: HTMLElement;
     sliderWindow: HTMLElement;
     paginationLine: HTMLElement;
@@ -123,7 +117,7 @@ export default class AboutUsSliderComponent extends Vue {
     sliderWidth: HTMLElement;
   };
 
-  sliderData: any = [
+  sliderData: AboutCard[] = [
     {
       img: "mainAboutUsImg",
       title: "2009 год",
@@ -163,20 +157,18 @@ export default class AboutUsSliderComponent extends Vue {
   startX: number = 0;
   endX: number = 0;
   lineMobWidth: number = 0;
+  isMobile: boolean = false;
 
   get SlideCount() {
     return this.sliderData.length;
   }
 
   paginationColoredLineWidth() {
-    setTimeout(() => {
-      const paginationItemRect =
-        this.$refs.paginationItem[this.currentSlide].getBoundingClientRect();
-      const lineIndent = paginationItemRect.width / 2;
+    const paginationItemRect =
+      this.$refs.paginationItem[this.currentSlide].getBoundingClientRect();
+    const lineIndent = paginationItemRect.width / 2;
 
-      this.lineWidth =
-        paginationItemRect.width * this.currentSlide + lineIndent;
-    }, 700);
+    this.lineWidth = paginationItemRect.width * this.currentSlide + lineIndent;
   }
 
   paginationlineMobWidthCalc() {
@@ -193,14 +185,13 @@ export default class AboutUsSliderComponent extends Vue {
   adaptiveSliderWidth() {
     const sliderWindowRect = this.$refs.sliderWindow.getBoundingClientRect();
 
-    // this.slideWidth = sliderWindowRect.width - 420;
     this.slideWidth = (sliderWindowRect.width / 100) * 78;
   }
 
   translateXWidthTimeOut() {
     setTimeout(() => {
       const slideRect =
-        this.$refs.slide[this.currentSlide].getBoundingClientRect();
+        this.$refs.slide[this.currentSlide].$el.getBoundingClientRect();
       const slideListRect = this.$refs.slideList.scrollWidth;
       const sliderWindowRect = this.$refs.sliderWindow.getBoundingClientRect();
 
@@ -218,26 +209,15 @@ export default class AboutUsSliderComponent extends Vue {
                 (this.SlideCount - 1)) +
           (sliderWindowRect.width - slideRect.width) / 2;
       }
-
-      // console.log(slideRect.width);
-      // console.log(slideListRect);
-      // console.log(sliderWindowRect.width);
     }, 700);
   }
 
   translateXWidth() {
     const slideRect =
-      this.$refs.slide[this.currentSlide].getBoundingClientRect();
+      this.$refs.slide[this.currentSlide].$el.getBoundingClientRect();
+
     const slideListRect = this.$refs.slideList.scrollWidth;
     const sliderWindowRect = this.$refs.sliderWindow.getBoundingClientRect();
-    // const observ = new ResizeObserver((entries) => {
-    //   this.translateX =
-    //   this.currentSlide *
-    //     (-slideRect.width -
-    //       (slideListRect - slideRect.width * this.SlideCount) /
-    //         (this.SlideCount - 1)) +
-    //   (sliderWindowRect.width - slideRect.width) / 2;
-    // })
 
     if (window.innerWidth <= 1024) {
       this.translateX =
@@ -253,11 +233,13 @@ export default class AboutUsSliderComponent extends Vue {
               (this.SlideCount - 1)) +
         (sliderWindowRect.width - slideRect.width) / 2;
     }
+  }
 
-    // console.log(slideRect.width);
-    // console.log(slideListRect);
-    // console.log(sliderWindowRect.width);
-    // console.log(observ);
+  calsIsMobile() {
+    const mobWidth = getComputedStyle(this.$refs.sliderWidth).getPropertyValue(
+      "--mobile-width"
+    );
+    this.isMobile = window.innerWidth <= parseInt(mobWidth);
   }
 
   nextSlide() {
@@ -286,22 +268,30 @@ export default class AboutUsSliderComponent extends Vue {
   handleTouchStart(e) {
     this.startX = e.touches[0].clientX;
     this.endX = 0;
+    console.log(this.endX);
+    console.log(this.startX);
   }
 
   handleTouchMove(e) {
     this.endX = e.touches[0].clientX;
+
+    console.log(this.endX);
   }
 
   handleTouchEnd() {
     const diffX = this.endX - this.startX;
 
-    if (this.endX < this.startX && diffX < -30) {
-      if (this.currentSlide + 1 >= this.SlideCount)
+    if (this.endX > 0 && this.endX < this.startX && diffX < -50) {
+      if (this.currentSlide + 1 >= this.SlideCount) {
         this.currentSlide = this.SlideCount - 1;
-      else this.currentSlide = this.currentSlide + 1;
-    } else if (this.endX > this.startX && diffX > 30) {
+      } else {
+        this.currentSlide = this.currentSlide + 1;
+      }
+    } else if (this.endX > this.startX && diffX > 50) {
       if (this.currentSlide - 1 < 0) this.currentSlide = 0;
-      else this.currentSlide = this.currentSlide - 1;
+      else {
+        this.currentSlide = this.currentSlide - 1;
+      }
     }
 
     this.translateXWidth();
@@ -313,6 +303,7 @@ export default class AboutUsSliderComponent extends Vue {
     this.translateXWidthTimeOut();
     this.paginationColoredLineWidth();
     this.paginationlineMobWidthCalc();
+    this.calsIsMobile();
   }
 
   mounted() {
@@ -328,6 +319,8 @@ export default class AboutUsSliderComponent extends Vue {
 
 <style lang="scss" scoped>
 .slider-about {
+  --mobile-width: #{$mobile-big-width};
+
   width: 100%;
   height: 836px;
 
@@ -342,7 +335,9 @@ export default class AboutUsSliderComponent extends Vue {
   @include bigMobile {
     height: auto;
 
-    padding: 24px 16px;
+    gap: 24px;
+
+    padding: 16px;
   }
 }
 .slider {
@@ -429,135 +424,6 @@ export default class AboutUsSliderComponent extends Vue {
 
     transform: translateX(var(--list-translateX));
     transition: 0.7s cubic-bezier(0.18, 0.17, 0.74, 0.76);
-  }
-
-  &__list-item {
-    --item-width: 0;
-    min-width: var(--item-width);
-    height: 600px;
-
-    @include flex-container;
-    align-items: center;
-    gap: 64px;
-
-    background-color: #ffffff;
-
-    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-
-    padding-right: 64px;
-
-    transform: scaleY(0.8);
-    transition: 0.7s cubic-bezier(0.18, 0.17, 0.74, 0.76);
-
-    @include smallScreen {
-      height: 540px;
-
-      gap: 32px;
-
-      box-shadow: none;
-
-      padding-right: 32px;
-    }
-
-    @include bigMobile {
-      min-width: 100%;
-      height: auto;
-
-      flex-direction: column;
-
-      padding: 0;
-    }
-    &.active {
-      transform: scaleY(1);
-    }
-  }
-
-  &__list-item-img-w {
-    width: 100%;
-    height: 100%;
-
-    box-shadow: inherit;
-
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-
-    @include bigMobile {
-      height: 450px;
-
-      box-shadow: none;
-
-      border-top-right-radius: inherit;
-      border-bottom-left-radius: none;
-    }
-
-    @include mobile {
-      height: 350px;
-    }
-  }
-
-  &__list-item-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    box-shadow: inherit;
-
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-
-    @include bigMobile {
-      box-shadow: none;
-
-      border-top-right-radius: inherit;
-      border-bottom-left-radius: none;
-    }
-  }
-
-  &__list-item-info {
-    width: 100%;
-    max-width: 756px;
-
-    @extend %flex-column;
-    gap: 56px;
-
-    @include smallScreen {
-      gap: 28px;
-    }
-
-    @include bigMobile {
-      gap: 8px;
-
-      padding: 0 16px;
-    }
-  }
-
-  &__list-item-info-title {
-    @include fontUnify(64, 80, 500);
-    color: $color-main;
-
-    @include smallScreen {
-      @include fontUnify(48, 52, 500);
-    }
-
-    @include bigMobile {
-      @include fontUnify(20, 30, 600);
-    }
-  }
-
-  &__list-item-info-text {
-    @include fontUnify(22, 30, 700);
-    letter-spacing: 0.02em;
-
-    @include smallScreen {
-      @include fontUnify(20, 26, 700);
-    }
-
-    @include bigMobile {
-      @include fontUnify;
-
-      height: 200px;
-    }
   }
 }
 .pagination {

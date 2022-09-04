@@ -7,7 +7,7 @@
     >
       <img
         class="cooperation-slider__arrow-left-img"
-        src="../../assets/icons/mainNavArrowLeftIcon.svg"
+        src="@/assets/icons/mainNavArrowLeftIcon.svg"
         alt=""
       />
     </div>
@@ -44,7 +44,7 @@
     >
       <img
         class="cooperation-slider__arrow-right-img"
-        src="../../assets/icons/mainNavArrowRightIcon.svg"
+        src="@/assets/icons/mainNavArrowRightIcon.svg"
         alt=""
       />
     </div>
@@ -190,18 +190,18 @@ export default class CooperationSliderComponent extends Vue {
     );
     const mobGap = parseFloat(mobGapStr);
 
-    const mobWdithToShow =
+    const mobWidthToShow =
       mobMaxWidth + mobGap * (this.SlideCount - 1) - slideWrapRect.width;
-    console.log(mobWdithToShow);
+    console.log(mobWidthToShow);
 
-    if (this.endX < this.startX)
+    if (this.endX > 0 && this.endX < this.startX)
       this.translateListX -= slideWrapRect.width / 1.2;
-    else if (this.endX > this.startX)
+    else if (this.endX > 0 && this.endX > this.startX)
       this.translateListX += slideWrapRect.width / 1.2;
 
     if (this.translateListX >= 0) this.translateListX = 0;
-    else if (this.translateListX < -mobWdithToShow) {
-      this.translateListX = -mobWdithToShow;
+    else if (this.translateListX <= -mobWidthToShow) {
+      this.translateListX = -mobWidthToShow;
     }
   }
 
@@ -256,6 +256,7 @@ export default class CooperationSliderComponent extends Vue {
   &__w {
     width: 1290px;
     overflow: hidden;
+    overscroll-behavior: contain;
   }
 
   &__cont {
