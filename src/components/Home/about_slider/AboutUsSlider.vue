@@ -387,7 +387,6 @@ export default class AboutUsSliderComponent extends Vue {
     transition: 0.2s ease;
 
     &:hover {
-      transform: scale(1.1);
       background-color: $color-main-dark;
     }
   }
@@ -407,7 +406,6 @@ export default class AboutUsSliderComponent extends Vue {
     transition: 0.2s ease;
 
     &:hover {
-      transform: scale(1.1);
       background-color: $color-main-dark;
     }
   }

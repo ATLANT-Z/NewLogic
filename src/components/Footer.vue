@@ -68,21 +68,6 @@
                 >{{ item.title }}</a
               >
             </div>
-            <!-- <a class="content__block-list-link" href="#">Контакты</a>
-            <a class="content__block-list-link" href="#">Блог</a>
-            <a class="content__block-list-link" href="#">Оплата и Доставка</a>
-            <a class="content__block-list-link" href="#"
-              >Гарантия и Сервисное обслуживание</a
-            >
-            <a class="content__block-list-link" href="#"
-              >Политика конфиденциальности</a
-            >
-            <a class="content__block-list-link" href="#"
-              >Договор публичной оферты</a
-            >
-            <a class="content__block-list-link" href="#">Сотрудничество</a>
-            <a class="content__block-list-link" href="#">Инструкции</a>
-            <a class="content__block-list-link" href="#">Форум</a> -->
           </div>
         </div>
         <div class="contacts__block">
@@ -308,6 +293,7 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   name: "FooterComponent",
+
 })
 export default class FooterComponent extends Vue {
   declare $refs: {
@@ -317,7 +303,7 @@ export default class FooterComponent extends Vue {
     InfoItem: HTMLElement;
   };
 
-  prodList: any = [
+  prodList: any[] = [
     { id: 1, title: "Комплекты для резервного питания" },
     { id: 2, title: "Источники бесперебойного питания" },
     { id: 3, title: "Аккумуляторы AGM" },
@@ -331,7 +317,7 @@ export default class FooterComponent extends Vue {
     { id: 11, title: "Компьютерная периферия" },
   ];
 
-  infoList: any = [
+  infoList: any[] = [
     { id: 1, title: "О компании" },
     { id: 2, title: "Контакты" },
     { id: 3, title: "Блог" },

@@ -111,20 +111,47 @@
                 </div>
               </div>
               <div class="contact__block-employee-contact">
-                <a class="contact__block-employee-tel" href="tel:+380674625740">
-                  <img
-                    class="contact__block-employee-tel-img"
-                    src="../assets/icons/managerPhoneIcon.svg"
-                    alt=""
-                  />
-                  <span>+38 (067) 462-57-40</span>
-                </a>
+                <div class="contact__block-employee-comm-w">
+                  <a
+                    class="contact__block-employee-comm"
+                    href="tel:+380674625740"
+                  >
+                    <img
+                      class="contact__block-employee-comm-img"
+                      src="../assets/icons/managerPhoneIcon.svg"
+                      alt=""
+                    />
+                    <span>+38 (067) 462-57-40</span>
+                  </a>
+                  <div class="contact__block-employee-messengers">
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="viber://chat?number=12345678"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerViber.svg"
+                        alt=""
+                      />
+                    </a>
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="https://t.me/<USERNAME>"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerTelegram.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
                 <a
-                  class="contact__block-employee-mail"
+                  class="contact__block-employee-comm"
                   href="mailto:a.georgieva@logicfox.pro"
                 >
                   <img
-                    class="contact__block-employee-mail-img"
+                    class="contact__block-employee-comm-img"
                     src="../assets/icons/managerMailIcon.svg"
                     alt=""
                   />
@@ -145,20 +172,47 @@
                 </div>
               </div>
               <div class="contact__block-employee-contact">
-                <a class="contact__block-employee-tel" href="tel:+380674625740">
-                  <img
-                    class="contact__block-employee-tel-img"
-                    src="../assets/icons/managerPhoneIcon.svg"
-                    alt=""
-                  />
-                  <span>+38 (067) 462-57-40</span>
-                </a>
+                <div class="contact__block-employee-comm-w">
+                  <a
+                    class="contact__block-employee-comm"
+                    href="tel:+380674625740"
+                  >
+                    <img
+                      class="contact__block-employee-comm-img"
+                      src="../assets/icons/managerPhoneIcon.svg"
+                      alt=""
+                    />
+                    <span>+38 (067) 462-57-40</span>
+                  </a>
+                  <div class="contact__block-employee-messengers">
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="viber://chat?number=12345678"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerViber.svg"
+                        alt=""
+                      />
+                    </a>
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="https://t.me/<USERNAME>"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerTelegram.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
                 <a
-                  class="contact__block-employee-mail"
+                  class="contact__block-employee-comm"
                   href="mailto:a.georgieva@logicfox.pro"
                 >
                   <img
-                    class="contact__block-employee-mail-img"
+                    class="contact__block-employee-comm-img"
                     src="../assets/icons/managerMailIcon.svg"
                     alt=""
                   />
@@ -179,20 +233,47 @@
                 </div>
               </div>
               <div class="contact__block-employee-contact">
-                <a class="contact__block-employee-tel" href="tel:+380674625740">
-                  <img
-                    class="contact__block-employee-tel-img"
-                    src="../assets/icons/managerPhoneIcon.svg"
-                    alt=""
-                  />
-                  <span>+38 (067) 462-57-40</span>
-                </a>
+                <div class="contact__block-employee-comm-w">
+                  <a
+                    class="contact__block-employee-comm"
+                    href="tel:+380674625740"
+                  >
+                    <img
+                      class="contact__block-employee-comm-img"
+                      src="../assets/icons/managerPhoneIcon.svg"
+                      alt=""
+                    />
+                    <span>+38 (067) 462-57-40</span>
+                  </a>
+                  <div class="contact__block-employee-messengers">
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="viber://chat?number=12345678"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerViber.svg"
+                        alt=""
+                      />
+                    </a>
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="https://t.me/<USERNAME>"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerTelegram.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
                 <a
-                  class="contact__block-employee-mail"
+                  class="contact__block-employee-comm"
                   href="mailto:a.georgieva@logicfox.pro"
                 >
                   <img
-                    class="contact__block-employee-mail-img"
+                    class="contact__block-employee-comm-img"
                     src="../assets/icons/managerMailIcon.svg"
                     alt=""
                   />
@@ -213,20 +294,47 @@
                 </div>
               </div>
               <div class="contact__block-employee-contact">
-                <a class="contact__block-employee-tel" href="tel:+380674625740">
-                  <img
-                    class="contact__block-employee-tel-img"
-                    src="../assets/icons/managerPhoneIcon.svg"
-                    alt=""
-                  />
-                  <span>+38 (067) 462-57-40</span>
-                </a>
+                <div class="contact__block-employee-comm-w">
+                  <a
+                    class="contact__block-employee-comm"
+                    href="tel:+380674625740"
+                  >
+                    <img
+                      class="contact__block-employee-comm-img"
+                      src="../assets/icons/managerPhoneIcon.svg"
+                      alt=""
+                    />
+                    <span>+38 (067) 462-57-40</span>
+                  </a>
+                  <div class="contact__block-employee-messengers">
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="viber://chat?number=12345678"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerViber.svg"
+                        alt=""
+                      />
+                    </a>
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="https://t.me/<USERNAME>"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerTelegram.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
                 <a
-                  class="contact__block-employee-mail"
+                  class="contact__block-employee-comm"
                   href="mailto:a.georgieva@logicfox.pro"
                 >
                   <img
-                    class="contact__block-employee-mail-img"
+                    class="contact__block-employee-comm-img"
                     src="../assets/icons/managerMailIcon.svg"
                     alt=""
                   />
@@ -334,7 +442,7 @@
               tabindex="0"
             ></iframe>
           </div>
-          <p class="contact_block-info-text">
+          <p class="contact__block-info-text">
             Уважаемые партнёры и клиенты компании, убедительная просьба при
             направлении оборудования на гарантийное/постгарантийное
             обслуживание, очень просим Вас прикреплять к отправке заполненный
@@ -374,20 +482,47 @@
                 </div>
               </div>
               <div class="contact__block-employee-contact">
-                <a class="contact__block-employee-tel" href="tel:+380674625740">
-                  <img
-                    class="contact__block-employee-tel-img"
-                    src="../assets/icons/managerPhoneIcon.svg"
-                    alt=""
-                  />
-                  <span>+38 (067) 462-57-40</span>
-                </a>
+                <div class="contact__block-employee-comm-w">
+                  <a
+                    class="contact__block-employee-comm"
+                    href="tel:+380674625740"
+                  >
+                    <img
+                      class="contact__block-employee-comm-img"
+                      src="../assets/icons/managerPhoneIcon.svg"
+                      alt=""
+                    />
+                    <span>+38 (067) 462-57-40</span>
+                  </a>
+                  <div class="contact__block-employee-messengers">
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="viber://chat?number=12345678"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerViber.svg"
+                        alt=""
+                      />
+                    </a>
+                    <a
+                      class="contact__block-employee-messenger"
+                      href="https://t.me/<USERNAME>"
+                    >
+                      <img
+                        class="contact__block-employee-messenger-img"
+                        src="@/assets/icons/contactsManagerTelegram.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
                 <a
-                  class="contact__block-employee-mail"
+                  class="contact__block-employee-comm"
                   href="mailto:a.georgieva@logicfox.pro"
                 >
                   <img
-                    class="contact__block-employee-mail-img"
+                    class="contact__block-employee-comm-img"
                     src="../assets/icons/managerMailIcon.svg"
                     alt=""
                   />
@@ -395,6 +530,32 @@
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="contact__main-block">
+          <div class="contact__block-title-w">
+            <h3 class="contact__block-title">юридический адрес и контакты</h3>
+            <div class="contact__block-line"></div>
+          </div>
+          <div class="contact__block-content">
+            <h4 class="contact__block-subtitle">Юридична адреса:</h4>
+            <p class="contact__block-info-text">
+              Україна, 65007, Одеська обл., місто Одеса, вул Мала Арнаутська,
+              будинок 105/1, квартира 11
+            </p>
+            <a
+              class="contact__block-legal-contacts"
+              href="mailto:info@logicpower.ua"
+            >
+              <img src="../assets/icons/managerMailIcon.svg" alt="" />
+              <span>E-mail:</span>
+              <span>info@logicpower.ua</span>
+            </a>
+            <a class="contact__block-legal-contacts" href="tel:0674886362">
+              <img src="../assets/icons/managerPhoneIcon.svg" alt="" />
+              <span>Телефон:</span>
+              <span>067 488 63 62</span>
+            </a>
           </div>
         </div>
       </div>
@@ -435,6 +596,8 @@ export default class ContactComponent extends Vue {}
 
     @include flex-container;
     gap: 24px;
+
+    padding-bottom: 64px;
   }
 
   &__nav {
@@ -591,19 +754,23 @@ export default class ContactComponent extends Vue {}
 
     padding: 8px 12px;
 
+    transition: 0.2s ease;
+
     &:hover {
       border-color: $color-main-dark;
+
+      & span {
+        color: $color-main-dark;
+      }
     }
 
-    & > span {
+    & span {
       @include fontUnify(24, 34);
       letter-spacing: 0.02em;
 
       color: $color-main;
 
-      &:hover {
-        color: $color-main-dark;
-      }
+      transition: 0.2s ease;
 
       @include mobile {
         @include fontUnify(18, 22, 500);
@@ -647,7 +814,7 @@ export default class ContactComponent extends Vue {}
   }
 
   &__block-employee-list {
-    @include flex-container(row, space-evenly, center);
+    @include flex-container(row, flex-start, center);
     flex-wrap: wrap;
     gap: 72px;
   }
@@ -670,6 +837,11 @@ export default class ContactComponent extends Vue {}
     &:hover {
       box-shadow: 0px 0px 24px rgb(0 0 0 / 30%);
       border-radius: 8px;
+
+      @include mobile {
+        box-shadow: none;
+        border-radius: 0;
+      }
     }
   }
 
@@ -729,9 +901,16 @@ export default class ContactComponent extends Vue {}
     }
   }
 
-  &__block-employee-tel {
+  &__block-employee-comm-w {
+    @include flex-container(row, flex-start, center);
+    gap: 16px;
+  }
+
+  &__block-employee-comm {
     @include flex-container(row, flex-start, center);
     gap: 32px;
+
+    transition: 0.2s ease;
 
     &:hover {
       color: $color-main-dark;
@@ -742,23 +921,19 @@ export default class ContactComponent extends Vue {}
     }
   }
 
-  &__block-employee-tel-img {
+  &__block-employee-comm-img {
   }
 
-  &__block-employee-mail {
+  &__block-employee-messengers {
     @include flex-container(row, flex-start, center);
-    gap: 32px;
-
-    &:hover {
-      color: $color-main-dark;
-    }
-
-    @include mobile {
-      gap: 24px;
-    }
+    gap: 16px;
   }
 
-  &__block-employee-mail-img {
+  &__block-employee-messenger {
+    transition: 0.2s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__block-description {
@@ -786,11 +961,45 @@ export default class ContactComponent extends Vue {}
   }
 
   &__block-info-text {
-    @include fontUnify(18, 24);
+    @include fontUnify(18, 24, 500);
     letter-spacing: 0.02em;
 
     @include mobile {
       @include fontUnify;
+    }
+  }
+
+  &__block-legal-contacts {
+    max-width: 415px;
+    width: 100%;
+
+    @include flex-container(row, flex-start, center);
+    gap: 16px;
+
+    border: 1px solid #8a8a8a;
+    border-radius: 8px;
+
+    padding: 8px 12px;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      border-color: $color-main-dark;
+
+      & span {
+        color: $color-main-dark;
+      }
+    }
+
+    & span {
+      @include fontUnify(20, 28);
+      letter-spacing: 0.02em;
+
+      transition: 0.2s ease;
+
+      @include mobile {
+        @include fontUnify;
+      }
     }
   }
 }

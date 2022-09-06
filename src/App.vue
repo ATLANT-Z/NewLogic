@@ -12,10 +12,10 @@
     <!-- <BlogComponent></BlogComponent> -->
     <!-- <CooperationComponent></CooperationComponent> -->
     <!-- <InstructionComponent></InstructionComponent> -->
-    <!-- <ContactComponent></ContactComponent> -->
-    <HomeComponent></HomeComponent>
+    <ContactComponent></ContactComponent>
+    <!-- <HomeComponent></HomeComponent> -->
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
-    <!-- <FooterComponent></FooterComponent> -->
+    <FooterComponent></FooterComponent>
   </main>
 </template>
 
