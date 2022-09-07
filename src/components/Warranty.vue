@@ -162,7 +162,9 @@ export default class WarrantyComponent extends Vue {}
 .warranty {
   @extend %flex-column;
   align-items: center;
+
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %width-content;

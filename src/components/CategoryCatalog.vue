@@ -4,11 +4,13 @@
     <div class="category-catalog__w">
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicpower.ua/storage/1903113/12258_1.jpg"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicpower.ua/storage/1903113/12258_1.jpg"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -24,11 +26,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicpower.ua/storage/1903100/30_1.jpg"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicpower.ua/storage/1903113/12258_1.jpg"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -44,11 +48,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -58,11 +64,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -75,11 +83,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -95,11 +105,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -115,11 +127,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -135,11 +149,13 @@
       </div>
       <div class="category-card">
         <a class="category-card__link" href="#">
-          <img
-            class="category-card__img"
-            src="https://logicfox.info/foto/14292/14292_1.png"
-            alt=""
-          />
+          <div class="category-card__img-cont">
+            <img
+              class="category-card__img"
+              src="https://logicfox.info/foto/14292/14292_1.png"
+              alt=""
+            />
+          </div>
         </a>
         <div class="category-card__info">
           <h3 class="category-card__title">Комплекты для резервного питания</h3>
@@ -228,7 +244,7 @@ export default class CategoryCatalogComponent extends Vue {}
   gap: 48px;
 
   @extend %padding-wrp;
-  background-color: $color-bg-grey-white;
+  padding-bottom: 80px;
 
   @include mobile {
     gap: 36px;
@@ -257,10 +273,10 @@ export default class CategoryCatalogComponent extends Vue {}
     flex-wrap: wrap;
 
     --gap: 16px;
-    gap: 24px Var(--gap);
+    gap: 24px var(--gap);
 
     @include mobile {
-      gap: Var(--gap);
+      gap: var(--gap);
     }
   }
 }
@@ -275,35 +291,47 @@ export default class CategoryCatalogComponent extends Vue {}
 
   border-radius: 8px;
 
-  @include set-cart-count-in-row(4);
+  @include set-item-count-in-row(4);
 
-  @include smallScreen() {
-    @include set-cart-count-in-row(3);
+  @include smallScreen {
+    @include set-item-count-in-row(3);
   }
 
-  @include bigMobile() {
-    @include set-cart-count-in-row(2);
+  @include bigMobile {
+    @include set-item-count-in-row(2);
   }
 
   @include mobile {
     gap: 16px;
 
-    @include set-cart-count-in-row(1);
+    @include set-item-count-in-row(1);
+  }
+
+  &__img-cont {
+    position: relative;
+    width: 100%;
+
+    padding-top: 100%;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
+    @include mobile {
+      padding-top: 60%;
+    }
   }
 
   &__img {
+    @include absoluteGrow();
+
     width: 100%;
-    height: 302px;
+    height: 100%;
 
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 
     object-fit: cover;
     pointer-events: none;
-
-    @include mobile {
-      height: 285px;
-    }
   }
 
   &__info {
@@ -324,12 +352,12 @@ export default class CategoryCatalogComponent extends Vue {}
   }
 
   &__title {
-    @include fontUnify(20, 30);
+    @include fontUnify(20, 30, 600);
     text-transform: uppercase;
     text-align: center;
 
     @include mobile {
-      @include fontUnify(18, 24);
+      @include fontUnify(18, 22, 600);
       letter-spacing: 0.02em;
     }
   }
@@ -356,7 +384,16 @@ export default class CategoryCatalogComponent extends Vue {}
     text-align: center;
     letter-spacing: 0.02em;
 
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
     color: $color-main;
+
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: $color-main-dark;
+    }
   }
 }
 
@@ -380,7 +417,12 @@ export default class CategoryCatalogComponent extends Vue {}
       gap: 16px;
     }
 
-    & > h2 {
+    & div {
+      @extend %flex-column;
+      gap: 16px;
+    }
+
+    & h2 {
       @include fontUnify(42, 50, 700);
       text-transform: uppercase;
 
@@ -390,35 +432,37 @@ export default class CategoryCatalogComponent extends Vue {}
       }
     }
 
-    & > div > h4 {
+    & h4 {
       @include fontUnify(32, 42, 600);
       letter-spacing: 0.02em;
 
-      margin-bottom: 24px;
+      margin-bottom: 8px;
 
       @include mobile {
         @include fontUnify(20, 28);
         text-align: center;
-
-        margin-bottom: 16px;
       }
     }
 
-    & > div > ul {
+    & ul {
       list-style: disc;
 
       padding-left: 18px;
     }
 
-    & > div > p,
-    & > div > ul > li {
+    & ol {
+      list-style: decimal;
+
+      padding-left: 24px;
+    }
+
+    & p,
+    & li {
       @include fontUnify(20, 28);
       letter-spacing: 0.02em;
 
       @include mobile {
         @include fontUnify;
-
-        margin-bottom: 24px;
       }
     }
   }

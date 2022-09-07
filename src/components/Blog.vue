@@ -2,10 +2,7 @@
   <section class="banner">
     <div class="banner__img-w">
       <picture>
-        <source
-          srcset="../assets/img/blogBannerMob.png"
-          media="(max-width: 680px)"
-        />
+        <source srcset="../assets/img/blogBannerMob.png" media="(max-width: 680px)" />
         <img class="banner__img" src="../assets/img/blogBanner.png" alt="" />
       </picture>
     </div>
@@ -30,11 +27,7 @@
       <div class="blog__card-list">
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -53,11 +46,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -76,11 +65,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -99,11 +84,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -122,11 +103,7 @@
         </div>
         <div class="blog__card">
           <a class="blog__card-link" href="#">
-            <img
-              class="blog__card-img"
-              src="../assets/img/moreCardPicture.png"
-              alt=""
-            />
+            <img class="blog__card-img" src="../assets/img/moreCardPicture.png" alt="" />
           </a>
           <div class="blog__card-inner">
             <div class="blog__card-article-w">
@@ -144,6 +121,7 @@
           </div>
         </div>
       </div>
+      <div class="pagination">1 2 3</div>
     </div>
   </section>
 </template>
@@ -152,15 +130,16 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class BlogComponent extends Vue {}
+export default class BlogComponent extends Vue { }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .blog {
   @extend %flex-column;
   align-items: center;
 
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %width-main;
@@ -196,6 +175,7 @@ export default class BlogComponent extends Vue {}
     @extend %width-content;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     padding-left: 16px;
     padding-right: 16px;
@@ -204,6 +184,21 @@ export default class BlogComponent extends Vue {}
   &__page {
     @include fontUnify(24, 34);
     letter-spacing: 0.02em;
+
+    cursor: pointer;
+
+    &.active {
+      border: 1px solid #393d38;
+      border-radius: 60px;
+
+      padding: 8px 56px;
+
+      color: $color-main;
+    }
+
+    &:hover {
+      color: $color-main;
+    }
 
     @include mobile {
       @include fontUnify;
@@ -218,10 +213,10 @@ export default class BlogComponent extends Vue {}
     flex-wrap: wrap;
 
     --gap: 16px;
-    gap: 24px Var(--gap);
+    gap: 24px var(--gap);
 
     @include mobile {
-      gap: Var(--gap);
+      gap: var(--gap);
     }
   }
 
@@ -233,14 +228,14 @@ export default class BlogComponent extends Vue {}
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 
-    @include set-cart-count-in-row(3);
+    @include set-item-count-in-row(3);
 
     @include bigMobile() {
-      @include set-cart-count-in-row(2);
+      @include set-item-count-in-row(2);
     }
 
     @include mobile() {
-      @include set-cart-count-in-row(1);
+      @include set-item-count-in-row(1);
     }
   }
 
@@ -291,8 +286,7 @@ export default class BlogComponent extends Vue {}
     color: $color-main;
   }
 
-  &__card-article-data {
-  }
+  &__card-article-data {}
 
   &__card-title {
     @include fontUnify(20, 30);
@@ -317,9 +311,5 @@ export default class BlogComponent extends Vue {}
       display: none;
     }
   }
-}
-
-.active {
-  color: $color-main;
 }
 </style>

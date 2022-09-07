@@ -1,30 +1,21 @@
 <template>
   <header></header>
-  <!-- <section class="banner">
-    <div class="banner__img-w">
-      <picture>
-        <source srcset="https://logicpower.ua/images/catalog/Продукция-1.png" media="(max-width: 1280px)">
-        <img class="banner__img" src="https://logicpower.ua/storage/1908309/Banner_LP_15_06.png" alt="">
-      </picture>
-    </div>
-    <div class="banner__content">
-      <div class="banner__content-column">
-        <h3 class="banner__title">Заголовок</h3>
-        <p class="banner__text">текст</p>
-        <input class="banner__input" type="text" value="123" />
-      </div>
-    </div>
-  </section> -->
   <main class="site-main">
     <!-- <CategoryCatalogComponent></CategoryCatalogComponent> -->
+    <!-- <SubCategoryCatalogComponent></SubCategoryCatalogComponent> -->
     <!-- <AboutCompanyComponent></AboutCompanyComponent> -->
     <!-- <PrivacyPolicyComponent></PrivacyPolicyComponent> -->
     <!-- <WarrantyComponent></WarrantyComponent> -->
     <!-- <PublicOfferComponent></PublicOfferComponent> -->
     <!-- <DeliveryComponent></DeliveryComponent> -->
-    <NewsArticleComponent></NewsArticleComponent>
+    <!-- <NewsArticleComponent></NewsArticleComponent> -->
     <!-- <BlogComponent></BlogComponent> -->
-    <CooperationComponent></CooperationComponent>
+    <!-- <CooperationComponent></CooperationComponent> -->
+    <!-- <InstructionComponent></InstructionComponent> -->
+    <ContactComponent></ContactComponent>
+    <!-- <HomeComponent></HomeComponent> -->
+    <!-- <PopUpLangComponent></PopUpLangComponent> -->
+    <FooterComponent></FooterComponent>
   </main>
 </template>
 
@@ -37,8 +28,14 @@ import WarrantyComponent from "./components/Warranty.vue";
 import PublicOfferComponent from "./components/PublicOffer.vue";
 import DeliveryComponent from "./components/Delivery.vue";
 import NewsArticleComponent from "./components/NewsArticle.vue";
-import BlogComponent from "./components/Blog.vue"
-import CooperationComponent from "./components/Cooperation.vue"
+import BlogComponent from "./components/Blog.vue";
+import CooperationComponent from "./components/Cooperation.vue";
+import InstructionComponent from "./components/Instruction.vue";
+import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
+import ContactComponent from "./components/Contact.vue";
+import HomeComponent from "./components/Home/Home.vue";
+import PopUpLangComponent from "./components/pop-up/PopUpLang.vue";
+import FooterComponent from "./components/Footer.vue"
 
 @Options({
   components: {
@@ -50,7 +47,13 @@ import CooperationComponent from "./components/Cooperation.vue"
     DeliveryComponent,
     NewsArticleComponent,
     BlogComponent,
-    CooperationComponent
+    CooperationComponent,
+    InstructionComponent,
+    SubCategoryCatalogComponent,
+    ContactComponent,
+    HomeComponent,
+    PopUpLangComponent,
+    FooterComponent,
   },
 })
 export default class App extends Vue {}
@@ -75,8 +78,8 @@ main {
 
   background-color: black;
 
-  margin-bottom: 80px;
-  
+  margin-bottom: 64px;
+
   @include mobile {
     height: 254px;
     margin-bottom: 48px;
@@ -110,11 +113,9 @@ main {
   }
 
   &__content-column {
-    width: 100%;
-    max-width: 1500px;
+    @extend %width-main;
 
-    display: flex;
-    flex-direction: column;
+    @extend %flex-column;
     justify-content: flex-end;
     gap: 24px;
 
@@ -137,9 +138,49 @@ main {
   }
 
   &__text {
+    width: 100%;
+    max-width: 486px;
+
+    @include fontUnify(18, 24);
+    letter-spacing: 0.02em;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__input-w {
+    width: 100%;
+    max-width: 327px;
+
+    position: relative;
   }
 
   &__input {
+    width: 100%;
+
+    @include fontUnify(16, 16);
+    letter-spacing: 0.02em;
+
+    background-color: #ffffff;
+
+    border-radius: 6px;
+
+    padding: 16px;
+
+    &::placeholder {
+      color: $color-text-lighter;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 </style>

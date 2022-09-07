@@ -2,15 +2,8 @@
   <section class="banner">
     <div class="banner__img-w">
       <picture>
-        <source
-          srcset="../assets/img/partnershipBannerMob.png"
-          media="(max-width: 680px)"
-        />
-        <img
-          class="banner__img"
-          src="../assets/img/partnershipBanner.png"
-          alt=""
-        />
+        <source srcset="../assets/img/partnershipBannerMob.png" media="(max-width: 680px)" />
+        <img class="banner__img" src="../assets/img/partnershipBanner.png" alt="" />
       </picture>
     </div>
     <div class="banner__content">
@@ -25,31 +18,19 @@
         <h4 class="cooperation__start-title">Как начать сотрудничество?</h4>
         <div class="cooperation__start-step">
           <div class="cooperation__start-step-item">
-            <img
-              class="cooperation__start-step-img"
-              src="../assets/icons/partnership1Icon.png"
-              alt=""
-            />
+            <img class="cooperation__start-step-img" src="../assets/icons/partnership1Icon.png" alt="" />
             <p class="cooperation__start-step-text">
               РЕГИСТРИРУЙТЕСЬ, ПОЛУЧАЙТЕ ДОСТУП К ОПТОВЫМ ЦЕНАМ
             </p>
           </div>
           <div class="cooperation__start-step-item">
-            <img
-              class="cooperation__start-step-img"
-              src="../assets/icons/partnership2Icon.png"
-              alt=""
-            />
+            <img class="cooperation__start-step-img" src="../assets/icons/partnership2Icon.png" alt="" />
             <p class="cooperation__start-step-text">
               С ВАМИ СВЯЖЕТСЯ МЕНЕДЖЕР, ДЛЯ ПОДТВЕРЖДЕНИЯ ДАННЫХ
             </p>
           </div>
           <div class="cooperation__start-step-item">
-            <img
-              class="cooperation__start-step-img"
-              src="../assets/icons/partnership3Icon.png"
-              alt=""
-            />
+            <img class="cooperation__start-step-img" src="../assets/icons/partnership3Icon.png" alt="" />
             <p class="cooperation__start-step-text">
               ИСПОЛЬЗУЙТЕ НАШ СЕРВИС B2B ДЛЯ БЫСТРОГО ЗАКАЗА ТОВАРОВ
             </p>
@@ -72,51 +53,31 @@
         <div class="cooperation-service__line-o"></div>
         <ul class="cooperation-service__list">
           <li class="cooperation-service__list-item">
-            <img
-              class="cooperation-service__list-item-img"
-              src="../assets/icons/partnershipMoneyIcon.png"
-              alt=""
-            />
+            <img class="cooperation-service__list-item-img" src="../assets/icons/partnershipMoneyIcon.png" alt="" />
             <p class="cooperation-service__list-item-text">
               Проверять актуальность цен
             </p>
           </li>
           <li class="cooperation-service__list-item">
-            <img
-              class="cooperation-service__list-item-img"
-              src="../assets/icons/partnershipEyeIcon.png"
-              alt=""
-            />
+            <img class="cooperation-service__list-item-img" src="../assets/icons/partnershipEyeIcon.png" alt="" />
             <p class="cooperation-service__list-item-text">
               Отслеживать наличие остатков товара на складе
             </p>
           </li>
           <li class="cooperation-service__list-item">
-            <img
-              class="cooperation-service__list-item-img"
-              src="../assets/icons/partnershipCarIcon.png"
-              alt=""
-            />
+            <img class="cooperation-service__list-item-img" src="../assets/icons/partnershipCarIcon.png" alt="" />
             <p class="cooperation-service__list-item-text">
               Максимально быстро сделать заказ
             </p>
           </li>
           <li class="cooperation-service__list-item">
-            <img
-              class="cooperation-service__list-item-img"
-              src="../assets/icons/partnershipKeyIcon.png"
-              alt=""
-            />
+            <img class="cooperation-service__list-item-img" src="../assets/icons/partnershipKeyIcon.png" alt="" />
             <p class="cooperation-service__list-item-text">
               Получить ТТН сразу после отправки товара
             </p>
           </li>
           <li class="cooperation-service__list-item">
-            <img
-              class="cooperation-service__list-item-img"
-              src="../assets/icons/partnershipPiggyIcon.png"
-              alt=""
-            />
+            <img class="cooperation-service__list-item-img" src="../assets/icons/partnershipPiggyIcon.png" alt="" />
             <p class="cooperation-service__list-item-text">
               Следить за состоянием бонусного счета
             </p>
@@ -139,41 +100,25 @@
         <div class="cooperation-product__list-w">
           <ul class="cooperation-product__list">
             <li class="cooperation-product__list-item">
-              <img
-                class="cooperation-product__list-item-img"
-                src="../assets/icons/partnershipCompIcon.png"
-                alt=""
-              />
+              <img class="cooperation-product__list-item-img" src="../assets/icons/partnershipCompIcon.png" alt="" />
               <p class="cooperation-product__list-item-text">
                 Компьютерные комплектующие
               </p>
             </li>
             <li class="cooperation-product__list-item">
-              <img
-                class="cooperation-product__list-item-img"
-                src="../assets/icons/partnershipSocketIcon.png"
-                alt=""
-              />
+              <img class="cooperation-product__list-item-img" src="../assets/icons/partnershipSocketIcon.png" alt="" />
               <p class="cooperation-product__list-item-text">
                 Электрооборудование
               </p>
             </li>
             <li class="cooperation-product__list-item">
-              <img
-                class="cooperation-product__list-item-img"
-                src="../assets/icons/partnershipSolarIcon.png"
-                alt=""
-              />
+              <img class="cooperation-product__list-item-img" src="../assets/icons/partnershipSolarIcon.png" alt="" />
               <p class="cooperation-product__list-item-text">
                 Солнечные фотомодули
               </p>
             </li>
             <li class="cooperation-product__list-item">
-              <img
-                class="cooperation-product__list-item-img"
-                src="../assets/icons/partnershipCableIcon.png"
-                alt=""
-              />
+              <img class="cooperation-product__list-item-img" src="../assets/icons/partnershipCableIcon.png" alt="" />
               <p class="cooperation-product__list-item-text">
                 Кабельную продукцию
               </p>
@@ -186,11 +131,8 @@
             </p>
             <div class="cooperation-product__list-more-item">
               <a class="cooperation-product__list-more-item-img-link" href="#">
-                <img
-                  class="cooperation-product__list-more-item-img"
-                  src="../assets/icons/partnershipGVIcon.png"
-                  alt=""
-                />
+                <img class="cooperation-product__list-more-item-img" src="../assets/icons/partnershipGVIcon.png"
+                  alt="" />
               </a>
               <p class="cooperation-product__list-more-item-text">
                 — оборудование для систем видеонаблюдения и контроля доступом
@@ -215,7 +157,7 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class CooperationComponent extends Vue {}
+export default class CooperationComponent extends Vue { }
 </script>
 
 <style lang="scss">
@@ -224,6 +166,7 @@ export default class CooperationComponent extends Vue {}
   align-items: center;
 
   @extend %padding-wrp;
+  padding-bottom: 80px;
 
   &__w {
     @extend %width-main;
@@ -267,9 +210,9 @@ export default class CooperationComponent extends Vue {}
     gap: 24px;
 
     @include mobile {
-        flex-direction: column;
-        align-items: center;
-        gap: 48px;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
     }
   }
 
@@ -281,8 +224,7 @@ export default class CooperationComponent extends Vue {}
     align-items: center;
   }
 
-  &__start-step-img {
-  }
+  &__start-step-img {}
 
   &__start-step-text {
     @include fontUnify(18, 24);
@@ -311,9 +253,25 @@ export default class CooperationComponent extends Vue {}
   }
 
   &__btn {
-    @extend %btn-main;
+    width: 100%;
+    max-width: 236px;
+
+    @include flex-container(row, center, center);
+
+    color: #FFFFFF;
+    background-color: $color-main;
+
+    border-radius: 6px;
+
+    padding: 8px 0;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $color-main-dark;
+    }
   }
 }
+
 .cooperation-service {
   width: 100%;
   max-width: 1244px;
@@ -333,6 +291,7 @@ export default class CooperationComponent extends Vue {}
 
     padding: 32px 8px;
   }
+
   &__title {
     width: 100%;
 
@@ -376,8 +335,7 @@ export default class CooperationComponent extends Vue {}
     align-items: center;
   }
 
-  &__list-item-img {
-  }
+  &__list-item-img {}
 
   &__list-item-text {
     @include fontUnify(18, 24);
@@ -411,6 +369,7 @@ export default class CooperationComponent extends Vue {}
     }
   }
 }
+
 .cooperation-product {
   width: 100%;
 
@@ -418,7 +377,7 @@ export default class CooperationComponent extends Vue {}
   align-items: center;
   gap: 36px;
 
-  @include mobile {
+  @include bigMobile {
     gap: 24px;
   }
 
@@ -429,7 +388,7 @@ export default class CooperationComponent extends Vue {}
     text-align: center;
     text-transform: uppercase;
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify(18, 24);
     }
   }
@@ -439,21 +398,23 @@ export default class CooperationComponent extends Vue {}
 
     display: flex;
     justify-content: center;
-    gap: 110px;
+    gap: 36px;
 
-    @include mobile {
-        flex-direction: column;
-        gap: 48px;
+    @include bigMobile {
+      flex-direction: column;
+      gap: 48px;
     }
   }
 
   &__list {
-    width: 100%;
+    width: 33%;
 
     @extend %flex-column;
     gap: 48px;
 
-    @include mobile {
+    @include bigMobile {
+      width: 100%;
+
       gap: 16px;
     }
   }
@@ -464,14 +425,14 @@ export default class CooperationComponent extends Vue {}
     gap: 24px;
   }
 
-  &__list-item-img {
-  }
+  &__list-item-img {}
 
   &__list-item-text {
     @include fontUnify(20, 28);
     letter-spacing: 0.02em;
+    word-break: break-word;
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify(18, 24);
     }
   }
@@ -482,21 +443,20 @@ export default class CooperationComponent extends Vue {}
 
     background-color: #8a8a8a;
 
-    @include mobile {
+    @include bigMobile {
       display: none;
     }
   }
 
   &__list-more {
-    width: 100%;
-    max-width: 597px;
+    width: 35%;
 
     @extend %flex-column;
     align-items: flex-start;
     gap: 36px;
 
-    @include mobile {
-        max-width: none;
+    @include bigMobile {
+      width: 100%;
     }
   }
 
@@ -505,7 +465,7 @@ export default class CooperationComponent extends Vue {}
     letter-spacing: 0.02em;
     text-transform: uppercase;
 
-    @include mobile {
+    @include bigMobile {
       text-align: center;
     }
   }
@@ -516,11 +476,9 @@ export default class CooperationComponent extends Vue {}
     gap: 16px;
   }
 
-  &__list-more-item-img-link {
-  }
+  &__list-more-item-img-link {}
 
-  &__list-more-item-img {
-  }
+  &__list-more-item-img {}
 
   &__list-more-item-text {
     @include fontUnify(18, 24);
