@@ -1,5 +1,5 @@
 <template>
-  <section class="banner contact-ban">
+  <section class="banner contact-ban" ref="banner">
     <div class="banner__img-w">
       <picture>
         <source
@@ -16,34 +16,59 @@
     </div>
   </section>
   <section class="contact">
-    <div class="contact__w">
+    <div class="contact__w" ref="contentWrap">
       <aside class="contact__nav">
         <div class="contact__nav-line"></div>
-        <ul class="contact__nav-list">
+        <ul
+          class="contact__nav-list"
+          :style="{
+            '--pos-top': navPosTop + 'px',
+            '--pos-left': navPosLeft + 'px',
+          }"
+          ref="navList"
+        >
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">1</div>
-            <p class="contact__nav-list-title">Общий номер</p>
+            <a href="#generalPhone" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">1</div>
+              <p class="contact__nav-list-title">Общий номер</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">2</div>
-            <p class="contact__nav-list-title">Отдел продаж</p>
+            <a href="#sales" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">2</div>
+              <p class="contact__nav-list-title">Отдел продаж</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">3</div>
-            <p class="contact__nav-list-title">Магазины</p>
+            <a href="#shops" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">3</div>
+              <p class="contact__nav-list-title">Магазины</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">4</div>
-            <p class="contact__nav-list-title">Техподдержка</p>
+            <a href="#techSupport" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">4</div>
+              <p class="contact__nav-list-title">Техподдержка</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">5</div>
-            <p class="contact__nav-list-title">Бухгалтерия</p>
+            <a href="#accounting" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">5</div>
+              <p class="contact__nav-list-title">Бухгалтерия</p>
+            </a>
+          </li>
+          <li class="contact__nav-list-item">
+            <a href="#legal" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">6</div>
+              <p class="contact__nav-list-title">
+                Юридический адрес и контакты
+              </p>
+            </a>
           </li>
         </ul>
       </aside>
       <div class="contact__main">
-        <div class="contact__main-block">
+        <div class="contact__main-block" id="generalPhone">
           <div class="contact__block-title-w">
             <h3 class="contact__block-title">Общий номер</h3>
             <div class="contact__block-line"></div>
@@ -88,7 +113,7 @@
             </div>
           </div>
         </div>
-        <div class="contact__main-block">
+        <div class="contact__main-block" id="sales">
           <div class="contact__block-title-w">
             <h3 class="contact__block-title">Отдел продаж</h3>
             <div class="contact__block-line"></div>
@@ -344,7 +369,7 @@
             </div>
           </div>
         </div>
-        <div class="contact__main-block">
+        <div class="contact__main-block" id="shops">
           <div class="contact__block-title-w">
             <h3 class="contact__block-title">Магазины</h3>
             <div class="contact__block-line"></div>
@@ -410,7 +435,7 @@
             ></iframe>
           </div>
         </div>
-        <div class="contact__main-block">
+        <div class="contact__main-block" id="techSupport">
           <div class="contact__block-title-w">
             <h3 class="contact__block-title">Техподдержка</h3>
             <div class="contact__block-line"></div>
@@ -458,7 +483,7 @@
             <span>Скачать файл</span>
           </a>
         </div>
-        <div class="contact__main-block">
+        <div class="contact__main-block" id="accounting">
           <div class="contact__block-title-w">
             <h3 class="contact__block-title">Бухгалтерия</h3>
             <div class="contact__block-line"></div>
@@ -532,7 +557,7 @@
             </div>
           </div>
         </div>
-        <div class="contact__main-block">
+        <div class="contact__main-block" id="legal">
           <div class="contact__block-title-w">
             <h3 class="contact__block-title">юридический адрес и контакты</h3>
             <div class="contact__block-line"></div>
@@ -567,7 +592,55 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class ContactComponent extends Vue {}
+export default class ContactComponent extends Vue {
+  declare $refs: {
+    banner: HTMLElement;
+    contentWrap: HTMLElement;
+    navList: HTMLElement;
+  };
+
+  navPosTop: number = 0;
+  navPosLeft: number = 0;
+
+  calcNavTop() {
+    const bannerRect = this.$refs.banner.getBoundingClientRect();
+    const contentWrapRect = this.$refs.contentWrap.getBoundingClientRect();
+    const navListRect = this.$refs.navList.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (bannerRect.bottom <= 0 && contentWrapRect.bottom >= 520) {
+      this.navPosTop = 32;
+    } else if (bannerRect.bottom <= 0 && contentWrapRect.bottom < 520) {
+      this.navPosTop = (windowHeight - 562) - navListRect.height - 64;
+    } else if (bannerRect.bottom > 0) this.navPosTop = bannerRect.bottom + 80;
+
+    console.log(contentWrapRect.bottom);
+    console.log(navListRect.bottom);
+  }
+
+  calcNavLeft() {
+    const windowWidth = window.innerWidth;
+    const contentWrapRect = this.$refs.contentWrap.getBoundingClientRect();
+
+    this.navPosLeft = (windowWidth - contentWrapRect.width) / 2;
+  }
+
+  onResize() {
+    this.calcNavTop();
+    this.calcNavLeft();
+  }
+
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("scroll", this.calcNavTop);
+  }
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scroll", this.calcNavTop);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -614,24 +687,37 @@ export default class ContactComponent extends Vue {}
     height: 100%;
     width: 8px;
 
+    border-radius: 6px;
+
     background-color: #ffffff;
   }
 
   &__nav-list {
-    position: absolute;
-    top: 80px;
-    left: 0;
+    --pos-top: 0;
+    --pos-left: 0;
+    width: 100%;
+    max-width: 230px;
+
+    position: fixed;
+
+    @extend %flex-column;
+    gap: 32px;
+
+    top: var(--pos-top);
+    left: var(--pos-left);
+
+    // transition: 0.1s ease;
   }
 
   &__nav-list-item {
     @include flex-container(row, flex-start, center);
-    gap: 32px;
+    gap: 16px;
 
     cursor: pointer;
   }
 
   &__nav-list-count {
-    width: 48px;
+    min-width: 48px;
     height: 48px;
 
     @include flex-container(row, center, center);
