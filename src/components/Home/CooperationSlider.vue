@@ -235,7 +235,7 @@ export default class CooperationSliderComponent extends Vue {
 
     border-radius: 50%;
 
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.5s ease;
@@ -297,7 +297,7 @@ export default class CooperationSliderComponent extends Vue {
 
     border-radius: 50%;
 
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s ease-in-out;

@@ -258,7 +258,7 @@ export default class CooperationComponent extends Vue { }
 
     @include flex-container(row, center, center);
 
-    color: #FFFFFF;
+    color: white;
     background-color: $color-main;
 
     border-radius: 6px;
@@ -280,7 +280,7 @@ export default class CooperationComponent extends Vue { }
   align-items: center;
   gap: 44px;
 
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 

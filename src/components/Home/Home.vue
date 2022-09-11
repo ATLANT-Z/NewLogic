@@ -209,7 +209,7 @@ export default class HomeComponent extends Vue {}
 
     border-radius: 16px;
 
-    color: #ffffff;
+    color: white;
     background-color: #393d38;
 
     @include mobile {
@@ -322,7 +322,7 @@ export default class HomeComponent extends Vue {}
     @include fontUnify(20, 28, 600);
     letter-spacing: 0.02em;
 
-    color: #ffffff;
+    color: white;
 
     @include mobile {
       @include fontUnify;
@@ -388,7 +388,7 @@ export default class HomeComponent extends Vue {}
     letter-spacing: 0.02em;
     text-transform: uppercase;
 
-    color: #ffffff;
+    color: white;
 
     @include mobile {
       @include fontUnify(24, 32, 700);
@@ -400,7 +400,7 @@ export default class HomeComponent extends Vue {}
     align-items: center;
     gap: 32px;
 
-    color: #ffffff;
+    color: white;
   }
 
   &__b2b-heading-title {
@@ -476,7 +476,7 @@ export default class HomeComponent extends Vue {}
     @include fontUnify(20, 30, 600);
     text-transform: uppercase;
 
-    color: #ffffff;
+    color: white;
     background-color: $color-main;
     border-radius: 6px;
 
@@ -547,7 +547,7 @@ export default class HomeComponent extends Vue {}
     justify-content: center;
     gap: 64px;
 
-    background-color: #ffffff;
+    background-color: white;
 
     @extend %padding-wrp;
 
@@ -617,7 +617,7 @@ export default class HomeComponent extends Vue {}
     align-items: center;
     gap: calc(var(--gap) * 1.5);
 
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 
     border-radius: 8px;
