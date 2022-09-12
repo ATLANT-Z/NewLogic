@@ -13,7 +13,8 @@
           <span class="card-title__code-number">16799</span>
         </div>
       </article>
-      <CardProductNavComponent></CardProductNavComponent>
+      <CardProductNavComponent />
+      <CardAboutProductComponent />
     </div>
   </section>
 </template>
@@ -21,11 +22,13 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import CardProductNavComponent from "./CardProductNav.vue";
+import CardAboutProductComponent from "./CardAboutProduct.vue";
 
 @Options({
   name: "CardProductComponent",
   components: {
     CardProductNavComponent,
+    CardAboutProductComponent,
   },
 })
 export default class CardProductComponent extends Vue {}
