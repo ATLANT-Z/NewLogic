@@ -1,6 +1,57 @@
 <template>
   <article class="product-about">
-    <div class="gallery"></div>
+    <div class="gallery">
+      <div class="gallery__w"></div>
+      <div class="info__block">
+        <div class="advantage">
+          <h2 class="info__block-title">Преимущества</h2>
+          <div class="advantage__w">
+            <div class="advantage__img-w">
+              <img
+                class="advantage__img"
+                src="@/assets/icons/cardAdvantage1.svg"
+                alt=""
+              />
+            </div>
+            <div class="advantage__img-w">
+              <img
+                class="advantage__img"
+                src="@/assets/icons/cardAdvantage2.svg"
+                alt=""
+              />
+            </div>
+            <div class="advantage__img-w">
+              <img
+                class="advantage__img"
+                src="@/assets/icons/cardAdvantage3.svg"
+                alt=""
+              />
+            </div>
+            <div class="advantage__img-w">
+              <img
+                class="advantage__img"
+                src="@/assets/icons/cardAdvantage4.svg"
+                alt=""
+              />
+            </div>
+            <div class="advantage__img-w">
+              <img
+                class="advantage__img"
+                src="@/assets/icons/cardAdvantage5.svg"
+                alt=""
+              />
+            </div>
+            <div class="advantage__img-w">
+              <img
+                class="advantage__img"
+                src="@/assets/icons/cardAdvantage6.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="info">
       <div class="info__block" v-if="isSale">
         <div class="sale">
@@ -74,8 +125,108 @@
         </div>
       </div>
       <div class="info__block"></div>
-      <div class="info__block"></div>
-      <div class="info__block"></div>
+      <div class="info__block">
+        <div class="payments">
+          <h2 class="info__block-title">Способы оплаты</h2>
+          <div class="payments__w">
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/cardGooglePay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/cardApplePay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/card24Pay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/cardVisaPay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/cardMastercardPay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/cardInstallmentPay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <img
+                class="payments__item-img"
+                src="@/assets/icons/cardInInstallmentPay.svg"
+                alt=""
+              />
+            </div>
+            <div class="payments__item">
+              <p class="payments__item-text">Наличный</p>
+            </div>
+            <div class="payments__item">
+              <p class="payments__item-text">Безналичный расчет</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info__block">
+        <div class="description">
+          <h2 class="info__block-title">Описание</h2>
+          <p class="description__text">
+            Описание UPS 500VA + литиевая (LiFePO4) батарея 750W Комплект
+            видеонаблюдения для квартиры на 2 камеры Готовые комплекты
+            видеонаблюдения на 2 камеры в одной коробке. Комплекты
+            видеонаблюдения GreenVision бюджетное решение для квартиры,
+            небольшого офиса или дачи. Купить комплект видеонаблюдения на 2
+            камеры в Украине: почему это выгодно? 1. Стоимость комплекта на
+            15-20% (зависит от модели) ниже общих затрат, если вы решите
+            приобретать оборудование для системы видеонаблюдения по отдельности.
+            2. 100% совместимость всех элементов видеонаблюдения, входящих в
+            комплект, что существенно экономит вам время на поиски необходимого
+            оборудования. 3. Возможность установить систему видеонаблюдения
+            своими руками. В комплектацию входят все материалы и приспособления,
+            необходимые для подключения и монтажа. 4. Простые и интуитивные
+            настройки системы видеонаблюдения, встроенные в меню регистратора.
+            Интерфейс доступен на нескольких языках. 5. Бесплатное программное
+            обеспечение и приложения для удаленного доступа. ПО и обновления к
+            нему можно скачать на официальном сайте компании GreenVision Для
+            чего нужны системы видеонаблюдения на 2 камеры? Две камеры
+            видеонаблюдения для квартиры это много или мало? Все зависит от
+            объектов, которые вы планируете контролировать. Установите одну
+            камеру видеонаблюдения возле входной двери, обеспечив, таким
+            образом, полный контроль безопасности входа в квартиру (дом, офис,
+            небольшой магазин и т.д.) Другую камеру видеонаблюдения можно
+            установить: в помещении, где хранятся материальные ценности; в
+            детской, если есть необходимость контроля работы няни в коридоре,
+            если нужно контролировать перемещение по квартире или в любом другом
+            месте, которое вы хотите держать под контролем Функциональные
+            возможности систем видеонаблюдения: видеорегистратор + 2 камеры
+            Высокое качество изображения. (IP, гибридные,Wi-Fi) камеры, которые
+            входят в комплект видеонаблюдения, имеют разрешение изображения
+            (2,3,5)МП. Вы сможете просматривать видео и сохранять изображение с
+            высокой степенью детализации.
+          </p>
+          <a href="#" class="description__link">Подробнее</a>
+        </div>
+      </div>
     </div>
   </article>
 </template>
@@ -119,12 +270,47 @@ export default class CardAboutProductComponent extends Vue {
 .gallery {
   max-width: 590px;
   width: 100%;
-  height: 522px;
 
-  background: white;
-  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  @extend %flex-column;
+  gap: 16px;
+
+  @include bigMobile {
+    max-width: none;
+  }
+
+  &__w {
+    width: 100%;
+    height: 522px;
+
+    background: white;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
 }
+
+.advantage {
+  @extend %flex-column;
+  gap: 24px;
+
+  &__w {
+    width: 100%;
+
+    @include flex-container(row, space-between, center);
+    flex-wrap: wrap;
+    gap: 24px 40px;
+
+    @include bigMobile {
+      justify-content: center;
+    }
+  }
+
+  &__img-w {
+  }
+
+  &__img {
+  }
+}
+
 .info {
   width: 100%;
 
@@ -137,6 +323,14 @@ export default class CardAboutProductComponent extends Vue {
     border-radius: 8px;
 
     padding: 16px;
+  }
+
+  &__block-title {
+    @include fontUnify(18, 20, 700);
+
+    @include mobile {
+      @include fontUnify(18, 20, 500);
+    }
   }
 }
 .sale {
@@ -343,6 +537,63 @@ export default class CardAboutProductComponent extends Vue {
     @include mobile {
       @include fontUnify(14, 16);
     }
+  }
+}
+
+.payments {
+  @extend %flex-column;
+  gap: 24px;
+
+  &__w {
+    @include flex-container(row, flex-start, center);
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @include mobile {
+      gap: 8px;
+    }
+  }
+
+  &__item {
+    height: 40px;
+
+    @include flex-container(row, center, center);
+
+    border: 1px solid $color-main;
+    border-radius: 6px;
+
+    padding: 0 12px;
+  }
+
+  &__item-img {
+  }
+
+  &__item-text {
+    @include fontUnify;
+    text-align: center;
+
+    white-space: nowrap;
+  }
+}
+
+.description {
+  @extend %flex-column;
+  gap: 24px;
+
+  &__text {
+    height: 65px;
+
+    overflow: hidden;
+  }
+
+  &__link {
+    max-width: fit-content;
+
+    @include fontUnify;
+    text-decoration: underline;
+    color: $color-main;
+
+    cursor: pointer;
   }
 }
 </style>
