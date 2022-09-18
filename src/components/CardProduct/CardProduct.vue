@@ -15,6 +15,7 @@
       </article>
       <CardProductNavComponent />
       <CardAboutProductComponent />
+      <CardProductSpecificationsComponent />
     </div>
   </section>
 </template>
@@ -23,12 +24,14 @@
 import { Options, Vue } from "vue-class-component";
 import CardProductNavComponent from "./CardProductNav.vue";
 import CardAboutProductComponent from "./CardAboutProduct.vue";
+import CardProductSpecificationsComponent from "./CardProductSpecifications.vue"
 
 @Options({
   name: "CardProductComponent",
   components: {
     CardProductNavComponent,
     CardAboutProductComponent,
+    CardProductSpecificationsComponent,
   },
 })
 export default class CardProductComponent extends Vue {}
@@ -36,6 +39,8 @@ export default class CardProductComponent extends Vue {}
 
 <style lang="scss" scoped>
 .card-product {
+  position: relative;
+
   @extend %flex-column;
   align-items: center;
 

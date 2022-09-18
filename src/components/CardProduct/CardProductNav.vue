@@ -1,6 +1,6 @@
 <template>
   <article class="card-nav">
-    <h3 class="card-nav__line"></h3>
+    <div class="card-nav__line"></div>
     <ul class="card-nav__list">
       <li class="card-nav__item">
         <h3 class="card-nav__title active">Всё о товаре</h3>
@@ -45,13 +45,13 @@ export default class CardProductNavComponent extends Vue {}
 
   &__line {
     width: 100%;
-    height: 1px;
+    height: 3px;
 
     position: absolute;
-    top: 1px;
+    top: 0;
     left: 0;
 
-    background-color: $color-bg-grey;
+    background-color: $color-bg-grey-lighter;
 
     z-index: -1;
   }
@@ -63,7 +63,6 @@ export default class CardProductNavComponent extends Vue {}
     @include flex-container(row, space-between, flex-start);
     gap: 40px;
 
-    padding-bottom: 8px;
     overflow-x: auto;
 
     &::-webkit-scrollbar {

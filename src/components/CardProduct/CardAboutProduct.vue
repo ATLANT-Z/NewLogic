@@ -79,7 +79,7 @@
             <button class="buy">Купить</button>
           </div>
           <div class="price__info">
-            <div class="price__info-facilities">
+            <!-- <div class="price__info-facilities">
               <div class="price__info-facilities-availability">В наличии</div>
               <div class="price__info-facilities-item">
                 <img
@@ -109,7 +109,7 @@
                   14 дней обмен/возврат
                 </p>
               </div>
-            </div>
+            </div> -->
             <div class="price__info-tools">Компонент у Андрея</div>
             <div class="price__info-guarantee">
               <img
@@ -117,14 +117,125 @@
                 src="@/assets/icons/cardGuarantee.svg"
                 alt=""
               />
-              <p class="price__info-guarantee-text">
-                <b>100%</b> гарантия качества от производителя
-              </p>
+              <div class="price__info-guarantee-text-w">
+                <p class="price__info-guarantee-text">
+                  <b>100%</b> гарантия качества от производителя.
+                </p>
+                <p class="price__info-guarantee-text">
+                  Возврат/обмен осуществляется в течении 14 дней
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="info__block"></div>
+      <div class="info__block">
+        <div class="delivery">
+          <h2 class="info__block-title">Доставка</h2>
+          <div class="delivery__nav">
+            <div class="delivery__nav-line"></div>
+            <ul class="delivery__nav-list">
+              <li class="delivery__nav-item">
+                <p
+                  class="delivery__nav-title"
+                  @click="
+                    (deliveryData.odesa = true), (deliveryData.ukraine = false)
+                  "
+                  :class="deliveryData.odesa ? 'active' : ''"
+                >
+                  Одесса
+                </p>
+              </li>
+              <li class="delivery__nav-item">
+                <p
+                  class="delivery__nav-title"
+                  @click="
+                    (deliveryData.odesa = false), (deliveryData.ukraine = true)
+                  "
+                  :class="deliveryData.ukraine ? 'active' : ''"
+                >
+                  Украина
+                </p>
+              </li>
+            </ul>
+          </div>
+          <!-- <transition name="fade" mode="out-in">
+            <div class="delivery__terms-odesa" v-show="deliveryData.odesa">
+              <p class="delivery__terms">
+                <span class="delivery__terms-post">Самовывоз</span>
+                отправим завтра
+                <span class="delivery__terms-cost">Бесплатно</span>
+              </p>
+              <p class="delivery__terms">
+                <span class="delivery__terms-post">Курьер</span>
+                завтра с 10:00 до 17:00
+                <span class="delivery__terms-cost">Бесплатно</span>
+              </p>
+              <p class="delivery__terms">
+                <span class="delivery__terms-post"
+                  >Отделение “Новая Почта”</span
+                >
+                отправим завтра
+                <span class="delivery__terms-cost">от 56 грн</span>
+              </p>
+            </div>
+          </transition>
+          <transition name="fade" mode="out-in">
+            <div class="delivery__terms-ukraine" v-show="deliveryData.ukraine">
+              <p class="delivery__terms">
+                <span class="delivery__terms-post"
+                  >Отделение “Новая Почта”</span
+                >
+                отправим завтра
+                <span class="delivery__terms-cost">от 56 грн</span>
+              </p>
+              <p class="delivery__terms">
+                <span class="delivery__terms-post">Отделение “УкрПочта”</span>
+                отправим завтра
+                <span class="delivery__terms-cost">от 56 грн</span>
+              </p>
+            </div>
+          </transition> -->
+          <transition name="fade" mode="out-in" appear>
+            <div class="delivery__terms-odesa" v-if="deliveryData.odesa">
+              <p class="delivery__terms">
+                <span class="delivery__terms-post">Самовывоз</span>
+                отправим завтра
+                <span class="delivery__terms-cost">Бесплатно</span>
+              </p>
+              <p class="delivery__terms">
+                <span class="delivery__terms-post">Курьер</span>
+                завтра с 10:00 до 17:00
+                <span class="delivery__terms-cost">Бесплатно</span>
+              </p>
+              <p class="delivery__terms">
+                <span class="delivery__terms-post"
+                  >Отделение “Новая Почта”</span
+                >
+                отправим завтра
+                <span class="delivery__terms-cost">от 56 грн</span>
+              </p>
+            </div>
+            <div
+              class="delivery__terms-ukraine"
+              v-else-if="deliveryData.ukraine"
+            >
+              <p class="delivery__terms">
+                <span class="delivery__terms-post"
+                  >Отделение “Новая Почта”</span
+                >
+                отправим завтра
+                <span class="delivery__terms-cost">от 56 грн</span>
+              </p>
+              <p class="delivery__terms">
+                <span class="delivery__terms-post">Отделение “УкрПочта”</span>
+                отправим завтра
+                <span class="delivery__terms-cost">от 56 грн</span>
+              </p>
+            </div>
+          </transition>
+        </div>
+      </div>
       <div class="info__block">
         <div class="payments">
           <h2 class="info__block-title">Способы оплаты</h2>
@@ -224,7 +335,7 @@
             (2,3,5)МП. Вы сможете просматривать видео и сохранять изображение с
             высокой степенью детализации.
           </p>
-          <a href="#" class="description__link">Подробнее</a>
+          <a href="#description" class="description__link">Подробнее</a>
         </div>
       </div>
     </div>
@@ -239,6 +350,11 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class CardAboutProductComponent extends Vue {
   isSale: boolean = true;
+
+  deliveryData: any = {
+    odesa: true,
+    ukraine: false,
+  };
 }
 </script>
 
@@ -256,6 +372,10 @@ export default class CardAboutProductComponent extends Vue {
   color: white;
   background: #f36c21;
   border-radius: 6px;
+
+  @include bigMobile {
+    max-width: none;
+  }
 }
 
 .product-about {
@@ -436,18 +556,40 @@ export default class CardAboutProductComponent extends Vue {
     @include flex-container(row, flex-start, center);
     flex-wrap: wrap;
     gap: 16px;
+
+    @include bigMobile {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
+      background-color: white;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+
+      padding: 8px;
+    }
   }
 
   &__money-sale {
     @extend %flex-column;
     gap: 8px;
+
+    @include bigMobile {
+      flex-direction: row;
+    }
   }
 
   &__money-sale-old {
     @include fontUnify(18, 24);
     text-decoration: line-through;
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify;
     }
   }
@@ -456,7 +598,7 @@ export default class CardAboutProductComponent extends Vue {
     @include fontUnify(48, 52, 500);
     color: red;
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify(24, 28, 500);
     }
   }
@@ -464,7 +606,7 @@ export default class CardAboutProductComponent extends Vue {
   &__money-regular {
     @include fontUnify(48, 52, 500);
 
-    @include mobile {
+    @include bigMobile {
       @include fontUnify(24, 28, 500);
     }
   }
@@ -540,6 +682,124 @@ export default class CardAboutProductComponent extends Vue {
   }
 }
 
+.delivery {
+  @include flex-container(column, space-between, flex-start);
+  gap: 24px;
+
+  &__nav {
+    width: 100%;
+
+    @extend %flex-column;
+
+    position: relative;
+  }
+
+  &__nav-line {
+    width: 100%;
+    height: 3px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: $color-bg-grey-lighter;
+
+    z-index: 0;
+  }
+
+  &__nav-list {
+    width: 100%;
+
+    @include flex-container(row, flex-start, flex-start);
+    gap: 24px;
+
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $color-bg-grey;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-main;
+    }
+  }
+
+  &__nav-item {
+  }
+
+  &__nav-title {
+    position: relative;
+
+    @include fontUnify;
+    text-align: center;
+
+    border-top: 3px solid transparent;
+
+    white-space: nowrap;
+
+    padding-top: 8px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    z-index: 2;
+    &:hover {
+      border-top: 3px solid $color-main;
+      color: $color-main;
+    }
+    &.active {
+      border-top: 3px solid $color-main;
+      color: $color-main;
+    }
+
+    @include bigMobile {
+      @include fontUnify;
+    }
+  }
+
+  &__terms-odesa {
+    @extend %flex-column;
+    gap: 8px;
+  }
+
+  &__terms {
+    @include flex-container(row, flex-start, center);
+    flex-wrap: wrap;
+    gap: 8px;
+
+    @include fontUnify;
+    letter-spacing: 0.02em;
+    color: $color-text-lighter;
+
+    @include bigMobile {
+      @include fontUnify(14, 16);
+    }
+  }
+
+  &__terms-post {
+    font-weight: 700;
+    color: $color-text;
+
+    @include bigMobile {
+      font-weight: 500;
+    }
+  }
+
+  &__terms-cost {
+    color: $color-main;
+  }
+
+  &__terms-ukraine {
+    @extend %flex-column;
+    gap: 8px;
+  }
+}
+
 .payments {
   @extend %flex-column;
   gap: 24px;
@@ -595,5 +855,22 @@ export default class CardAboutProductComponent extends Vue {
 
     cursor: pointer;
   }
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  // transform: scale(0.5);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  // transform: scale(1);
+}
+
+.fade-leave-active,
+.fade-enter-active {
+  transition: all 0.2s ease;
 }
 </style>
