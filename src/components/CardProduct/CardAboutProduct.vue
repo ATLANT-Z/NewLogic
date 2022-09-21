@@ -51,6 +51,34 @@
           </div>
         </div>
       </div>
+      <div class="read-more">
+        <a class="read-more__link" href="#description">
+          <p class="read-more__text">Подробнее о товаре</p>
+          <svg
+            class="read-more__img"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 8V16M12 16L15.5 12.5M12 16L8.5 12.5"
+              stroke="#F36C21"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+              stroke="#F36C21"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
     <div class="info">
       <div class="info__block" v-if="isSale">
@@ -76,7 +104,50 @@
               <p class="price__money-sale-new">3113 грн</p>
             </div>
             <div class="price__money-regular" v-else>3113 грн</div>
-            <button class="buy">Купить</button>
+            <div class="price__money-btn-w">
+              <button class="buy">Купить</button>
+              <button class="buy__credit">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    stroke="#F36C21"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15.5 16C15.7761 16 16 15.7761 16 15.5C16 15.2239 15.7761 15 15.5 15C15.2239 15 15 15.2239 15 15.5C15 15.7761 15.2239 16 15.5 16Z"
+                    fill="#F36C21"
+                    stroke="#F36C21"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8.5 9C8.77614 9 9 8.77614 9 8.5C9 8.22386 8.77614 8 8.5 8C8.22386 8 8 8.22386 8 8.5C8 8.77614 8.22386 9 8.5 9Z"
+                    fill="#F36C21"
+                    stroke="#F36C21"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16 8L8 16"
+                    stroke="#F36C21"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Купить в кредит
+              </button>
+            </div>
           </div>
           <div class="price__info">
             <!-- <div class="price__info-facilities">
@@ -110,22 +181,8 @@
                 </p>
               </div>
             </div> -->
+            <div class="price__info-facilities-availability">В наличии</div>
             <div class="price__info-tools">Компонент у Андрея</div>
-            <div class="price__info-guarantee">
-              <img
-                class="price__info-guarantee-img"
-                src="@/assets/icons/cardGuarantee.svg"
-                alt=""
-              />
-              <div class="price__info-guarantee-text-w">
-                <p class="price__info-guarantee-text">
-                  <b>100%</b> гарантия качества от производителя.
-                </p>
-                <p class="price__info-guarantee-text">
-                  Возврат/обмен осуществляется в течении 14 дней
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -299,43 +356,23 @@
         </div>
       </div>
       <div class="info__block">
-        <div class="description">
-          <h2 class="info__block-title">Описание</h2>
-          <p class="description__text">
-            Описание UPS 500VA + литиевая (LiFePO4) батарея 750W Комплект
-            видеонаблюдения для квартиры на 2 камеры Готовые комплекты
-            видеонаблюдения на 2 камеры в одной коробке. Комплекты
-            видеонаблюдения GreenVision бюджетное решение для квартиры,
-            небольшого офиса или дачи. Купить комплект видеонаблюдения на 2
-            камеры в Украине: почему это выгодно? 1. Стоимость комплекта на
-            15-20% (зависит от модели) ниже общих затрат, если вы решите
-            приобретать оборудование для системы видеонаблюдения по отдельности.
-            2. 100% совместимость всех элементов видеонаблюдения, входящих в
-            комплект, что существенно экономит вам время на поиски необходимого
-            оборудования. 3. Возможность установить систему видеонаблюдения
-            своими руками. В комплектацию входят все материалы и приспособления,
-            необходимые для подключения и монтажа. 4. Простые и интуитивные
-            настройки системы видеонаблюдения, встроенные в меню регистратора.
-            Интерфейс доступен на нескольких языках. 5. Бесплатное программное
-            обеспечение и приложения для удаленного доступа. ПО и обновления к
-            нему можно скачать на официальном сайте компании GreenVision Для
-            чего нужны системы видеонаблюдения на 2 камеры? Две камеры
-            видеонаблюдения для квартиры это много или мало? Все зависит от
-            объектов, которые вы планируете контролировать. Установите одну
-            камеру видеонаблюдения возле входной двери, обеспечив, таким
-            образом, полный контроль безопасности входа в квартиру (дом, офис,
-            небольшой магазин и т.д.) Другую камеру видеонаблюдения можно
-            установить: в помещении, где хранятся материальные ценности; в
-            детской, если есть необходимость контроля работы няни в коридоре,
-            если нужно контролировать перемещение по квартире или в любом другом
-            месте, которое вы хотите держать под контролем Функциональные
-            возможности систем видеонаблюдения: видеорегистратор + 2 камеры
-            Высокое качество изображения. (IP, гибридные,Wi-Fi) камеры, которые
-            входят в комплект видеонаблюдения, имеют разрешение изображения
-            (2,3,5)МП. Вы сможете просматривать видео и сохранять изображение с
-            высокой степенью детализации.
-          </p>
-          <a href="#description" class="description__link">Подробнее</a>
+        <div class="guarantee">
+          <h2 class="info__block-title">Гарантия</h2>
+          <div class="guarantee__info">
+            <img
+              class="guarantee__info-img"
+              src="@/assets/icons/cardGuarantee.svg"
+              alt=""
+            />
+            <div class="guarantee__info-text-w">
+              <p class="guarantee__info-text">
+                <b>100%</b> гарантия качества от производителя.
+              </p>
+              <p class="guarantee__info-text">
+                Возврат/обмен осуществляется в течении 14 дней
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -373,12 +410,43 @@ export default class CardAboutProductComponent extends Vue {
   background: #f36c21;
   border-radius: 6px;
 
-  @include bigMobile {
+  @include mobile {
     max-width: none;
+  }
+
+  &__credit {
+    max-width: 274px;
+    width: 100%;
+
+    @include flex-container(row, center, center);
+    gap: 16px;
+    padding: 8px 0;
+
+    @include fontUnify(18, 24);
+    text-align: center;
+
+    color: $color-main;
+
+    border: 1px solid $color-main;
+    border-radius: 6px;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      background-color: $color-main-lightest;
+      border: 1px solid $color-main-dark;
+      color: $color-main-dark;
+    }
+
+    @include mobile {
+      max-width: none;
+    }
   }
 }
 
 .product-about {
+  --local-pad: 16px;
+
   width: 100%;
   @include flex-container;
   gap: 16px;
@@ -431,6 +499,42 @@ export default class CardAboutProductComponent extends Vue {
   }
 }
 
+.read-more {
+  border: 1px solid $color-main;
+  border-radius: 8px;
+
+  padding: var(--local-pad);
+
+  &__link {
+    @include flex-container(row, space-between, center);
+    gap: 24px;
+
+    transition: 1s ease;
+
+    &:hover .read-more__text {
+      text-decoration: underline;
+      color: $color-main-dark;
+    }
+
+    &:hover .read-more__img path {
+      stroke: $color-main-dark;
+    }
+  }
+
+  &__text {
+    @include fontUnify(16, 24, 700);
+    color: $color-main;
+
+    transition: 0.2s ease;
+  }
+
+  &__img {
+    path {
+      transition: 0.2s ease;
+    }
+  }
+}
+
 .info {
   width: 100%;
 
@@ -442,7 +546,7 @@ export default class CardAboutProductComponent extends Vue {
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 
-    padding: 16px;
+    padding: var(--local-pad);
   }
 
   &__block-title {
@@ -541,48 +645,53 @@ export default class CardAboutProductComponent extends Vue {
       background: rgba(243, 108, 33, 0.5);
     }
 
+    @include bigMobile {
+      max-width: 380px;
+    }
+
     @include mobile {
       max-width: none;
     }
   }
 }
 .price {
-  @include flex-container(column, space-between, flex-start);
+  height: 100%;
+
+  @include flex-container(row, space-between, stretch);
   gap: 16px;
+
+  @include bigMobile {
+    flex-direction: column;
+  }
 
   &__money {
     width: 100%;
 
-    @include flex-container(row, flex-start, center);
-    flex-wrap: wrap;
+    @extend %flex-column;
     gap: 16px;
 
-    @include bigMobile {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 100;
+    // @include bigMobile {
+    //   position: fixed;
+    //   bottom: 0;
+    //   left: 0;
+    //   z-index: 100;
 
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
+    //   flex-direction: column;
+    //   align-items: flex-start;
+    //   gap: 8px;
 
-      box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
-      background-color: white;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+    //   box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
+    //   background-color: white;
+    //   border-top-left-radius: 8px;
+    //   border-top-right-radius: 8px;
 
-      padding: 8px;
-    }
+    //   padding: 8px;
+    // }
   }
 
   &__money-sale {
-    @extend %flex-column;
-    gap: 8px;
-
-    @include bigMobile {
-      flex-direction: row;
-    }
+    @include flex-container(row, flex-start, flex-start);
+    gap: 16px;
   }
 
   &__money-sale-old {
@@ -611,28 +720,34 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 
-  &__info {
-    width: 100%;
-
-    @extend %flex-column;
-    gap: 16px;
-  }
-
-  &__info-facilities {
+  &__money-btn-w {
     @include flex-container(row, flex-start, center);
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 16px 32px;
+  }
+
+  &__info {
+    height: 100%;
+
+    @extend %flex-column;
+    justify-content: space-between;
+
+    @include bigMobile {
+      width: 100%;
+
+      flex-direction: row-reverse;
+    }
   }
 
   &__info-facilities-availability {
     @include flex-container(row, center, center);
 
     @include fontUnify(14, 20);
-    color: $color-main;
+    color: $color-green-dark;
     white-space: nowrap;
 
-    background: rgba(243, 108, 33, 0.1);
-    border-radius: 8px;
+    background: rgba(21, 152, 34, 0.1);
+    border-radius: 4px;
 
     padding: 3px 10px;
   }
@@ -663,22 +778,6 @@ export default class CardAboutProductComponent extends Vue {
   }
 
   &__info-tools {
-  }
-
-  &__info-guarantee {
-    @include flex-container(row, flex-start, center);
-    gap: 16px;
-  }
-
-  &__info-guarantee-img {
-  }
-
-  &__info-guarantee-text {
-    @include fontUnify;
-
-    @include mobile {
-      @include fontUnify(14, 16);
-    }
   }
 }
 
@@ -804,6 +903,10 @@ export default class CardAboutProductComponent extends Vue {
   @extend %flex-column;
   gap: 24px;
 
+  @include mobile {
+    gap: 16px;
+  }
+
   &__w {
     @include flex-container(row, flex-start, center);
     flex-wrap: wrap;
@@ -836,24 +939,28 @@ export default class CardAboutProductComponent extends Vue {
   }
 }
 
-.description {
+.guarantee {
   @extend %flex-column;
   gap: 24px;
 
-  &__text {
-    height: 65px;
-
-    overflow: hidden;
+  @include mobile {
+    gap: 16px;
   }
 
-  &__link {
-    max-width: fit-content;
+  &__info {
+    @include flex-container(row, flex-start, center);
+    gap: 16px;
+  }
 
+  &__info-img {
+  }
+
+  &__info-text {
     @include fontUnify;
-    text-decoration: underline;
-    color: $color-main;
 
-    cursor: pointer;
+    @include mobile {
+      @include fontUnify(14, 16);
+    }
   }
 }
 

@@ -51,6 +51,7 @@
           </div>
           <div class="product-card__money-regular" v-else>3113 грн</div>
         </div>
+        <p class="product-card__code">Код: <span>0954</span></p>
         <h2 class="product-card__title">Наружная IP Камера</h2>
         <p class="product-card__article">GV-074-IP-H-COА14 COO21 - 201080p</p>
         <button class="buy">Купить</button>
@@ -82,7 +83,7 @@ export default class CardProductSpecificationsComponent extends Vue {
     height: 400vh;
 
     @extend %flex-column;
-    gap: 24px;
+    gap: 16px;
   }
 
   &__buywith-title {
@@ -99,17 +100,21 @@ export default class CardProductSpecificationsComponent extends Vue {
   }
 
   &__description-title {
-    @include fontUnify(20, 24, 600);
-    color: $color-main;
+    @include fontUnify(18, 22, 700);
 
     margin-bottom: 24px;
 
     @include bigMobile {
-      @include fontUnify(16, 22, 500);
+      font-weight: 500;
+    }
+
+    @include bigMobile {
+      margin-bottom: 16px;
     }
   }
 
   &__article {
+    font-weight: 400;
   }
 
   &__characteristics {
@@ -121,13 +126,17 @@ export default class CardProductSpecificationsComponent extends Vue {
     border-radius: 8px;
 
     padding: var(--local-pad);
+
+    @include mobile {
+      gap: 16px;
+    }
   }
 
   &__characteristics-title {
     @include fontUnify(18, 22, 700);
 
     @include bigMobile {
-      @include fontUnify(18, 22, 500);
+      font-weight: 500;
     }
   }
 
@@ -139,6 +148,10 @@ export default class CardProductSpecificationsComponent extends Vue {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 8px;
+
+    @include bigMobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__characteristics-name {
@@ -213,6 +226,12 @@ export default class CardProductSpecificationsComponent extends Vue {
 
   &__money-regular {
     @include fontUnify(24, 32, 500);
+  }
+
+  &__code {
+    align-self: flex-start;
+    @include fontUnify;
+    letter-spacing: 0.02em;
   }
 
   &__title {
