@@ -9,7 +9,9 @@
         <div class="ui-anchor" id="description"></div>
         <h3 class="spec__title">
           Описание
-          <span class="spec__article">UPS 500VA + литиевая (LiFePO4) батарея 750W</span>
+          <span class="spec__article"
+            >UPS 500VA + литиевая (LiFePO4) батарея 750W</span
+          >
         </h3>
         <div class="ui-rich-text" v-html="contentFromServer"></div>
       </section>
@@ -33,7 +35,9 @@
       <section class="instruction">
         <h3 class="spec__title">
           Загрузки
-          <span class="spec__article">UPS 500VA + литиевая (LiFePO4) батарея 750W</span>
+          <span class="spec__article"
+            >UPS 500VA + литиевая (LiFePO4) батарея 750W</span
+          >
         </h3>
         <div class="instruction__title-w">
           <span class="instruction__title">Тип</span>
@@ -44,48 +48,82 @@
         </div>
         <div class="instruction__tech-w">
           <div class="instruction__tech-title-w">
-            <span class="instruction__tech-title">Техническая документация</span>
+            <span class="instruction__tech-title"
+              >Техническая документация</span
+            >
           </div>
-          <div class="instruction__tech-row" v-for="(item, idx) of techData" :key="idx">
-            <span class="instruction__tech-row-title">{{item.title}}</span>
-            <span class="instruction__tech-row-date">{{item.date}}</span>
-            <span class="instruction__tech-row-lang">{{item.lang}}</span>
-            <span class="instruction__tech-row-type">{{item.type}}</span>
-            <a class="instruction__tech-row-link" :href="item.link">Скачать</a>
+          <div
+            class="instruction__tech-row"
+            v-for="(item, idx) of techData"
+            :key="idx"
+          >
+            <span class="instruction__tech-row-title">{{ item.title }}</span>
+            <span class="instruction__tech-row-date">{{ item.date }}</span>
+            <span class="instruction__tech-row-lang">{{ item.lang }}</span>
+            <span class="instruction__tech-row-type">{{ item.type }}</span>
+            <a class="instruction__tech-row-link" :href="item.link"
+              ><span>Скачать</span>
+              <img
+                class="instruction__tech-row-link-img"
+                src="@/assets/icons/download-arrow.svg"
+                alt=""
+            /></a>
           </div>
         </div>
-        <div class="instruction__tech-w">
+        <div class="instruction__tech-w" v-if="driverData.length">
           <div class="instruction__tech-title-w">
             <span class="instruction__tech-title">Драйвера</span>
           </div>
-          <div class="instruction__tech-row" v-for="(item, idx) of techData" :key="idx">
-            <span class="instruction__tech-row-title">{{item.title}}</span>
-            <span class="instruction__tech-row-date">{{item.date}}</span>
-            <span class="instruction__tech-row-lang">{{item.lang}}</span>
-            <span class="instruction__tech-row-type">{{item.type}}</span>
-            <a class="instruction__tech-row-link" :href="item.link">Скачать</a>
+          <div
+            class="instruction__tech-row"
+            v-for="(item, idx) of driverData"
+            :key="idx"
+          >
+            <span class="instruction__tech-row-title">{{ item.title }}</span>
+            <span class="instruction__tech-row-date">{{ item.date }}</span>
+            <span class="instruction__tech-row-lang">{{ item.lang }}</span>
+            <span class="instruction__tech-row-type">{{ item.type }}</span>
+            <a class="instruction__tech-row-link" :href="item.link"
+              ><span>Скачать</span>
+              <img
+                class="instruction__tech-row-link-img"
+                src="@/assets/icons/download-arrow.svg"
+                alt=""
+            /></a>
           </div>
         </div>
         <div class="instruction__tech-w">
           <div class="instruction__tech-title-w">
             <span class="instruction__tech-title">Мобильные приложения</span>
           </div>
-          <div class="instruction__tech-row" v-for="(item, idx) of techData" :key="idx">
-            <span class="instruction__tech-row-title">{{item.title}}</span>
-            <span class="instruction__tech-row-date">{{item.date}}</span>
-            <span class="instruction__tech-row-lang">{{item.lang}}</span>
-            <span class="instruction__tech-row-type">{{item.type}}</span>
-            <a class="instruction__tech-row-link" :href="item.link">Скачать</a>
+          <div
+            class="instruction__tech-row"
+            v-for="(item, idx) of techData"
+            :key="idx"
+          >
+            <span class="instruction__tech-row-title">{{ item.title }}</span>
+            <span class="instruction__tech-row-date">{{ item.date }}</span>
+            <span class="instruction__tech-row-lang">{{ item.lang }}</span>
+            <span class="instruction__tech-row-type">{{ item.type }}</span>
+            <a class="instruction__tech-row-link" :href="item.link"
+              ><span>Скачать</span>
+              <img
+                class="instruction__tech-row-link-img"
+                src="@/assets/icons/download-arrow.svg"
+                alt=""
+            /></a>
           </div>
         </div>
-        <div class="instruction__tech-w"></div>
-        <div class="instruction__tech-w"></div>
       </section>
     </div>
     <div class="product-card__position">
       <div class="product-card__w">
         <div class="product-card__img-w">
-          <img class="product-card__img" src="@/assets/img/sliderPromImg.png" alt="" />
+          <img
+            class="product-card__img"
+            src="@/assets/img/sliderPromImg.png"
+            alt=""
+          />
         </div>
         <div class="product-card__money" @click="isSale = !isSale">
           <div class="product-card__money-sale" v-if="isSale">
@@ -117,16 +155,33 @@ export default class CardProductSpecificationsComponent extends Vue {
       date: "23.01.2020",
       lang: "укр; рус;",
       type: "pdf",
-      link: "https://greenvision.ua/download.php?url=https://logicfox.info/manuals/LP/UPS/16157/16157_16158_161159_17014_17015_manual_ukr.pdf"
+      link: "https://greenvision.ua/download.php?url=https://logicfox.info/manuals/LP/UPS/16157/16157_16158_161159_17014_17015_manual_ukr.pdf",
     },
     {
       title: "Руководство пользователя IP камеры",
       date: "27.05.2021",
       lang: "eng",
       type: "pdf",
-      link: "https://greenvision.ua/download.php?url=https://logicfox.info/manuals/LP/UPS/16157/16157_16158_161159_17014_17015_manual_ukr.pdf"
-    }
-  ]
+      link: "https://greenvision.ua/download.php?url=https://logicfox.info/manuals/LP/UPS/16157/16157_16158_161159_17014_17015_manual_ukr.pdf",
+    },
+  ];
+
+  driverData: any[] = [
+    {
+      title: "Руководство пользователя",
+      date: "23.01.2020",
+      lang: "укр; рус;",
+      type: "pdf",
+      link: "https://greenvision.ua/download.php?url=https://logicfox.info/manuals/LP/UPS/16157/16157_16158_161159_17014_17015_manual_ukr.pdf",
+    },
+    {
+      title: "Руководство пользователя IP камеры",
+      date: "27.05.2021",
+      lang: "eng",
+      type: "pdf",
+      link: "https://greenvision.ua/download.php?url=https://logicfox.info/manuals/LP/UPS/16157/16157_16158_161159_17014_17015_manual_ukr.pdf",
+    },
+  ];
 }
 </script>
 
@@ -140,7 +195,6 @@ export default class CardProductSpecificationsComponent extends Vue {
 
   &__w {
     width: 100%;
-    height: 400vh;
 
     @extend %flex-column;
     gap: 16px;
@@ -158,7 +212,8 @@ export default class CardProductSpecificationsComponent extends Vue {
     font-weight: 400;
   }
 
-  &__buywith-title {}
+  &__buywith-title {
+  }
 
   &__description {
     @extend %flex-column;
@@ -171,10 +226,6 @@ export default class CardProductSpecificationsComponent extends Vue {
 
     & .spec__title {
       margin-bottom: 24px;
-
-      @include bigMobile {
-        margin-bottom: 16px;
-      }
     }
   }
 
@@ -226,12 +277,142 @@ export default class CardProductSpecificationsComponent extends Vue {
 
   padding: var(--local-pad) 0;
 
-  @include mobile {
-    gap: 16px;
-  }
-
   & .spec__title {
     padding: 0 var(--local-pad);
+  }
+
+  &__title-w {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    justify-items: center;
+
+    padding: 0 var(--local-pad);
+
+    @include mobile {
+      grid-template-columns: 2fr repeat(2, 1fr);
+    }
+  }
+
+  &__title {
+    @include fontUnify;
+    letter-spacing: 0.02em;
+
+    color: $color-text-lighter;
+
+    &:first-child {
+      justify-self: flex-start;
+    }
+
+    &:last-child {
+      justify-self: flex-end;
+    }
+
+    @include mobile {
+      @include fontUnify(14, 16);
+
+      &:nth-child(2n) {
+        display: none;
+      }
+    }
+  }
+
+  &__tech-w {
+    @include flex-container(column, center, flex-start);
+    gap: 16px;
+
+    @include mobile {
+      gap: 8px;
+    }
+  }
+
+  &__tech-title-w {
+    width: 100%;
+
+    border-top: 1px solid $color-main;
+
+    background: rgba(243, 108, 33, 0.1);
+    padding: 8px 0;
+  }
+
+  &__tech-title {
+    @include fontUnify(16, 22, 500);
+    color: $color-main;
+
+    padding-left: 16px;
+  }
+
+  &__tech-row {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: 8px;
+
+    justify-items: center;
+
+    @include fontUnify;
+
+    padding: 0 var(--local-pad);
+
+    @include mobile {
+      grid-template-columns: 2fr repeat(2, 1fr);
+
+      @include fontUnify(14, 16);
+    }
+  }
+
+  &__tech-row-title {
+    justify-self: flex-start;
+  }
+
+  &__tech-row-date {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__tech-row-lang {
+  }
+
+  &__tech-row-type {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__tech-row-link {
+    width: fit-content;
+
+    color: $color-main;
+
+    @include flex-container(row, flex-start, flex-start);
+    gap: 8px;
+
+    justify-self: flex-end;
+
+    & span {
+      border-bottom: 1px solid transparent;
+
+      transition: 0.2s ease;
+    }
+
+    &:hover {
+      & span {
+        border-bottom: 1px solid $color-main;
+      }
+
+      & .instruction__tech-row-link-img {
+        transform: translateY(2px);
+      }
+    }
+  }
+
+  &__tech-row-link-img {
+    transition: 0.2s ease;
+
+    @include mobile {
+      display: none;
+    }
   }
 }
 
@@ -263,7 +444,8 @@ export default class CardProductSpecificationsComponent extends Vue {
     width: 100%;
   }
 
-  &__img {}
+  &__img {
+  }
 
   &__money {
     width: 100%;

@@ -478,7 +478,7 @@ export default class CardAboutProductComponent extends Vue {
 
 .advantage {
   @extend %flex-column;
-  gap: 24px;
+  gap: 16px;
 
   &__w {
     width: 100%;
