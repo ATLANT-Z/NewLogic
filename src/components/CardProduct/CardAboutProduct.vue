@@ -1,5 +1,9 @@
 <template>
-  <article class="product-about">
+  <article
+    class="product-about"
+    ref="productWrapper"
+    :class="TabList.all ? 'active' : ''"
+  >
     <div class="gallery">
       <div class="gallery__w"></div>
       <div class="info__block">
@@ -96,7 +100,7 @@
           <button class="sale__details">Узнать детали</button>
         </div>
       </div>
-      <div class="info__block">
+      <div class="info__block" ref="blockPrice">
         <div class="price">
           <div class="price__money" @click="isSale = !isSale">
             <div class="price__money-sale" v-if="isSale">
@@ -381,17 +385,75 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { Prop } from "vue-property-decorator";
+
+interface activeTabDataList {
+  all: boolean;
+  characteristics: boolean;
+  reviews: boolean;
+  multimedia: boolean;
+  downloads: boolean;
+}
 
 @Options({
   name: "CardAboutProductComponent",
 })
 export default class CardAboutProductComponent extends Vue {
+  @Prop({ required: true }) TabList: activeTabDataList;
+
   isSale: boolean = true;
+  isMobile: boolean = false;
+  isVisibility: boolean = false;
+
+  declare $refs: {
+    productWrapper: HTMLElement;
+    blockPrice: HTMLElement;
+    mobilePrice: HTMLElement;
+  };
 
   deliveryData: any = {
     odesa: true,
     ukraine: false,
   };
+
+  calcBlockPriceVisibility() {
+    const blockPriceRect = this.$refs.blockPrice.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (
+      blockPriceRect.top + blockPriceRect.height <= windowHeight &&
+      blockPriceRect.top + blockPriceRect.height > 0
+    )
+      this.isVisibility = !this.isVisibility;
+    // console.log(blockPriceRect.bottom);
+    console.log(blockPriceRect.top);
+    // console.log(blockPriceRect.height);
+    console.log(window.innerHeight);
+    console.log(window.scrollY);
+  }
+
+  calsIsMobile() {
+    const mobWidth = getComputedStyle(
+      this.$refs.productWrapper
+    ).getPropertyValue("--mobile-width");
+    this.isMobile = window.innerWidth <= parseInt(mobWidth);
+  }
+
+  onResize() {
+    this.calsIsMobile();
+    // this.calcBlockPriceVisibility();
+  }
+
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+    // window.addEventListener("scroll", this.calcBlockPriceVisibility);
+  }
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
+    // window.removeEventListener("scroll", this.calcBlockPriceVisibility);
+  }
 }
 </script>
 
@@ -445,14 +507,22 @@ export default class CardAboutProductComponent extends Vue {
 }
 
 .product-about {
+  display: none;
+
   --local-pad: 16px;
+  --mobile-width: #{$mobile-big-width};
+  --header-height: #{$height-header};
 
   width: 100%;
-  @include flex-container;
+  // @include flex-container;
   gap: 16px;
 
-  @include bigMobile {
-    flex-direction: column;
+  &.active {
+    @include flex-container;
+
+    @include bigMobile {
+      flex-direction: column;
+    }
   }
 }
 .gallery {
@@ -669,28 +739,10 @@ export default class CardAboutProductComponent extends Vue {
 
     @extend %flex-column;
     gap: 16px;
-
-    // @include bigMobile {
-    //   position: fixed;
-    //   bottom: 0;
-    //   left: 0;
-    //   z-index: 100;
-
-    //   flex-direction: column;
-    //   align-items: flex-start;
-    //   gap: 8px;
-
-    //   box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
-    //   background-color: white;
-    //   border-top-left-radius: 8px;
-    //   border-top-right-radius: 8px;
-
-    //   padding: 8px;
-    // }
   }
 
   &__money-sale {
-    @include flex-container(row, flex-start, flex-start);
+    @include flex-container(row-reverse, flex-end, center);
     gap: 16px;
   }
 
@@ -964,16 +1016,57 @@ export default class CardAboutProductComponent extends Vue {
   }
 }
 
+// .mobile-price {
+//   width: 100%;
+
+//   @include flex-container(row, space-between, center);
+//   flex-wrap: wrap;
+//   gap: 8px;
+
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   z-index: 100;
+
+//   box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
+//   background-color: white;
+//   border-top-left-radius: 8px;
+//   border-top-right-radius: 8px;
+
+//   padding: 8px;
+
+//   & .buy {
+//     max-width: 160px;
+//   }
+
+//   &__money-sale {
+//     @include flex-container(row-reverse, flex-end, center);
+//     gap: 16px;
+//   }
+
+//   &__money-sale-old {
+//     @include fontUnify;
+//     text-decoration: line-through;
+//   }
+
+//   &__money-sale-new {
+//     @include fontUnify(24, 28, 500);
+//     color: red;
+//   }
+
+//   &__money-regular {
+//     @include fontUnify(24, 28, 500);
+//   }
+// }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  // transform: scale(0.5);
 }
 
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
-  // transform: scale(1);
 }
 
 .fade-leave-active,

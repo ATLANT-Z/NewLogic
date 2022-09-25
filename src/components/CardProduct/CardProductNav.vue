@@ -3,19 +3,79 @@
     <div class="card-nav__line"></div>
     <ul class="card-nav__list">
       <li class="card-nav__item">
-        <h3 class="card-nav__title active">Всё о товаре</h3>
+        <h3
+          class="card-nav__title"
+          @click="
+            (TabList.all = true),
+              (TabList.characteristics = false),
+              (TabList.reviews = false),
+              (TabList.multimedia = false),
+              (TabList.downloads = false)
+          "
+          :class="TabList.all ? 'active' : ''"
+        >
+          Всё о товаре
+        </h3>
       </li>
       <li class="card-nav__item">
-        <h3 class="card-nav__title">Характеристики</h3>
+        <h3
+          class="card-nav__title"
+          @click="
+            (TabList.all = false),
+              (TabList.characteristics = true),
+              (TabList.reviews = false),
+              (TabList.multimedia = false),
+              (TabList.downloads = false)
+          "
+          :class="TabList.characteristics ? 'active' : ''"
+        >
+          Характеристики
+        </h3>
       </li>
       <li class="card-nav__item">
-        <h3 class="card-nav__title">Отзывы</h3>
+        <h3
+          class="card-nav__title"
+          @click="
+            (TabList.all = false),
+              (TabList.characteristics = false),
+              (TabList.reviews = true),
+              (TabList.multimedia = false),
+              (TabList.downloads = false)
+          "
+          :class="TabList.reviews ? 'active' : ''"
+        >
+          Отзывы
+        </h3>
       </li>
       <li class="card-nav__item">
-        <h3 class="card-nav__title">Мультимедиа</h3>
+        <h3
+          class="card-nav__title"
+          @click="
+            (TabList.all = false),
+              (TabList.characteristics = false),
+              (TabList.reviews = false),
+              (TabList.multimedia = true),
+              (TabList.downloads = false)
+          "
+          :class="TabList.multimedia ? 'active' : ''"
+        >
+          Мультимедиа
+        </h3>
       </li>
       <li class="card-nav__item">
-        <h3 class="card-nav__title">Загрузки</h3>
+        <h3
+          class="card-nav__title"
+          @click="
+            (TabList.all = false),
+              (TabList.characteristics = false),
+              (TabList.reviews = false),
+              (TabList.multimedia = false),
+              (TabList.downloads = true)
+          "
+          :class="TabList.downloads ? 'active' : ''"
+        >
+          Загрузки
+        </h3>
       </li>
     </ul>
   </article>
@@ -23,11 +83,22 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { Prop } from "vue-property-decorator";
+
+interface activeTabDataList {
+  all: boolean;
+  characteristics: boolean;
+  reviews: boolean;
+  multimedia: boolean;
+  downloads: boolean;
+}
 
 @Options({
   name: "CardProductNavComponent",
 })
-export default class CardProductNavComponent extends Vue {}
+export default class CardProductNavComponent extends Vue {
+  @Prop({ required: true }) TabList: activeTabDataList;
+}
 </script>
 
 <style lang="scss" scoped>

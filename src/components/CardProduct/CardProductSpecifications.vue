@@ -1,11 +1,11 @@
 <template>
   <article class="spec">
     <div class="spec__w">
-      <div class="spec__buywith">
+      <!-- <div class="spec__buywith">
         <h4 class="spec__buywith-title">С этим продуктом покупают</h4>
         <div>SliderComponent</div>
-      </div>
-      <section class="spec__description">
+      </div> -->
+      <section class="spec__description" :class="TabList.all ? 'active' : ''">
         <div class="ui-anchor" id="description"></div>
         <h3 class="spec__title">
           Описание
@@ -15,7 +15,13 @@
         </h3>
         <div class="ui-rich-text" v-html="contentFromServer"></div>
       </section>
-      <section class="spec__characteristics">
+      <section
+        class="spec__characteristics"
+        :class="
+          (TabList.all ? 'active' : '') ||
+          (TabList.characteristics ? 'active' : '')
+        "
+      >
         <h3 class="spec__title">
           Характеристики
           <span class="spec__article">GV-074-IP-H-COА14-20 3МР (Lite)</span>
@@ -32,7 +38,12 @@
           </div>
         </div>
       </section>
-      <section class="instruction">
+      <section
+        class="instruction"
+        :class="
+          (TabList.all ? 'active' : '') || (TabList.downloads ? 'active' : '')
+        "
+      >
         <h3 class="spec__title">
           Загрузки
           <span class="spec__article"
@@ -143,9 +154,20 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { Prop } from "vue-property-decorator";
+
+interface activeTabDataList {
+  all: boolean;
+  characteristics: boolean;
+  reviews: boolean;
+  multimedia: boolean;
+  downloads: boolean;
+}
 
 @Options({})
 export default class CardProductSpecificationsComponent extends Vue {
+  @Prop({ required: true }) TabList: activeTabDataList;
+
   isSale: boolean = true;
   contentFromServer: string = "";
 
@@ -190,7 +212,7 @@ export default class CardProductSpecificationsComponent extends Vue {
   --local-pad: 16px;
   width: 100%;
 
-  @include flex-container;
+  @include flex-container(row, space-between, flex-start);
   gap: 16px;
 
   &__w {
@@ -216,13 +238,23 @@ export default class CardProductSpecificationsComponent extends Vue {
   }
 
   &__description {
-    @extend %flex-column;
+    // visibility: hidden;
+    // opacity: 0;
+    display: none;
+    // @extend %flex-column;
 
     background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 
     padding: var(--local-pad);
+
+    &.active {
+      @extend %flex-column;
+
+      // visibility: visible;
+      // opacity: 1;
+    }
 
     & .spec__title {
       margin-bottom: 24px;
@@ -230,7 +262,10 @@ export default class CardProductSpecificationsComponent extends Vue {
   }
 
   &__characteristics {
-    @extend %flex-column;
+    // visibility: hidden;
+    // opacity: 0;
+    display: none;
+    // @extend %flex-column;
     gap: 16px;
 
     background-color: white;
@@ -238,6 +273,13 @@ export default class CardProductSpecificationsComponent extends Vue {
     border-radius: 8px;
 
     padding: var(--local-pad);
+
+    &.active {
+      @extend %flex-column;
+
+      // visibility: visible;
+      // opacity: 1;
+    }
   }
 
   &__characteristics-cont {
@@ -268,7 +310,11 @@ export default class CardProductSpecificationsComponent extends Vue {
 }
 
 .instruction {
-  @extend %flex-column;
+  // visibility: hidden;
+  // opacity: 0;
+  display: none;
+
+  // @extend %flex-column;
   gap: 16px;
 
   background-color: white;
@@ -276,6 +322,13 @@ export default class CardProductSpecificationsComponent extends Vue {
   border-radius: 8px;
 
   padding: var(--local-pad) 0;
+
+  &.active {
+    @extend %flex-column;
+
+    // visibility: visible;
+    // opacity: 1;
+  }
 
   & .spec__title {
     padding: 0 var(--local-pad);
