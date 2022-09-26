@@ -1043,7 +1043,7 @@ export default class ContactComponent extends Vue {
     @extend %flex-column;
     gap: 16px;
 
-    & > .contact__block-subtitle {
+    & .contact__block-subtitle {
       text-align: left;
     }
   }

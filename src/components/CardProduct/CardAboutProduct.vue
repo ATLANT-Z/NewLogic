@@ -2,7 +2,7 @@
   <article
     class="product-about"
     ref="productWrapper"
-    :class="TabList.all ? 'active' : ''"
+    :class="ActiveBlock === 0 ? 'active' : ''"
   >
     <div class="gallery">
       <div class="gallery__w"></div>
@@ -387,19 +387,19 @@
 import { Options, Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
-interface activeTabDataList {
-  all: boolean;
-  characteristics: boolean;
-  reviews: boolean;
-  multimedia: boolean;
-  downloads: boolean;
-}
+// interface activeTabDataList {
+//   all: boolean;
+//   characteristics: boolean;
+//   reviews: boolean;
+//   multimedia: boolean;
+//   downloads: boolean;
+// }
 
 @Options({
   name: "CardAboutProductComponent",
 })
 export default class CardAboutProductComponent extends Vue {
-  @Prop({ required: true }) TabList: activeTabDataList;
+  @Prop({ required: true }) ActiveBlock: number;
 
   isSale: boolean = true;
   isMobile: boolean = false;

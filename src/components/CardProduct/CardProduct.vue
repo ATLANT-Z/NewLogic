@@ -3,9 +3,7 @@
     <div class="card-product__w">
       <article class="card-title">
         <h1 class="card-title__text">
-          <span class="card-title__text-bold"
-            >Комплект резервного питания с ФЭМ</span
-          >
+          <span class="card-title__text-bold">Комплект резервного питания с ФЭМ</span>
           <span class="card-title__text-normal"></span> 1.4кВт АКБ mGel 100 Ah
         </h1>
         <div class="card-title__code">
@@ -13,9 +11,9 @@
           <span class="card-title__code-number">16799</span>
         </div>
       </article>
-      <CardProductNavComponent :TabList="activeTabData" />
-      <CardAboutProductComponent :TabList="activeTabData" />
-      <CardProductSpecificationsComponent :TabList="activeTabData" />
+      <CardProductNavComponent :TabList="navList" :CurrentNavF="calcCurrNav" :CurrentNav="currentNav"/>
+      <CardAboutProductComponent  :ActiveBlock="currentNav"/>
+      <CardProductSpecificationsComponent  :ActiveBlock="currentNav"/>
       <div class="mobile-price" v-if="isMobile">
         <div class="mobile-price__money-sale">
           <p class="mobile-price__money-sale-old">3500 грн</p>
@@ -47,13 +45,26 @@ export default class CardProductComponent extends Vue {
     productWrapper: HTMLElement;
   };
 
-  activeTabData: any = {
-    all: true,
-    characteristics: false,
-    reviews: false,
-    multimedia: false,
-    downloads: false,
-  };
+  navList: any[] = [
+    { title: "Всё о товаре" },
+    { title: "Характеристики" },
+    { title: "Отзывы" },
+    { title: "Мультимедиа" },
+    { title: "Загрузки" },
+  ]
+  currentNav: number = 0;
+
+  calcCurrNav(idx) {
+    this.currentNav = idx
+  }
+
+  activeTabData: any[] = [
+    { all: true },
+    { characteristics: false },
+    { reviews: false },
+    { multimedia: false },
+    { downloads: false },
+  ];
   isMobile: boolean = false;
 
   calsIsMobile() {
@@ -88,6 +99,7 @@ export default class CardProductComponent extends Vue {
   align-items: center;
 
   padding: 0 16px;
+
   &__w {
     @extend %width-main;
 
@@ -96,6 +108,7 @@ export default class CardProductComponent extends Vue {
     gap: 16px;
   }
 }
+
 .card-title {
   width: 100%;
 
@@ -125,8 +138,7 @@ export default class CardProductComponent extends Vue {
     }
   }
 
-  &__text-normal {
-  }
+  &__text-normal {}
 
   &__code {
     @include flex-container(row, center, center);
@@ -143,8 +155,7 @@ export default class CardProductComponent extends Vue {
     color: $color-main;
   }
 
-  &__code-number {
-  }
+  &__code-number {}
 }
 
 .mobile-price {
@@ -189,6 +200,7 @@ export default class CardProductComponent extends Vue {
     @include fontUnify(24, 28, 500);
   }
 }
+
 .mobile-price {
   width: 100%;
 

@@ -2,81 +2,64 @@
   <article class="card-nav">
     <div class="card-nav__line"></div>
     <ul class="card-nav__list">
-      <li class="card-nav__item">
-        <h3
-          class="card-nav__title"
-          @click="
-            (TabList.all = true),
-              (TabList.characteristics = false),
-              (TabList.reviews = false),
-              (TabList.multimedia = false),
-              (TabList.downloads = false)
-          "
-          :class="TabList.all ? 'active' : ''"
-        >
+      <li class="card-nav__item" v-for="(item, idx) in TabList" :key="idx" @click="CurrentNavF(idx)">
+        <h3 class="card-nav__title" :class="{active: idx === CurrentNav}">{{item.title}}</h3>
+      </li>
+      <!-- <li class="card-nav__item">
+        <h3 class="card-nav__title" @click="
+          (TabList.all = true),
+            (TabList.characteristics = false),
+            (TabList.reviews = false),
+            (TabList.multimedia = false),
+            (TabList.downloads = false)
+        " :class="TabList.all ? 'active' : ''">
           Всё о товаре
         </h3>
       </li>
       <li class="card-nav__item">
-        <h3
-          class="card-nav__title"
-          @click="
-            (TabList.all = false),
-              (TabList.characteristics = true),
-              (TabList.reviews = false),
-              (TabList.multimedia = false),
-              (TabList.downloads = false)
-          "
-          :class="TabList.characteristics ? 'active' : ''"
-        >
+        <h3 class="card-nav__title" @click="
+          (TabList.all = false),
+            (TabList.characteristics = true),
+            (TabList.reviews = false),
+            (TabList.multimedia = false),
+            (TabList.downloads = false)
+        " :class="TabList.characteristics ? 'active' : ''">
           Характеристики
         </h3>
       </li>
       <li class="card-nav__item">
-        <h3
-          class="card-nav__title"
-          @click="
-            (TabList.all = false),
-              (TabList.characteristics = false),
-              (TabList.reviews = true),
-              (TabList.multimedia = false),
-              (TabList.downloads = false)
-          "
-          :class="TabList.reviews ? 'active' : ''"
-        >
+        <h3 class="card-nav__title" @click="
+          (TabList.all = false),
+            (TabList.characteristics = false),
+            (TabList.reviews = true),
+            (TabList.multimedia = false),
+            (TabList.downloads = false)
+        " :class="TabList.reviews ? 'active' : ''">
           Отзывы
         </h3>
       </li>
       <li class="card-nav__item">
-        <h3
-          class="card-nav__title"
-          @click="
-            (TabList.all = false),
-              (TabList.characteristics = false),
-              (TabList.reviews = false),
-              (TabList.multimedia = true),
-              (TabList.downloads = false)
-          "
-          :class="TabList.multimedia ? 'active' : ''"
-        >
+        <h3 class="card-nav__title" @click="
+          (TabList.all = false),
+            (TabList.characteristics = false),
+            (TabList.reviews = false),
+            (TabList.multimedia = true),
+            (TabList.downloads = false)
+        " :class="TabList.multimedia ? 'active' : ''">
           Мультимедиа
         </h3>
       </li>
       <li class="card-nav__item">
-        <h3
-          class="card-nav__title"
-          @click="
-            (TabList.all = false),
-              (TabList.characteristics = false),
-              (TabList.reviews = false),
-              (TabList.multimedia = false),
-              (TabList.downloads = true)
-          "
-          :class="TabList.downloads ? 'active' : ''"
-        >
+        <h3 class="card-nav__title" @click="
+          (TabList.all = false),
+            (TabList.characteristics = false),
+            (TabList.reviews = false),
+            (TabList.multimedia = false),
+            (TabList.downloads = true)
+        " :class="TabList.downloads ? 'active' : ''">
           Загрузки
         </h3>
-      </li>
+      </li> -->
     </ul>
   </article>
 </template>
@@ -93,11 +76,34 @@ interface activeTabDataList {
   downloads: boolean;
 }
 
+interface navList {
+  title: any;
+}
+
 @Options({
   name: "CardProductNavComponent",
-})
+  emits: {
+    CurrentNavF(idx) {
+      this.CurrentNav = idx      
+    }
+  }
+}
+)
 export default class CardProductNavComponent extends Vue {
-  @Prop({ required: true }) TabList: activeTabDataList;
+  @Prop({ required: true }) TabList: navList;
+  @Prop({ required: true }) CurrentNavF: Function;
+  @Prop({ required: true }) CurrentNav: Function;
+
+
+
+  // navList: any[] = [
+  //   { title: "Всё о товаре" },
+  //   { title: "Характеристики" },
+  //   { title: "Отзывы" },
+  //   { title: "Мультимедиа" },
+  //   { title: "Загрузки" },
+  // ]
+
 }
 </script>
 
@@ -154,8 +160,7 @@ export default class CardProductNavComponent extends Vue {
     }
   }
 
-  &__item {
-  }
+  &__item {}
 
   &__title {
     @include fontUnify(20, 24);
@@ -174,6 +179,7 @@ export default class CardProductNavComponent extends Vue {
       border-top: 3px solid $color-main;
       color: $color-main;
     }
+
     &.active {
       border-top: 3px solid $color-main;
       color: $color-main;
