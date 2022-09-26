@@ -3,7 +3,9 @@
     <div class="card-product__w">
       <article class="card-title">
         <h1 class="card-title__text">
-          <span class="card-title__text-bold">Комплект резервного питания с ФЭМ</span>
+          <span class="card-title__text-bold"
+            >Комплект резервного питания с ФЭМ</span
+          >
           <span class="card-title__text-normal"></span> 1.4кВт АКБ mGel 100 Ah
         </h1>
         <div class="card-title__code">
@@ -11,9 +13,13 @@
           <span class="card-title__code-number">16799</span>
         </div>
       </article>
-      <CardProductNavComponent :TabList="navList" :CurrentNavF="calcCurrNav" :CurrentNav="currentNav"/>
-      <CardAboutProductComponent  :ActiveBlock="currentNav"/>
-      <CardProductSpecificationsComponent  :ActiveBlock="currentNav"/>
+      <CardProductNavComponent
+        :TabList="navList"
+        :CurrentNavF="calcCurrNav"
+        :CurrentNav="currentNav"
+      />
+      <CardAboutProductComponent :ActiveBlock="currentNav" />
+      <CardProductSpecificationsComponent :ActiveBlock="currentNav" />
       <div class="mobile-price" v-if="isMobile">
         <div class="mobile-price__money-sale">
           <p class="mobile-price__money-sale-old">3500 грн</p>
@@ -51,11 +57,11 @@ export default class CardProductComponent extends Vue {
     { title: "Отзывы" },
     { title: "Мультимедиа" },
     { title: "Загрузки" },
-  ]
+  ];
   currentNav: number = 0;
 
   calcCurrNav(idx) {
-    this.currentNav = idx
+    this.currentNav = idx;
   }
 
   activeTabData: any[] = [
@@ -138,7 +144,8 @@ export default class CardProductComponent extends Vue {
     }
   }
 
-  &__text-normal {}
+  &__text-normal {
+  }
 
   &__code {
     @include flex-container(row, center, center);
@@ -155,7 +162,8 @@ export default class CardProductComponent extends Vue {
     color: $color-main;
   }
 
-  &__code-number {}
+  &__code-number {
+  }
 }
 
 .mobile-price {

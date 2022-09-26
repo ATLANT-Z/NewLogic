@@ -2,8 +2,15 @@
   <article class="card-nav">
     <div class="card-nav__line"></div>
     <ul class="card-nav__list">
-      <li class="card-nav__item" v-for="(item, idx) in TabList" :key="idx" @click="CurrentNavF(idx)">
-        <h3 class="card-nav__title" :class="{active: idx === CurrentNav}">{{item.title}}</h3>
+      <li
+        class="card-nav__item"
+        v-for="(item, idx) in TabList"
+        :key="idx"
+        @click="CurrentNavF(idx)"
+      >
+        <h3 class="card-nav__title" :class="{ active: idx === CurrentNav }">
+          {{ item.title }}
+        </h3>
       </li>
       <!-- <li class="card-nav__item">
         <h3 class="card-nav__title" @click="
@@ -68,14 +75,6 @@
 import { Options, Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
-interface activeTabDataList {
-  all: boolean;
-  characteristics: boolean;
-  reviews: boolean;
-  multimedia: boolean;
-  downloads: boolean;
-}
-
 interface navList {
   title: any;
 }
@@ -84,17 +83,14 @@ interface navList {
   name: "CardProductNavComponent",
   emits: {
     CurrentNavF(idx) {
-      this.CurrentNav = idx      
-    }
-  }
-}
-)
+      this.CurrentNav = idx;
+    },
+  },
+})
 export default class CardProductNavComponent extends Vue {
   @Prop({ required: true }) TabList: navList;
   @Prop({ required: true }) CurrentNavF: Function;
   @Prop({ required: true }) CurrentNav: Function;
-
-
 
   // navList: any[] = [
   //   { title: "Всё о товаре" },
@@ -103,7 +99,6 @@ export default class CardProductNavComponent extends Vue {
   //   { title: "Мультимедиа" },
   //   { title: "Загрузки" },
   // ]
-
 }
 </script>
 
@@ -160,7 +155,8 @@ export default class CardProductNavComponent extends Vue {
     }
   }
 
-  &__item {}
+  &__item {
+  }
 
   &__title {
     @include fontUnify(20, 24);

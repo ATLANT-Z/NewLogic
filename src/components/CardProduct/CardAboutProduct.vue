@@ -514,7 +514,6 @@ export default class CardAboutProductComponent extends Vue {
   --header-height: #{$height-header};
 
   width: 100%;
-  // @include flex-container;
   gap: 16px;
 
   &.active {
@@ -1015,49 +1014,6 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 }
-
-// .mobile-price {
-//   width: 100%;
-
-//   @include flex-container(row, space-between, center);
-//   flex-wrap: wrap;
-//   gap: 8px;
-
-//   position: fixed;
-//   bottom: 0;
-//   left: 0;
-//   z-index: 100;
-
-//   box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
-//   background-color: white;
-//   border-top-left-radius: 8px;
-//   border-top-right-radius: 8px;
-
-//   padding: 8px;
-
-//   & .buy {
-//     max-width: 160px;
-//   }
-
-//   &__money-sale {
-//     @include flex-container(row-reverse, flex-end, center);
-//     gap: 16px;
-//   }
-
-//   &__money-sale-old {
-//     @include fontUnify;
-//     text-decoration: line-through;
-//   }
-
-//   &__money-sale-new {
-//     @include fontUnify(24, 28, 500);
-//     color: red;
-//   }
-
-//   &__money-regular {
-//     @include fontUnify(24, 28, 500);
-//   }
-// }
 
 .fade-enter-from,
 .fade-leave-to {

@@ -5,16 +5,25 @@
         <h4 class="spec__buywith-title">С этим продуктом покупают</h4>
         <div>SliderComponent</div>
       </div> -->
-      <section class="spec__description" :class="ActiveBlock === 0 ? 'active' : ''">
+      <section
+        class="spec__description"
+        :class="ActiveBlock === 0 ? 'active' : ''"
+      >
         <div class="ui-anchor" id="description"></div>
         <h3 class="spec__title">
           Описание
-          <span class="spec__article">UPS 500VA + литиевая (LiFePO4) батарея 750W</span>
+          <span class="spec__article"
+            >UPS 500VA + литиевая (LiFePO4) батарея 750W</span
+          >
         </h3>
         <div class="ui-rich-text" v-html="contentFromServer"></div>
       </section>
-      <section class="spec__characteristics" :class="
-      (ActiveBlock === 0 ? 'active' : ActiveBlock === 1 ? 'active' : '')">
+      <section
+        class="spec__characteristics"
+        :class="
+          ActiveBlock === 0 ? 'active' : ActiveBlock === 1 ? 'active' : ''
+        "
+      >
         <h3 class="spec__title">
           Характеристики
           <span class="spec__article">GV-074-IP-H-COА14-20 3МР (Lite)</span>
@@ -31,11 +40,17 @@
           </div>
         </div>
       </section>
-      <section class="instruction" 
-      :class="(ActiveBlock === 0 ? 'active' : ActiveBlock === 4 ? 'active' : '')">
+      <section
+        class="instruction"
+        :class="
+          ActiveBlock === 0 ? 'active' : ActiveBlock === 4 ? 'active' : ''
+        "
+      >
         <h3 class="spec__title">
           Загрузки
-          <span class="spec__article">UPS 500VA + литиевая (LiFePO4) батарея 750W</span>
+          <span class="spec__article"
+            >UPS 500VA + литиевая (LiFePO4) батарея 750W</span
+          >
         </h3>
         <div class="instruction__title-w">
           <span class="instruction__title">Тип</span>
@@ -46,41 +61,94 @@
         </div>
         <div class="instruction__tech-w">
           <div class="instruction__tech-title-w">
-            <span class="instruction__tech-title">Техническая документация</span>
+            <span class="instruction__tech-title"
+              >Техническая документация</span
+            >
           </div>
-          <div class="instruction__tech-row" v-for="(item, idx) of techData" :key="idx">
+          <div
+            class="instruction__tech-row"
+            v-for="(item, idx) of techData"
+            :key="idx"
+          >
             <span class="instruction__tech-row-title">{{ item.title }}</span>
             <span class="instruction__tech-row-date">{{ item.date }}</span>
             <span class="instruction__tech-row-lang">{{ item.lang }}</span>
             <span class="instruction__tech-row-type">{{ item.type }}</span>
-            <a class="instruction__tech-row-link" :href="item.link"><span>Скачать</span>
-              <img class="instruction__tech-row-link-img" src="@/assets/icons/download-arrow.svg" alt="" /></a>
+            <a class="instruction__tech-row-link" :href="item.link"
+              ><span>Скачать</span>
+              <img
+                class="instruction__tech-row-link-img"
+                src="@/assets/icons/download-arrow.svg"
+                alt=""
+            /></a>
           </div>
         </div>
         <div class="instruction__tech-w" v-if="driverData.length">
           <div class="instruction__tech-title-w">
             <span class="instruction__tech-title">Драйвера</span>
           </div>
-          <div class="instruction__tech-row" v-for="(item, idx) of driverData" :key="idx">
+          <div
+            class="instruction__tech-row"
+            v-for="(item, idx) of driverData"
+            :key="idx"
+          >
             <span class="instruction__tech-row-title">{{ item.title }}</span>
             <span class="instruction__tech-row-date">{{ item.date }}</span>
             <span class="instruction__tech-row-lang">{{ item.lang }}</span>
             <span class="instruction__tech-row-type">{{ item.type }}</span>
-            <a class="instruction__tech-row-link" :href="item.link"><span>Скачать</span>
-              <img class="instruction__tech-row-link-img" src="@/assets/icons/download-arrow.svg" alt="" /></a>
+            <a class="instruction__tech-row-link" :href="item.link"
+              ><span>Скачать</span>
+              <img
+                class="instruction__tech-row-link-img"
+                src="@/assets/icons/download-arrow.svg"
+                alt=""
+            /></a>
           </div>
         </div>
         <div class="instruction__tech-w">
           <div class="instruction__tech-title-w">
             <span class="instruction__tech-title">Мобильные приложения</span>
           </div>
-          <div class="instruction__tech-row" v-for="(item, idx) of techData" :key="idx">
+          <div
+            class="instruction__tech-row"
+            v-for="(item, idx) of techData"
+            :key="idx"
+          >
             <span class="instruction__tech-row-title">{{ item.title }}</span>
             <span class="instruction__tech-row-date">{{ item.date }}</span>
             <span class="instruction__tech-row-lang">{{ item.lang }}</span>
             <span class="instruction__tech-row-type">{{ item.type }}</span>
-            <a class="instruction__tech-row-link" :href="item.link"><span>Скачать</span>
-              <img class="instruction__tech-row-link-img" src="@/assets/icons/download-arrow.svg" alt="" /></a>
+            <a class="instruction__tech-row-link" :href="item.link"
+              ><span>Скачать</span>
+              <img
+                class="instruction__tech-row-link-img"
+                src="@/assets/icons/download-arrow.svg"
+                alt=""
+            /></a>
+          </div>
+        </div>
+      </section>
+      <section class="multimedia" :class="ActiveBlock === 3 ? 'active' : ''">
+        <h3 class="spec__title">
+          Видеообзоры
+          <span class="spec__article"
+            >UPS 500VA + литиевая (LiFePO4) батарея 750W</span
+          >
+        </h3>
+        <div class="multimedia__player-list">
+          <div class="multimedia__player-w">
+            <iframe
+              class="multimedia__player"
+              src="https://www.youtube.com/embed/mVcXW-jdC3Q"
+              frameborder="0"
+            ></iframe>
+          </div>
+          <div class="multimedia__player-w">
+            <iframe
+              class="multimedia__player"
+              src="https://www.youtube.com/embed/mVcXW-jdC3Q"
+              frameborder="0"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -88,7 +156,11 @@
     <div class="product-card__position">
       <div class="product-card__w">
         <div class="product-card__img-w">
-          <img class="product-card__img" src="@/assets/img/sliderPromImg.png" alt="" />
+          <img
+            class="product-card__img"
+            src="@/assets/img/sliderPromImg.png"
+            alt=""
+          />
         </div>
         <div class="product-card__money" @click="isSale = !isSale">
           <div class="product-card__money-sale" v-if="isSale">
@@ -180,13 +252,11 @@ export default class CardProductSpecificationsComponent extends Vue {
     font-weight: 400;
   }
 
-  &__buywith-title {}
+  &__buywith-title {
+  }
 
   &__description {
-    // visibility: hidden;
-    // opacity: 0;
     display: none;
-    // @extend %flex-column;
 
     background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
@@ -196,9 +266,6 @@ export default class CardProductSpecificationsComponent extends Vue {
 
     &.active {
       @extend %flex-column;
-
-      // visibility: visible;
-      // opacity: 1;
     }
 
     & .spec__title {
@@ -207,10 +274,7 @@ export default class CardProductSpecificationsComponent extends Vue {
   }
 
   &__characteristics {
-    // visibility: hidden;
-    // opacity: 0;
     display: none;
-    // @extend %flex-column;
     gap: 16px;
 
     background-color: white;
@@ -221,9 +285,6 @@ export default class CardProductSpecificationsComponent extends Vue {
 
     &.active {
       @extend %flex-column;
-
-      // visibility: visible;
-      // opacity: 1;
     }
   }
 
@@ -255,11 +316,8 @@ export default class CardProductSpecificationsComponent extends Vue {
 }
 
 .instruction {
-  // visibility: hidden;
-  // opacity: 0;
   display: none;
 
-  // @extend %flex-column;
   gap: 16px;
 
   background-color: white;
@@ -270,9 +328,6 @@ export default class CardProductSpecificationsComponent extends Vue {
 
   &.active {
     @extend %flex-column;
-
-    // visibility: visible;
-    // opacity: 1;
   }
 
   & .spec__title {
@@ -369,7 +424,8 @@ export default class CardProductSpecificationsComponent extends Vue {
     }
   }
 
-  &__tech-row-lang {}
+  &__tech-row-lang {
+  }
 
   &__tech-row-type {
     @include mobile {
@@ -413,6 +469,39 @@ export default class CardProductSpecificationsComponent extends Vue {
   }
 }
 
+.multimedia {
+  display: none;
+
+  gap: 16px;
+
+  background-color: white;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+
+  padding: var(--local-pad);
+
+  &.active {
+    @extend %flex-column;
+  }
+
+  &__player-list {
+    @include flex-container(row, center, center);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__player-w {
+    width: 100%;
+    max-width: 493px;
+    height: 256px;
+  }
+
+  &__player {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .product-card {
   &__position {
     @include bigMobile {
@@ -441,7 +530,8 @@ export default class CardProductSpecificationsComponent extends Vue {
     width: 100%;
   }
 
-  &__img {}
+  &__img {
+  }
 
   &__money {
     width: 100%;
