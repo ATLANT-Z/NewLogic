@@ -2,103 +2,57 @@
   <article class="card-nav">
     <div class="card-nav__line"></div>
     <ul class="card-nav__list">
-      <li
-        class="card-nav__item"
-        v-for="(item, idx) in TabList"
-        :key="idx"
-        @click="CurrentNavF(idx)"
+      <li class="card-nav__item" 
+          v-for="(item) in navList" :key="item.id" @click="clickNav(item.id)"
       >
-        <h3 class="card-nav__title" :class="{ active: idx === CurrentNav }">
+        <h3 class="card-nav__title" :class="{ 
+          active: item.id === CurrentNav 
+        }">
           {{ item.title }}
         </h3>
       </li>
-      <!-- <li class="card-nav__item">
-        <h3 class="card-nav__title" @click="
-          (TabList.all = true),
-            (TabList.characteristics = false),
-            (TabList.reviews = false),
-            (TabList.multimedia = false),
-            (TabList.downloads = false)
-        " :class="TabList.all ? 'active' : ''">
-          Всё о товаре
-        </h3>
-      </li>
-      <li class="card-nav__item">
-        <h3 class="card-nav__title" @click="
-          (TabList.all = false),
-            (TabList.characteristics = true),
-            (TabList.reviews = false),
-            (TabList.multimedia = false),
-            (TabList.downloads = false)
-        " :class="TabList.characteristics ? 'active' : ''">
-          Характеристики
-        </h3>
-      </li>
-      <li class="card-nav__item">
-        <h3 class="card-nav__title" @click="
-          (TabList.all = false),
-            (TabList.characteristics = false),
-            (TabList.reviews = true),
-            (TabList.multimedia = false),
-            (TabList.downloads = false)
-        " :class="TabList.reviews ? 'active' : ''">
-          Отзывы
-        </h3>
-      </li>
-      <li class="card-nav__item">
-        <h3 class="card-nav__title" @click="
-          (TabList.all = false),
-            (TabList.characteristics = false),
-            (TabList.reviews = false),
-            (TabList.multimedia = true),
-            (TabList.downloads = false)
-        " :class="TabList.multimedia ? 'active' : ''">
-          Мультимедиа
-        </h3>
-      </li>
-      <li class="card-nav__item">
-        <h3 class="card-nav__title" @click="
-          (TabList.all = false),
-            (TabList.characteristics = false),
-            (TabList.reviews = false),
-            (TabList.multimedia = false),
-            (TabList.downloads = true)
-        " :class="TabList.downloads ? 'active' : ''">
-          Загрузки
-        </h3>
-      </li> -->
     </ul>
   </article>
 </template>
 
 <script lang="ts">
+import { ProductNav } from "@/models/view/card_product/nav";
 import { Options, Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
-interface navList {
-  title: any;
-}
-
 @Options({
   name: "CardProductNavComponent",
-  emits: {
-    CurrentNavF(idx) {
-      this.CurrentNav = idx;
-    },
-  },
+  emits: ['navChange']
 })
 export default class CardProductNavComponent extends Vue {
-  @Prop({ required: true }) TabList: navList;
-  @Prop({ required: true }) CurrentNavF: Function;
-  @Prop({ required: true }) CurrentNav: Function;
+  @Prop({ required: true }) CurrentNav: ProductNav;
 
-  // navList: any[] = [
-  //   { title: "Всё о товаре" },
-  //   { title: "Характеристики" },
-  //   { title: "Отзывы" },
-  //   { title: "Мультимедиа" },
-  //   { title: "Загрузки" },
-  // ]
+  navList = [
+    {
+      id: ProductNav.ALL,
+      title: "Всё о товаре"
+    },
+    {
+      id: ProductNav.SPEC,
+      title: "Характеристики"
+    },
+    {
+      id: ProductNav.REVIEWS,
+      title: "Отзывы"
+    },
+    {
+      id: ProductNav.MEDIA,
+      title: "Мультимедиа"
+    },
+    {
+      id: ProductNav.DOWNLOADS,
+      title: "Загрузки"
+    },
+  ];
+
+  clickNav(idx) {
+    this.$emit('navChange', idx);
+  }
 }
 </script>
 
@@ -155,8 +109,7 @@ export default class CardProductNavComponent extends Vue {
     }
   }
 
-  &__item {
-  }
+  &__item {}
 
   &__title {
     @include fontUnify(20, 24);

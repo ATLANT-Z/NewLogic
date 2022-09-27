@@ -1,9 +1,5 @@
 <template>
-  <article
-    class="product-about"
-    ref="productWrapper"
-    :class="ActiveBlock === 0 ? 'active' : ''"
-  >
+  <article class="product-about">
     <div class="gallery">
       <div class="gallery__w"></div>
       <div class="info__block">
@@ -11,46 +7,22 @@
           <h2 class="info__block-title">Преимущества</h2>
           <div class="advantage__w">
             <div class="advantage__img-w">
-              <img
-                class="advantage__img"
-                src="@/assets/icons/cardAdvantage1.svg"
-                alt=""
-              />
+              <img class="advantage__img" src="@/assets/icons/cardAdvantage1.svg" alt="" />
             </div>
             <div class="advantage__img-w">
-              <img
-                class="advantage__img"
-                src="@/assets/icons/cardAdvantage2.svg"
-                alt=""
-              />
+              <img class="advantage__img" src="@/assets/icons/cardAdvantage2.svg" alt="" />
             </div>
             <div class="advantage__img-w">
-              <img
-                class="advantage__img"
-                src="@/assets/icons/cardAdvantage3.svg"
-                alt=""
-              />
+              <img class="advantage__img" src="@/assets/icons/cardAdvantage3.svg" alt="" />
             </div>
             <div class="advantage__img-w">
-              <img
-                class="advantage__img"
-                src="@/assets/icons/cardAdvantage4.svg"
-                alt=""
-              />
+              <img class="advantage__img" src="@/assets/icons/cardAdvantage4.svg" alt="" />
             </div>
             <div class="advantage__img-w">
-              <img
-                class="advantage__img"
-                src="@/assets/icons/cardAdvantage5.svg"
-                alt=""
-              />
+              <img class="advantage__img" src="@/assets/icons/cardAdvantage5.svg" alt="" />
             </div>
             <div class="advantage__img-w">
-              <img
-                class="advantage__img"
-                src="@/assets/icons/cardAdvantage6.svg"
-                alt=""
-              />
+              <img class="advantage__img" src="@/assets/icons/cardAdvantage6.svg" alt="" />
             </div>
           </div>
         </div>
@@ -58,28 +30,13 @@
       <div class="read-more">
         <a class="read-more__link" href="#description">
           <p class="read-more__text">Подробнее о товаре</p>
-          <svg
-            class="read-more__img"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 8V16M12 16L15.5 12.5M12 16L8.5 12.5"
-              stroke="#F36C21"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+          <svg class="read-more__img" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke="#F36C21" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
             <path
               d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-              stroke="#F36C21"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              stroke="#F36C21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
       </div>
@@ -111,43 +68,18 @@
             <div class="price__money-btn-w">
               <button class="buy">Купить</button>
               <button class="buy__credit">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                    stroke="#F36C21"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
+                    stroke="#F36C21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                   <path
                     d="M15.5 16C15.7761 16 16 15.7761 16 15.5C16 15.2239 15.7761 15 15.5 15C15.2239 15 15 15.2239 15 15.5C15 15.7761 15.2239 16 15.5 16Z"
-                    fill="#F36C21"
-                    stroke="#F36C21"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
+                    fill="#F36C21" stroke="#F36C21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                   <path
                     d="M8.5 9C8.77614 9 9 8.77614 9 8.5C9 8.22386 8.77614 8 8.5 8C8.22386 8 8 8.22386 8 8.5C8 8.77614 8.22386 9 8.5 9Z"
-                    fill="#F36C21"
-                    stroke="#F36C21"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M16 8L8 16"
-                    stroke="#F36C21"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
+                    fill="#F36C21" stroke="#F36C21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M16 8L8 16" stroke="#F36C21" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
                 Купить в кредит
               </button>
@@ -197,68 +129,21 @@
             <div class="delivery__nav-line"></div>
             <ul class="delivery__nav-list">
               <li class="delivery__nav-item">
-                <p
-                  class="delivery__nav-title"
-                  @click="
-                    (deliveryData.odesa = true), (deliveryData.ukraine = false)
-                  "
-                  :class="deliveryData.odesa ? 'active' : ''"
-                >
+                <p class="delivery__nav-title" @click="currLabel = DeliveryLabel.ODESA"
+                  :class="{active: currLabel === DeliveryLabel.ODESA}">
                   Одесса
                 </p>
               </li>
               <li class="delivery__nav-item">
-                <p
-                  class="delivery__nav-title"
-                  @click="
-                    (deliveryData.odesa = false), (deliveryData.ukraine = true)
-                  "
-                  :class="deliveryData.ukraine ? 'active' : ''"
-                >
+                <p class="delivery__nav-title" @click="currLabel = DeliveryLabel.UKRAINE"
+                  :class="{active: currLabel === DeliveryLabel.UKRAINE}">
                   Украина
                 </p>
               </li>
             </ul>
           </div>
-          <!-- <transition name="fade" mode="out-in">
-            <div class="delivery__terms-odesa" v-show="deliveryData.odesa">
-              <p class="delivery__terms">
-                <span class="delivery__terms-post">Самовывоз</span>
-                отправим завтра
-                <span class="delivery__terms-cost">Бесплатно</span>
-              </p>
-              <p class="delivery__terms">
-                <span class="delivery__terms-post">Курьер</span>
-                завтра с 10:00 до 17:00
-                <span class="delivery__terms-cost">Бесплатно</span>
-              </p>
-              <p class="delivery__terms">
-                <span class="delivery__terms-post"
-                  >Отделение “Новая Почта”</span
-                >
-                отправим завтра
-                <span class="delivery__terms-cost">от 56 грн</span>
-              </p>
-            </div>
-          </transition>
-          <transition name="fade" mode="out-in">
-            <div class="delivery__terms-ukraine" v-show="deliveryData.ukraine">
-              <p class="delivery__terms">
-                <span class="delivery__terms-post"
-                  >Отделение “Новая Почта”</span
-                >
-                отправим завтра
-                <span class="delivery__terms-cost">от 56 грн</span>
-              </p>
-              <p class="delivery__terms">
-                <span class="delivery__terms-post">Отделение “УкрПочта”</span>
-                отправим завтра
-                <span class="delivery__terms-cost">от 56 грн</span>
-              </p>
-            </div>
-          </transition> -->
           <transition name="fade" mode="out-in" appear>
-            <div class="delivery__terms-odesa" v-if="deliveryData.odesa">
+            <div class="delivery__terms-odesa" v-if="currLabel === DeliveryLabel.ODESA">
               <p class="delivery__terms">
                 <span class="delivery__terms-post">Самовывоз</span>
                 отправим завтра
@@ -270,21 +155,14 @@
                 <span class="delivery__terms-cost">Бесплатно</span>
               </p>
               <p class="delivery__terms">
-                <span class="delivery__terms-post"
-                  >Отделение “Новая Почта”</span
-                >
+                <span class="delivery__terms-post">Отделение “Новая Почта”</span>
                 отправим завтра
                 <span class="delivery__terms-cost">от 56 грн</span>
               </p>
             </div>
-            <div
-              class="delivery__terms-ukraine"
-              v-else-if="deliveryData.ukraine"
-            >
+            <div class="delivery__terms-ukraine" v-else-if="currLabel === DeliveryLabel.UKRAINE">
               <p class="delivery__terms">
-                <span class="delivery__terms-post"
-                  >Отделение “Новая Почта”</span
-                >
+                <span class="delivery__terms-post">Отделение “Новая Почта”</span>
                 отправим завтра
                 <span class="delivery__terms-cost">от 56 грн</span>
               </p>
@@ -302,53 +180,25 @@
           <h2 class="info__block-title">Способы оплаты</h2>
           <div class="payments__w">
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/cardGooglePay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/cardGooglePay.svg" alt="" />
             </div>
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/cardApplePay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/cardApplePay.svg" alt="" />
             </div>
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/card24Pay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/card24Pay.svg" alt="" />
             </div>
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/cardVisaPay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/cardVisaPay.svg" alt="" />
             </div>
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/cardMastercardPay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/cardMastercardPay.svg" alt="" />
             </div>
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/cardInstallmentPay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/cardInstallmentPay.svg" alt="" />
             </div>
             <div class="payments__item">
-              <img
-                class="payments__item-img"
-                src="@/assets/icons/cardInInstallmentPay.svg"
-                alt=""
-              />
+              <img class="payments__item-img" src="@/assets/icons/cardInInstallmentPay.svg" alt="" />
             </div>
             <div class="payments__item">
               <p class="payments__item-text">Наличный</p>
@@ -363,11 +213,7 @@
         <div class="guarantee">
           <h2 class="info__block-title">Гарантия</h2>
           <div class="guarantee__info">
-            <img
-              class="guarantee__info-img"
-              src="@/assets/icons/cardGuarantee.svg"
-              alt=""
-            />
+            <img class="guarantee__info-img" src="@/assets/icons/cardGuarantee.svg" alt="" />
             <div class="guarantee__info-text-w">
               <p class="guarantee__info-text">
                 <b>100%</b> гарантия качества от производителя.
@@ -385,75 +231,24 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { Prop } from "vue-property-decorator";
 
-// interface activeTabDataList {
-//   all: boolean;
-//   characteristics: boolean;
-//   reviews: boolean;
-//   multimedia: boolean;
-//   downloads: boolean;
-// }
+enum DeliveryLabel {
+  ODESA = 1,
+  UKRAINE
+}
 
 @Options({
   name: "CardAboutProductComponent",
 })
 export default class CardAboutProductComponent extends Vue {
-  @Prop({ required: true }) ActiveBlock: number;
+  isSale: boolean = false;
 
-  isSale: boolean = true;
-  isMobile: boolean = false;
-  isVisibility: boolean = false;
+  DeliveryLabel = DeliveryLabel;
+  currLabel: DeliveryLabel = DeliveryLabel.ODESA;
 
   declare $refs: {
-    productWrapper: HTMLElement;
     blockPrice: HTMLElement;
-    mobilePrice: HTMLElement;
   };
-
-  deliveryData: any = {
-    odesa: true,
-    ukraine: false,
-  };
-
-  calcBlockPriceVisibility() {
-    const blockPriceRect = this.$refs.blockPrice.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    if (
-      blockPriceRect.top + blockPriceRect.height <= windowHeight &&
-      blockPriceRect.top + blockPriceRect.height > 0
-    )
-      this.isVisibility = !this.isVisibility;
-    // console.log(blockPriceRect.bottom);
-    console.log(blockPriceRect.top);
-    // console.log(blockPriceRect.height);
-    console.log(window.innerHeight);
-    console.log(window.scrollY);
-  }
-
-  calsIsMobile() {
-    const mobWidth = getComputedStyle(
-      this.$refs.productWrapper
-    ).getPropertyValue("--mobile-width");
-    this.isMobile = window.innerWidth <= parseInt(mobWidth);
-  }
-
-  onResize() {
-    this.calsIsMobile();
-    // this.calcBlockPriceVisibility();
-  }
-
-  mounted() {
-    this.onResize();
-    window.addEventListener("resize", this.onResize);
-    // window.addEventListener("scroll", this.calcBlockPriceVisibility);
-  }
-
-  unmounted() {
-    window.removeEventListener("resize", this.onResize);
-    // window.removeEventListener("scroll", this.calcBlockPriceVisibility);
-  }
 }
 </script>
 
@@ -524,6 +319,7 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 }
+
 .gallery {
   max-width: 590px;
   width: 100%;
@@ -561,11 +357,9 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 
-  &__img-w {
-  }
+  &__img-w {}
 
-  &__img {
-  }
+  &__img {}
 }
 
 .read-more {
@@ -626,6 +420,7 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 }
+
 .sale {
   @include flex-container(row, space-between, center);
   gap: 16px;
@@ -723,6 +518,7 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 }
+
 .price {
   height: 100%;
 
@@ -828,8 +624,7 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 
-  &__info-tools {
-  }
+  &__info-tools {}
 }
 
 .delivery {
@@ -879,8 +674,7 @@ export default class CardAboutProductComponent extends Vue {
     }
   }
 
-  &__nav-item {
-  }
+  &__nav-item {}
 
   &__nav-title {
     position: relative;
@@ -898,10 +692,12 @@ export default class CardAboutProductComponent extends Vue {
     transition: 0.2s ease;
 
     z-index: 2;
+
     &:hover {
       border-top: 3px solid $color-main;
       color: $color-main;
     }
+
     &.active {
       border-top: 3px solid $color-main;
       color: $color-main;
@@ -979,8 +775,7 @@ export default class CardAboutProductComponent extends Vue {
     padding: 0 12px;
   }
 
-  &__item-img {
-  }
+  &__item-img {}
 
   &__item-text {
     @include fontUnify;
@@ -1003,8 +798,7 @@ export default class CardAboutProductComponent extends Vue {
     gap: 16px;
   }
 
-  &__info-img {
-  }
+  &__info-img {}
 
   &__info-text {
     @include fontUnify;

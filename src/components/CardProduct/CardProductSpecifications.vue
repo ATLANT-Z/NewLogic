@@ -7,7 +7,7 @@
       </div> -->
       <section
         class="spec__description"
-        :class="ActiveBlock === 0 ? 'active' : ''"
+        :class="ActiveBlock === 1 ? 'active' : ''"
       >
         <div class="ui-anchor" id="description"></div>
         <h3 class="spec__title">
@@ -21,7 +21,7 @@
       <section
         class="spec__characteristics"
         :class="
-          ActiveBlock === 0 ? 'active' : ActiveBlock === 1 ? 'active' : ''
+          ActiveBlock === 1 ? 'active' : ActiveBlock === 1 ? 'active' : ''
         "
       >
         <h3 class="spec__title">
@@ -43,7 +43,7 @@
       <section
         class="instruction"
         :class="
-          ActiveBlock === 0 ? 'active' : ActiveBlock === 4 ? 'active' : ''
+          ActiveBlock === 1 ? 'active' : ActiveBlock === 4 ? 'active' : ''
         "
       >
         <h3 class="spec__title">

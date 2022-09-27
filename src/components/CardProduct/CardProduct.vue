@@ -3,9 +3,7 @@
     <div class="card-product__w">
       <article class="card-title">
         <h1 class="card-title__text">
-          <span class="card-title__text-bold"
-            >Комплект резервного питания с ФЭМ</span
-          >
+          <span class="card-title__text-bold">Комплект резервного питания с ФЭМ</span>
           <span class="card-title__text-normal"></span> 1.4кВт АКБ mGel 100 Ah
         </h1>
         <div class="card-title__code">
@@ -13,14 +11,10 @@
           <span class="card-title__code-number">16799</span>
         </div>
       </article>
-      <CardProductNavComponent
-        :TabList="navList"
-        :CurrentNavF="calcCurrNav"
-        :CurrentNav="currentNav"
-      />
-      <CardAboutProductComponent :ActiveBlock="currentNav" />
+      <CardProductNavComponent :CurrentNav="currentNav" @navChange="calcCurrNav" />
+      <CardAboutProductComponent :class="{active: currentNav === ProductNav.ALL}" ref="aboutSection" />
       <CardProductSpecificationsComponent :ActiveBlock="currentNav" />
-      <div class="mobile-price" v-if="isMobile">
+      <div class="mobile-price" v-if="isMobile && isVisibility">
         <div class="mobile-price__money-sale">
           <p class="mobile-price__money-sale-old">3500 грн</p>
           <p class="mobile-price__money-sale-new">3113 грн</p>
@@ -37,6 +31,8 @@ import { Options, Vue } from "vue-class-component";
 import CardProductNavComponent from "./CardProductNav.vue";
 import CardAboutProductComponent from "./CardAboutProduct.vue";
 import CardProductSpecificationsComponent from "./CardProductSpecifications.vue";
+import { ProductNav } from "@/models/view/card_product/nav";
+import { headerViewService } from "@/services/view/header/header.view.service";
 
 @Options({
   name: "CardProductComponent",
@@ -49,29 +45,35 @@ import CardProductSpecificationsComponent from "./CardProductSpecifications.vue"
 export default class CardProductComponent extends Vue {
   declare $refs: {
     productWrapper: HTMLElement;
+    aboutSection: CardAboutProductComponent
   };
 
-  navList: any[] = [
-    { title: "Всё о товаре" },
-    { title: "Характеристики" },
-    { title: "Отзывы" },
-    { title: "Мультимедиа" },
-    { title: "Загрузки" },
-  ];
-  currentNav: number = 0;
+  ProductNav = ProductNav;
+  currentNav: ProductNav = ProductNav.ALL;
 
   calcCurrNav(idx) {
     this.currentNav = idx;
   }
 
-  activeTabData: any[] = [
-    { all: true },
-    { characteristics: false },
-    { reviews: false },
-    { multimedia: false },
-    { downloads: false },
-  ];
+  isSale: boolean = true;
   isMobile: boolean = false;
+  isVisibility: boolean = false;
+
+  calcBlockPriceVisibility() {
+    const priceBlock = this.$refs.aboutSection.$refs.blockPrice;
+    const blockPriceRect = priceBlock.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (
+      blockPriceRect.bottom <= windowHeight &&
+      blockPriceRect.top > headerViewService.headerHeight
+    ) {
+      this.isVisibility = false;
+    }
+    else {
+      this.isVisibility = true;
+    }
+  }
 
   calsIsMobile() {
     const mobWidth = getComputedStyle(
@@ -82,15 +84,18 @@ export default class CardProductComponent extends Vue {
 
   onResize() {
     this.calsIsMobile();
+    this.calcBlockPriceVisibility();
   }
 
   mounted() {
     this.onResize();
     window.addEventListener("resize", this.onResize);
+    window.addEventListener("scroll", this.calcBlockPriceVisibility);
   }
 
   unmounted() {
     window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scroll", this.calcBlockPriceVisibility);
   }
 }
 </script>
@@ -144,8 +149,7 @@ export default class CardProductComponent extends Vue {
     }
   }
 
-  &__text-normal {
-  }
+  &__text-normal {}
 
   &__code {
     @include flex-container(row, center, center);
@@ -162,8 +166,7 @@ export default class CardProductComponent extends Vue {
     color: $color-main;
   }
 
-  &__code-number {
-  }
+  &__code-number {}
 }
 
 .mobile-price {
