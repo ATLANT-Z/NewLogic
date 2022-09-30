@@ -1,5 +1,5 @@
 <template>
-  <article class="card-nav">
+  <section class="card-nav">
     <div class="card-nav__line"></div>
     <ul class="card-nav__list">
       <li class="card-nav__item" 
@@ -12,7 +12,7 @@
         </h3>
       </li>
     </ul>
-  </article>
+  </section>
 </template>
 
 <script lang="ts">
@@ -42,7 +42,7 @@ export default class CardProductNavComponent extends Vue {
     },
     {
       id: ProductNav.MEDIA,
-      title: "Мультимедиа"
+      title: "Видео"
     },
     {
       id: ProductNav.DOWNLOADS,

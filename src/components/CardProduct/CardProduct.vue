@@ -1,19 +1,70 @@
 <template>
-  <section class="card-product" ref="productWrapper">
+  <article class="card-product" ref="productWrapper">
     <div class="card-product__w">
-      <article class="card-title">
+      <div class="card-title">
         <h1 class="card-title__text">
-          <span class="card-title__text-bold">Комплект резервного питания с ФЭМ</span>
+          <span class="card-title__text-bold">{{ card.name.ru }}</span>
           <span class="card-title__text-normal"></span> 1.4кВт АКБ mGel 100 Ah
         </h1>
         <div class="card-title__code">
           <span class="card-title__code-text">Код:</span>
-          <span class="card-title__code-number">16799</span>
+          <span class="card-title__code-number">{{ card.code }}</span>
         </div>
-      </article>
-      <CardProductNavComponent :CurrentNav="currentNav" @navChange="calcCurrNav" />
-      <CardAboutProductComponent :class="{active: currentNav === ProductNav.ALL}" ref="aboutSection" />
-      <CardProductSpecificationsComponent :ActiveBlock="currentNav" />
+      </div>
+      <CardProductNavComponent
+        :CurrentNav="currentNav"
+        @navChange="calcCurrNav"
+      />
+      <CardAboutProductComponent
+        :class="{ active: currentNav === ProductNav.ALL }"
+        ref="aboutSection"
+      />
+      <div class="spec">
+        <div class="spec__w">
+          <CardProductDescriptionComponent
+            :class="{ active: currentNav === ProductNav.ALL }"
+          >
+            <h3 class="spec__title">
+              Описание
+              <span class="spec__article">{{ card.name.ru }}</span>
+            </h3>
+          </CardProductDescriptionComponent>
+          <CardProductCharacteristicsComponent
+            :class="{
+              active:
+                currentNav === ProductNav.ALL || currentNav === ProductNav.SPEC,
+            }"
+          >
+            <h3 class="spec__title">
+              Характеристики
+              <span class="spec__article">{{ card.name.ru }}</span>
+            </h3>
+          </CardProductCharacteristicsComponent>
+          <CardProductInstructionComponent
+            :class="{
+              active:
+                currentNav === ProductNav.ALL ||
+                currentNav === ProductNav.DOWNLOADS,
+            }"
+          >
+            <h3 class="spec__title">
+              Загрузки
+              <span class="spec__article">{{ card.name.ru }}</span>
+            </h3>
+          </CardProductInstructionComponent>
+          <CardProductVideoComponent
+            :class="{
+              active: currentNav === ProductNav.MEDIA,
+            }"
+          >
+            <h3 class="spec__title">
+              Видео
+              <span class="spec__article">{{ card.name.ru }}</span>
+            </h3>
+          </CardProductVideoComponent>
+        </div>
+        <CardProductAsideComponent :code="card.code"/>
+      </div>
       <div class="mobile-price" v-if="isMobile && isVisibility">
         <div class="mobile-price__money-sale">
           <p class="mobile-price__money-sale-old">3500 грн</p>
@@ -23,14 +74,18 @@
         <button class="buy">Купить</button>
       </div>
     </div>
-  </section>
+  </article>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import CardProductNavComponent from "./CardProductNav.vue";
 import CardAboutProductComponent from "./CardAboutProduct.vue";
-import CardProductSpecificationsComponent from "./CardProductSpecifications.vue";
+import CardProductDescriptionComponent from "./CardProductDescription.vue";
+import CardProductAsideComponent from "./CardProductAside.vue";
+import CardProductCharacteristicsComponent from "./CardProductCharacteristics.vue";
+import CardProductInstructionComponent from "./CardProductInstruction.vue";
+import CardProductVideoComponent from "./CardProductVideo.vue";
 import { ProductNav } from "@/models/view/card_product/nav";
 import { headerViewService } from "@/services/view/header/header.view.service";
 
@@ -39,17 +94,107 @@ import { headerViewService } from "@/services/view/header/header.view.service";
   components: {
     CardProductNavComponent,
     CardAboutProductComponent,
-    CardProductSpecificationsComponent,
+    CardProductDescriptionComponent,
+    CardProductAsideComponent,
+    CardProductCharacteristicsComponent,
+    CardProductInstructionComponent,
+    CardProductVideoComponent,
   },
 })
 export default class CardProductComponent extends Vue {
   declare $refs: {
     productWrapper: HTMLElement;
-    aboutSection: CardAboutProductComponent
+    aboutSection: CardAboutProductComponent;
   };
 
   ProductNav = ProductNav;
   currentNav: ProductNav = ProductNav.ALL;
+
+  card = {
+    code: "0000001",
+    slug: {
+      ru: "akkumulyator",
+      uk: "akumulyator",
+    },
+    name: {
+      ru: "Аккумулятор",
+      uk: "Акумулятор",
+    },
+    description: {
+      ru: "<p>Электрический аккумулятор</p>",
+      uk: "<p>Електричний акумулятор</p>",
+    },
+    status: "inStock",
+    labels: ["novelty"],
+    prices: [
+      {
+        type: "current",
+        money: {
+          amount: 33.77,
+          currency: "UAH",
+        },
+      },
+    ],
+    manufacturer: {
+      slug: "logicpower",
+      name: "LogicPower",
+    },
+    specifications: [
+      {
+        id: 1,
+        name: {
+          ru: "Тип корпуса",
+          uk: "Тип корпусу",
+        },
+        option: {
+          id: 2,
+          value: {
+            ru: "цилиндрический",
+            uk: "циліндричний",
+          },
+        },
+      },
+    ],
+    categories: [
+      {
+        name: {
+          ru: "Сетевое оборудование",
+          uk: "Мережеве обладнання",
+        },
+      },
+    ],
+    images: [
+      {
+        locales: ["ru"],
+        url: "https://example.com/image.jpg",
+        thumbnails: [
+          {
+            url: "https://example.com/image_tile.jpg",
+            type: "tile",
+          },
+        ],
+      },
+    ],
+    attachments: [
+      {
+        group: "Инструкция",
+        files: [
+          {
+            locales: ["ru"],
+            name: {
+              ru: "Инструкция пользователя",
+              uk: "Інструкція користувача",
+            },
+            url: "https://logicfox.info/manuals/LP/UPS/2415/2415_2416_4324_4325_(LP_650_850VA-PS-6PS)_manual_ua.pdf",
+            meta: {
+              type: "application/pdf",
+              size: 1846538,
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   calcCurrNav(idx) {
     this.currentNav = idx;
@@ -69,8 +214,7 @@ export default class CardProductComponent extends Vue {
       blockPriceRect.top > headerViewService.headerHeight
     ) {
       this.isVisibility = false;
-    }
-    else {
+    } else {
       this.isVisibility = true;
     }
   }
@@ -103,6 +247,7 @@ export default class CardProductComponent extends Vue {
 <style lang="scss" scoped>
 .card-product {
   --mobile-width: #{$mobile-big-width};
+  --local-pad: 16px;
 
   position: relative;
 
@@ -149,7 +294,8 @@ export default class CardProductComponent extends Vue {
     }
   }
 
-  &__text-normal {}
+  &__text-normal {
+  }
 
   &__code {
     @include flex-container(row, center, center);
@@ -166,7 +312,34 @@ export default class CardProductComponent extends Vue {
     color: $color-main;
   }
 
-  &__code-number {}
+  &__code-number {
+  }
+}
+
+.spec {
+  width: 100%;
+
+  @include flex-container(row, space-between, flex-start);
+  gap: 16px;
+
+  &__w {
+    width: 100%;
+
+    @extend %flex-column;
+    gap: 16px;
+  }
+
+  &__title {
+    @include fontUnify(18, 22, 700);
+
+    @include bigMobile {
+      font-weight: 500;
+    }
+  }
+
+  &__article {
+    font-weight: 400;
+  }
 }
 
 .mobile-price {
