@@ -1,18 +1,34 @@
 <template>
-  <section class="card-nav">
-    <div class="card-nav__line"></div>
-    <ul class="card-nav__list">
-      <li class="card-nav__item" 
-          v-for="(item) in navList" :key="item.id" @click="clickNav(item.id)"
-      >
-        <h3 class="card-nav__title" :class="{ 
-          active: item.id === CurrentNav 
-        }">
-          {{ item.title }}
-        </h3>
-      </li>
-    </ul>
-  </section>
+  <nav class="nav" ref="navListHTML">
+    <div class="nav__w">
+      <ul class="nav__list" @scroll="onNavScroll" ref="navItems">
+        <li
+          class="nav__item"
+          v-for="item in navList"
+          :key="item.id"
+          @click="clickNav(item.id)"
+          ref="navItemList"
+        >
+          <h3
+            class="nav__title"
+            :class="{
+              active: item.id === CurrentNav,
+            }"
+          >
+            {{ item.title }}
+          </h3>
+        </li>
+      </ul>
+      <div
+        class="nav__color-line"
+        :style="{
+          '--line-width': colorLineWidth + 'px',
+          '--pos-x': colorLinePosX + 'px',
+        }"
+      ></div>
+      <div class="nav__line"></div>
+    </div>
+  </nav>
 </template>
 
 <script lang="ts">
@@ -22,120 +38,191 @@ import { Prop } from "vue-property-decorator";
 
 @Options({
   name: "CardProductNavComponent",
-  emits: ['navChange']
+  emits: ["navChange"],
 })
 export default class CardProductNavComponent extends Vue {
   @Prop({ required: true }) CurrentNav: ProductNav;
 
+  declare $refs: {
+    navListHTML: HTMLElement;
+    navItems: HTMLElement;
+    navItemList: HTMLElement[];
+  };
+
+  colorLineWidth: number = 0;
+  colorLinePosX: number = 0;
+
   navList = [
     {
       id: ProductNav.ALL,
-      title: "Всё о товаре"
+      title: "Всё о товаре",
     },
     {
       id: ProductNav.SPEC,
-      title: "Характеристики"
+      title: "Характеристики",
     },
     {
       id: ProductNav.REVIEWS,
-      title: "Отзывы"
+      title: "Отзывы",
     },
     {
       id: ProductNav.MEDIA,
-      title: "Видео"
+      title: "Видео",
     },
     {
       id: ProductNav.DOWNLOADS,
-      title: "Загрузки"
+      title: "Загрузки",
     },
   ];
 
-  clickNav(idx) {
-    this.$emit('navChange', idx);
+  getIndex(id: ProductNav) {
+    return this.navList.findIndex((el) => el.id === id);
+  }
+
+  calcColorLineWidth(index: number) {
+    const currNavItemWidth = this.$refs.navItemList[index].scrollWidth;
+    this.colorLineWidth = currNavItemWidth;
+  }
+
+  clickNav(id: ProductNav) {
+    this.$emit("navChange", id);
+    this.calcColorLineWidth(this.getIndex(id));
+    this.calcColorLinePosX(this.getIndex(id));
+  }
+
+  calcColorLinePosX(index: number) {
+    this.colorLinePosX =
+      this.$refs.navItemList[index].offsetLeft - this.$refs.navItems.scrollLeft;
+  }
+
+  onResize() {
+    this.calcColorLineWidth(this.getIndex(this.CurrentNav));
+    this.calcColorLinePosX(this.getIndex(this.CurrentNav));
+  }
+
+  onNavScroll() {
+    this.calcColorLinePosX(this.getIndex(this.CurrentNav));
+  }
+
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.card-nav {
+.nav {
   width: 100%;
 
   @extend %flex-column;
   align-items: center;
 
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: $color-bg-grey-white;
 
   @include mobile {
     align-items: flex-start;
   }
 
+  &__w {
+    position: relative;
+    @extend %width-main;
+  }
+
   &__line {
-    width: 100%;
+    @extend %width-main;
     height: 3px;
 
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: 0;
 
     background-color: $color-bg-grey-lighter;
 
     z-index: -1;
+
+    @include mobile() {
+      height: 1px;
+    }
+  }
+
+  &__color-line {
+    --line-width: 0;
+    --pos-x: 0;
+
+    width: var(--line-width);
+
+    height: 3px;
+
+    position: absolute;
+    bottom: 0;
+
+    transform: translateX(var(--pos-x));
+
+    background-color: $color-main;
+
+    z-index: 1;
+
+    transition: 0.4s ease;
+
+    @include mobile() {
+      height: 1px;
+      transition: 0.1s ease;
+    }
   }
 
   &__list {
     width: 100%;
-    max-width: 850px;
 
     @include flex-container(row, space-between, flex-start);
-    gap: 40px;
 
     overflow-x: auto;
 
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 2px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: $color-bg-grey;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $color-main;
-    }
+    @include scrollbarStyle(0px);
 
     @include mobile {
       gap: 16px;
+
+      padding: 0 16px;
     }
   }
 
-  &__item {}
+  &__item {
+    width: 100%;
+  }
 
   &__title {
     @include fontUnify(20, 24);
     text-align: center;
 
-    border-top: 3px solid transparent;
-
     white-space: nowrap;
 
-    padding-top: 8px;
+    padding-bottom: 8px;
 
     cursor: pointer;
     transition: 0.2s ease;
 
+    @include bigMobile {
+      @include fontUnify(14, 20);
+    }
+
+    @include mobile {
+      padding-bottom: 4px;
+    }
+
     &:hover {
-      border-top: 3px solid $color-main;
       color: $color-main;
     }
 
     &.active {
-      border-top: 3px solid $color-main;
       color: $color-main;
-    }
-
-    @include bigMobile {
-      @include fontUnify(14, 20);
     }
   }
 }

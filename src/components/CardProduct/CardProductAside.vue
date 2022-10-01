@@ -1,5 +1,8 @@
 <template>
-  <aside class="aside-card">
+  <aside
+    class="aside-card"
+    :style="{ '--top-aside': navHeight + 'px' }"
+  >
     <div class="aside-card__w">
       <div class="aside-card__img-w">
         <img
@@ -34,6 +37,7 @@ import { Prop } from "vue-property-decorator";
 })
 export default class CardProductAsideComponent extends Vue {
   @Prop({ require: true }) code: string;
+  @Prop({ require: true }) navHeight: number;
 
   isSale: boolean = true;
 }
@@ -41,8 +45,9 @@ export default class CardProductAsideComponent extends Vue {
 
 <style lang="scss" scoped>
 .aside-card {
+  --top-aside: 0;
   position: sticky;
-  top: calc(16px + var(--height-header));
+    top: calc(16px + var(--height-header) + var(--top-aside));
 
   @include bigMobile {
     display: none;
@@ -57,9 +62,6 @@ export default class CardProductAsideComponent extends Vue {
     background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-
-    // position: sticky;
-    // top: calc(16px + var(--height-header));
 
     padding: var(--local-pad);
   }

@@ -10,7 +10,9 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class CardProductDescriptionComponent extends Vue {}
+export default class CardProductDescriptionComponent extends Vue {
+  contentFromServer: string = "";
+}
 </script>
 
 <style lang="scss" scoped>

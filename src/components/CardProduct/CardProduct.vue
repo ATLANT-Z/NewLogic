@@ -1,80 +1,92 @@
 <template>
-  <article class="card-product" ref="productWrapper">
+  <div class="card-product" ref="productWrapper">
     <div class="card-product__w">
-      <div class="card-title">
-        <h1 class="card-title__text">
-          <span class="card-title__text-bold">{{ card.name.ru }}</span>
-          <span class="card-title__text-normal"></span> 1.4кВт АКБ mGel 100 Ah
-        </h1>
-        <div class="card-title__code">
-          <span class="card-title__code-text">Код:</span>
-          <span class="card-title__code-number">{{ card.code }}</span>
+      <div class="card-product__container">
+        <div class="card-title">
+          <h1 class="card-title__text">
+            <span class="card-title__text-bold">{{ card.name.ru }}</span>
+            <span class="card-title__text-normal"></span> 1.4кВт АКБ mGel 100 Ah
+          </h1>
+          <div class="card-title__code">
+            <span class="card-title__code-text">Код:</span>
+            <span class="card-title__code-number">{{ card.code }}</span>
+          </div>
         </div>
-      </div>
-      <CardProductNavComponent
-        :CurrentNav="currentNav"
-        @navChange="calcCurrNav"
-      />
-      <CardAboutProductComponent
-        :class="{ active: currentNav === ProductNav.ALL }"
-        ref="aboutSection"
-      />
-      <div class="spec">
-        <div class="spec__w">
-          <CardProductDescriptionComponent
-            :class="{ active: currentNav === ProductNav.ALL }"
-          >
-            <h3 class="spec__title">
-              Описание
-              <span class="spec__article">{{ card.name.ru }}</span>
-            </h3>
-          </CardProductDescriptionComponent>
-          <CardProductCharacteristicsComponent
-            :class="{
-              active:
-                currentNav === ProductNav.ALL || currentNav === ProductNav.SPEC,
-            }"
-          >
-            <h3 class="spec__title">
-              Характеристики
-              <span class="spec__article">{{ card.name.ru }}</span>
-            </h3>
-          </CardProductCharacteristicsComponent>
-          <CardProductInstructionComponent
-            :class="{
-              active:
-                currentNav === ProductNav.ALL ||
-                currentNav === ProductNav.DOWNLOADS,
-            }"
-          >
-            <h3 class="spec__title">
-              Загрузки
-              <span class="spec__article">{{ card.name.ru }}</span>
-            </h3>
-          </CardProductInstructionComponent>
-          <CardProductVideoComponent
-            :class="{
-              active: currentNav === ProductNav.MEDIA,
-            }"
-          >
-            <h3 class="spec__title">
-              Видео
-              <span class="spec__article">{{ card.name.ru }}</span>
-            </h3>
-          </CardProductVideoComponent>
-        </div>
-        <CardProductAsideComponent :code="card.code"/>
-      </div>
-      <div class="mobile-price" v-if="isMobile && isVisibility">
-        <div class="mobile-price__money-sale">
-          <p class="mobile-price__money-sale-old">3500 грн</p>
-          <p class="mobile-price__money-sale-new">3113 грн</p>
-        </div>
-        <div class="mobile-price__money-regular">3113 грн</div>
-        <button class="buy">Купить</button>
       </div>
     </div>
-  </article>
+    <CardProductNavComponent
+      @navChange="calcCurrNav"
+      :CurrentNav="currentNav"
+      ref="productNavList"
+    />
+    <div class="card-product__w">
+      <div class="card-product__container">
+        <CardAboutProductComponent
+          :class="{ active: currentNav === ProductNav.ALL }"
+          ref="aboutSection"
+        />
+      </div>
+    </div>
+    <div class="card-product__w">
+      <div class="card-product__container">
+        <div class="spec">
+          <div class="spec__w">
+            <CardProductDescriptionComponent
+              :class="{ active: currentNav === ProductNav.ALL }"
+            >
+              <h3 class="spec__title">
+                Описание
+                <span class="spec__article">{{ card.name.ru }}</span>
+              </h3>
+            </CardProductDescriptionComponent>
+            <CardProductCharacteristicsComponent
+              :class="{
+                active:
+                  currentNav === ProductNav.ALL ||
+                  currentNav === ProductNav.SPEC,
+              }"
+            >
+              <h3 class="spec__title">
+                Характеристики
+                <span class="spec__article">{{ card.name.ru }}</span>
+              </h3>
+            </CardProductCharacteristicsComponent>
+            <CardProductInstructionComponent
+              :class="{
+                active:
+                  currentNav === ProductNav.ALL ||
+                  currentNav === ProductNav.DOWNLOADS,
+              }"
+            >
+              <h3 class="spec__title">
+                Загрузки
+                <span class="spec__article">{{ card.name.ru }}</span>
+              </h3>
+            </CardProductInstructionComponent>
+            <CardProductVideoComponent
+              :class="{
+                active: currentNav === ProductNav.MEDIA,
+              }"
+            >
+              <h3 class="spec__title">
+                Видео
+                <span class="spec__article">{{ card.name.ru }}</span>
+              </h3>
+            </CardProductVideoComponent>
+          </div>
+          <CardProductAsideComponent :code="card.code" :navHeight="navHeight" />
+        </div>
+        <div class="mobile-price" v-if="isMobile && isVisibility">
+          <div class="mobile-price__money-sale">
+            <p class="mobile-price__money-sale-old">3500 грн</p>
+            <p class="mobile-price__money-sale-new">3113 грн</p>
+          </div>
+          <div class="mobile-price__money-regular">3113 грн</div>
+          <button class="buy">Купить</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -105,6 +117,7 @@ export default class CardProductComponent extends Vue {
   declare $refs: {
     productWrapper: HTMLElement;
     aboutSection: CardAboutProductComponent;
+    productNavList: CardProductNavComponent;
   };
 
   ProductNav = ProductNav;
@@ -203,6 +216,13 @@ export default class CardProductComponent extends Vue {
   isSale: boolean = true;
   isMobile: boolean = false;
   isVisibility: boolean = false;
+  navHeight: number = 0;
+
+  calcNavHeight() {
+    const navHeightRect =
+      this.$refs.productNavList.$refs.navListHTML.getBoundingClientRect();
+    this.navHeight = navHeightRect.height;
+  }
 
   calcBlockPriceVisibility() {
     const priceBlock = this.$refs.aboutSection.$refs.blockPrice;
@@ -229,6 +249,7 @@ export default class CardProductComponent extends Vue {
   onResize() {
     this.calsIsMobile();
     this.calcBlockPriceVisibility();
+    this.calcNavHeight();
   }
 
   mounted() {
@@ -253,15 +274,19 @@ export default class CardProductComponent extends Vue {
 
   @extend %flex-column;
   align-items: center;
-
-  padding: 0 16px;
+  gap: 16px;
 
   &__w {
-    @extend %width-main;
+    width: 100%;
 
     @extend %flex-column;
     align-items: center;
-    gap: 16px;
+
+    padding: 0 16px;
+  }
+
+  &__container {
+    @extend %width-main;
   }
 }
 
@@ -269,14 +294,10 @@ export default class CardProductComponent extends Vue {
   width: 100%;
 
   @include flex-container(row, space-between, flex-start);
+  flex-wrap: wrap;
   gap: 16px;
 
   padding-top: 16px;
-
-  @include bigMobile {
-    @include flex-container(column, center, flex-start);
-    gap: 8px;
-  }
 
   &__text {
     @include fontUnify(36, 42);
@@ -339,49 +360,6 @@ export default class CardProductComponent extends Vue {
 
   &__article {
     font-weight: 400;
-  }
-}
-
-.mobile-price {
-  width: 100%;
-
-  @include flex-container(row, space-between, center);
-  flex-wrap: wrap;
-  gap: 8px;
-
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-
-  box-shadow: 0px 3px 11px rgb(0 0 0 / 10%);
-  background-color: white;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-
-  padding: 8px;
-
-  & .buy {
-    max-width: 160px;
-  }
-
-  &__money-sale {
-    @include flex-container(row-reverse, flex-end, center);
-    gap: 16px;
-  }
-
-  &__money-sale-old {
-    @include fontUnify;
-    text-decoration: line-through;
-  }
-
-  &__money-sale-new {
-    @include fontUnify(24, 28, 500);
-    color: red;
-  }
-
-  &__money-regular {
-    @include fontUnify(24, 28, 500);
   }
 }
 
