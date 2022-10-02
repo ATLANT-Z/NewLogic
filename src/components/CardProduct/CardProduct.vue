@@ -276,6 +276,8 @@ export default class CardProductComponent extends Vue {
   align-items: center;
   gap: 16px;
 
+  padding-bottom: 80px;
+
   &__w {
     width: 100%;
 

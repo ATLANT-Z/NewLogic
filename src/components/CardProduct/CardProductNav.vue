@@ -204,7 +204,7 @@ export default class CardProductNavComponent extends Vue {
 
     white-space: nowrap;
 
-    padding-bottom: 8px;
+    padding: 8px 0;
 
     cursor: pointer;
     transition: 0.2s ease;
@@ -214,7 +214,7 @@ export default class CardProductNavComponent extends Vue {
     }
 
     @include mobile {
-      padding-bottom: 4px;
+      padding: 4px 0;
     }
 
     &:hover {

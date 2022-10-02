@@ -10,13 +10,13 @@
     <!-- <DeliveryComponent></DeliveryComponent> -->
     <!-- <NewsArticleComponent></NewsArticleComponent> -->
     <!-- <BlogComponent></BlogComponent> -->
-    <!-- <CooperationComponent></CooperationComponent> -->
+    <CooperationComponent></CooperationComponent>
     <!-- <InstructionComponent></InstructionComponent> -->
     <!-- <ContactComponent></ContactComponent> -->
     <!-- <HomeComponent></HomeComponent> -->
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
     <!-- <FooterComponent></FooterComponent> -->
-    <CardProductComponent></CardProductComponent>
+    <!-- <CardProductComponent></CardProductComponent> -->
   </main>
 </template>
 
