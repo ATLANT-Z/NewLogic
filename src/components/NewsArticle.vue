@@ -304,7 +304,7 @@ export default class NewsArticleComponent extends Vue {}
     @extend %flex-column;
     align-items: center;
 
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 

@@ -286,7 +286,7 @@ export default class CategoryCatalogComponent extends Vue {}
   align-items: center;
   gap: 24px;
 
-  background-color: #ffffff;
+  background-color: white;
   box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 
   border-radius: 8px;

@@ -442,7 +442,7 @@ export default class AboutUsSliderComponent extends Vue {
     }
 
     &::-webkit-scrollbar-track {
-      background-color: #8a8a8a;
+      background-color: $color-bg-grey;
     }
 
     &::-webkit-scrollbar-thumb {

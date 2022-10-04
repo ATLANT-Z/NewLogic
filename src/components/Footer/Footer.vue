@@ -5,71 +5,14 @@
         <div class="content__logo-img-w">
           <img
             class="content__logo-img"
-            src="../assets/icons/footerMainLogo.svg"
+            src="@/assets/icons/footerMainLogo.svg"
             alt=""
           />
         </div>
-        <div class="content__block">
-          <div class="content__title-w" @click="dropDownProd()">
-            <h4 class="content__title">продукция</h4>
-            <div class="content__title-mob-arrow">
-              <img
-                class="content__title-mob-arrow-img"
-                src="../../src/assets/icons/nav-arrow-down.svg"
-                alt=""
-                :class="{ active: openProdList }"
-              />
-            </div>
-          </div>
-          <div
-            class="content__block-list-w"
-            :class="{ active: openProdList }"
-            :style="{ '--list-height': listHeight + 'px' }"
-          >
-            <ul class="content__block-list" ref="listOfProdItem">
-              <li
-                class="content__block-list-item"
-                v-for="item of prodList"
-                :key="item.id"
-                ref="ProdItem"
-              >
-                <a class="content__block-list-link" href="#">
-                  {{ item.title }}</a
-                >
-              </li>
-            </ul>
-          </div>
-          <a class="content__block-list-link" href="#">Перейти в католог</a>
-        </div>
-        <div class="content__block">
-          <div class="content__title-w" @click="dropDownInfo()">
-            <h4 class="content__title">ИНФОРМАЦИЯ</h4>
-            <div class="content__title-mob-arrow">
-              <img
-                class="content__title-mob-arrow-img"
-                src="../../src/assets/icons/nav-arrow-down.svg"
-                alt=""
-                :class="{ active: openInfoList }"
-              />
-            </div>
-          </div>
-          <div
-            class="content__block-list-w"
-            :class="{ active: openInfoList }"
-            :style="{ '--list-height': listInfoHeight + 'px' }"
-          >
-            <div class="content__block-list info" ref="listOfInfoItem">
-              <a
-                class="content__block-list-link"
-                href="#"
-                v-for="item of infoList"
-                :key="item.id"
-                ref="InfoItem"
-                >{{ item.title }}</a
-              >
-            </div>
-          </div>
-        </div>
+        <FooterList :thin="true" :title="'Продукция'" :list="prodList">
+          <a class="content__catalog-link" href="#">Перейти в католог</a>
+        </FooterList>
+        <FooterList :title="'Информация'" :list="infoList" />
         <div class="contacts__block">
           <div class="contacts__block-unit">
             <h4 class="content__title">Контакты</h4>
@@ -118,7 +61,7 @@
           <div class="content__logo-img-w">
             <img
               class="content__logo-img"
-              src="../assets/icons/footerMainLogo.svg"
+              src="@/assets/icons/footerMainLogo.svg"
               alt=""
             />
           </div>
@@ -134,14 +77,14 @@
             <div class="content__copyrights-img-w">
               <img
                 class="content__copyrights-img"
-                src="../assets/icons/footerMasterCardIcon.svg"
+                src="@/assets/icons/footerMasterCardIcon.svg"
                 alt=""
               />
             </div>
             <div class="content__copyrights-img-w">
               <img
                 class="content__copyrights-img"
-                src="../assets/icons/footerVisaIcon.svg"
+                src="@/assets/icons/footerVisaIcon.svg"
                 alt=""
               />
             </div>
@@ -270,14 +213,14 @@
             <div class="content__copyrights-img-w">
               <img
                 class="content__copyrights-img"
-                src="../assets/icons/footerMasterCardIcon.svg"
+                src="@/assets/icons/footerMasterCardIcon.svg"
                 alt=""
               />
             </div>
             <div class="content__copyrights-img-w">
               <img
                 class="content__copyrights-img"
-                src="../assets/icons/footerVisaIcon.svg"
+                src="@/assets/icons/footerVisaIcon.svg"
                 alt=""
               />
             </div>
@@ -290,19 +233,13 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import FooterList from "./FooterList.vue";
 
 @Options({
   name: "FooterComponent",
-
+  components: { FooterList },
 })
 export default class FooterComponent extends Vue {
-  declare $refs: {
-    ProdItem: HTMLElement;
-    listOfProdItem: HTMLElement;
-    listOfInfoItem: HTMLElement;
-    InfoItem: HTMLElement;
-  };
-
   prodList: any[] = [
     { id: 1, title: "Комплекты для резервного питания" },
     { id: 2, title: "Источники бесперебойного питания" },
@@ -329,49 +266,6 @@ export default class FooterComponent extends Vue {
     { id: 9, title: "Инструкции" },
     { id: 10, title: "Форум" },
   ];
-
-  listHeight: number = 0;
-  listInfoHeight: number = 0;
-  openProdList: boolean = false;
-  openInfoList: boolean = false;
-
-  get ProdCount() {
-    return this.prodList.length;
-  }
-
-  get InfoCount() {
-    return this.infoList.length;
-  }
-
-  dropDownProd() {
-    if (innerWidth <= 680) {
-      const itemRect = this.$refs.ProdItem[0].getBoundingClientRect();
-      const listRect = this.$refs.listOfProdItem.getBoundingClientRect();
-
-      if (this.listHeight === 0)
-        this.listHeight =
-          itemRect.height * this.ProdCount +
-          (listRect.height - itemRect.height * this.ProdCount);
-      else this.listHeight = 0;
-
-      this.openProdList = !this.openProdList;
-    }
-  }
-
-  dropDownInfo() {
-    if (innerWidth <= 680) {
-      const itemRect = this.$refs.InfoItem[0].getBoundingClientRect();
-      const listRect = this.$refs.listOfInfoItem.getBoundingClientRect();
-
-      if (this.listInfoHeight === 0)
-        this.listInfoHeight =
-          itemRect.height * this.InfoCount +
-          (listRect.height - itemRect.height * this.InfoCount);
-      else this.listInfoHeight = 0;
-
-      this.openInfoList = !this.openInfoList;
-    }
-  }
 }
 </script>
 
@@ -425,28 +319,21 @@ export default class FooterComponent extends Vue {
     flex-direction: column;
   }
 
-  &__block {
-    @extend %flex-column;
-    gap: 24px;
+  &__catalog-link {
+    width: 100%;
+    max-width: 200px;
+
+    color: $color-main;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      color: $color-main-dark;
+    }
 
     @include mobile {
-      border-bottom: 1px solid $color-main;
+      display: none;
     }
-
-    & > .content__block-list-link {
-      width: 100%;
-      max-width: 200px;
-
-      color: $color-main;
-
-      @include mobile {
-        display: none;
-      }
-    }
-  }
-
-  &__title-w {
-    @include flex-container(row, space-between, center);
   }
 
   &__title {
@@ -460,99 +347,13 @@ export default class FooterComponent extends Vue {
     }
   }
 
-  &__title-mob-arrow {
-    display: none;
-
-    @include mobile {
-      display: block;
-    }
-  }
-
-  &__title-mob-arrow-img {
-    transition: 0.5s ease;
-    &.active {
-      transform: rotate(180deg);
-    }
-  }
-
-  &__block-list-w {
-    --list-gap: 8px;
-    --list-height: 0;
-
-    max-width: 416px;
-    width: 100%;
-
-    @include flex-container(row, flex-start);
-    gap: var(--list-gap);
-    flex-wrap: wrap;
-
-    overflow: hidden;
-
-    transition: 0.5s ease;
-
-    @include bigMobile {
-      flex-direction: column;
-    }
-
-    @include mobile {
-      max-width: none;
-      height: var(--list-height);
-    }
-
-    &.active {
-      @include mobile {
-        height: var(--list-height);
-      }
-    }
-  }
-
-  &__block-list {
-    max-height: 200px;
-    max-width: 416px;
-    width: 100%;
-
-    @include flex-container(row, flex-start);
-    gap: 8px;
-    flex-wrap: wrap;
-
-    overflow: hidden;
-
-    &.info {
-      max-height: none;
-      overflow: visible;
-
-      @include bigMobile {
-        flex-direction: column;
-      }
-    }
-
-    @include mobile {
-      max-height: none;
-      max-width: none;
-
-      flex-direction: column;
-      flex-wrap: nowrap;
-
-      overflow: visible;
-    }
-  }
-
-  &__block-list-item {
-    width: 100%;
-    max-width: 200px;
-
-    @include mobile {
-      max-width: none;
-    }
-  }
-
   &__block-list-link {
     width: 100%;
     max-width: 200px;
 
     @include fontUnify;
     letter-spacing: 0.02em;
-    color: #ffffff;
+    color: white;
 
     transition: 0.2s ease-in-out;
 
@@ -568,7 +369,7 @@ export default class FooterComponent extends Vue {
   &__caption {
     @include fontUnify(12, 16);
     letter-spacing: 0.02em;
-    color: #8a8a8a;
+    color: $color-text-lighter;
   }
 
   &__copyrights {
@@ -620,7 +421,7 @@ export default class FooterComponent extends Vue {
     @include fontUnify(12, 16);
     letter-spacing: 0.02em;
     text-align: center;
-    color: #ffffff;
+    color: white;
   }
 }
 .contacts {
@@ -651,9 +452,11 @@ export default class FooterComponent extends Vue {
   }
 
   &__text {
+    max-width: fit-content;
+
     @include fontUnify(16, 20, 700);
     letter-spacing: 0.02em;
-    color: #ffffff;
+    color: white;
 
     transition: 0.2s ease-in-out;
 
@@ -681,7 +484,7 @@ export default class FooterComponent extends Vue {
   &__block-link-text {
     @include fontUnify(20, 24);
     text-transform: uppercase;
-    color: #ffffff;
+    color: white;
 
     transition: 0.2s ease-in-out;
   }
@@ -695,7 +498,7 @@ export default class FooterComponent extends Vue {
     gap: 16px;
 
     border-radius: 16px;
-    background-color: #707070;
+    background-color: $color-bg-grey-darker;
 
     padding: 16px 32px;
 
@@ -742,17 +545,17 @@ export default class FooterComponent extends Vue {
   &__block-title {
     @include fontUnify(20, 30, 600);
     text-transform: uppercase;
-    color: #ffffff;
+    color: white;
   }
 
   &__block-text {
     @include fontUnify(12, 16);
     letter-spacing: 0.02em;
-    color: #ffffff;
+    color: white;
 
     @include mobile {
       @include fontUnify(12, 16);
-      color: #8a8a8a;
+      color: $color-text-lighter;
     }
   }
 
@@ -769,14 +572,14 @@ export default class FooterComponent extends Vue {
 
     border-radius: 6px 0 0 6px;
 
-    background-color: #ffffff;
+    background-color: white;
 
     padding: 12px 8px;
 
     &::placeholder {
       @include fontUnify(12, 16);
       letter-spacing: 0.02em;
-      color: #8a8a8a;
+      color: $color-text-lighter;
     }
   }
 
@@ -789,7 +592,7 @@ export default class FooterComponent extends Vue {
 
     @include fontUnify(18, 24);
     letter-spacing: 0.02em;
-    color: #ffffff;
+    color: white;
 
     border-radius: 6px;
     background-color: $color-main;

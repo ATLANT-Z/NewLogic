@@ -10,12 +10,13 @@
     <!-- <DeliveryComponent></DeliveryComponent> -->
     <!-- <NewsArticleComponent></NewsArticleComponent> -->
     <!-- <BlogComponent></BlogComponent> -->
-    <!-- <CooperationComponent></CooperationComponent> -->
+    <CooperationComponent></CooperationComponent>
     <!-- <InstructionComponent></InstructionComponent> -->
-    <ContactComponent></ContactComponent>
+    <!-- <ContactComponent></ContactComponent> -->
     <!-- <HomeComponent></HomeComponent> -->
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
-    <FooterComponent></FooterComponent>
+    <!-- <FooterComponent></FooterComponent> -->
+    <!-- <CardProductComponent></CardProductComponent> -->
   </main>
 </template>
 
@@ -35,7 +36,8 @@ import SubCategoryCatalogComponent from "./components/SubCategoryCatalog.vue";
 import ContactComponent from "./components/Contact.vue";
 import HomeComponent from "./components/Home/Home.vue";
 import PopUpLangComponent from "./components/pop-up/PopUpLang.vue";
-import FooterComponent from "./components/Footer.vue"
+import FooterComponent from "./components/Footer/Footer.vue";
+import CardProductComponent from "./components/CardProduct/CardProduct.vue";
 
 @Options({
   components: {
@@ -54,6 +56,7 @@ import FooterComponent from "./components/Footer.vue"
     HomeComponent,
     PopUpLangComponent,
     FooterComponent,
+    CardProductComponent,
   },
 })
 export default class App extends Vue {}

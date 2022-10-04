@@ -303,7 +303,7 @@ export default class SliderCategoryComponent extends Vue {
     flex-grow: 1;
 
     padding: 32px 16px;
-    color: #ffffff;
+    color: white;
     background-color: #393d38;
   }
 
@@ -322,7 +322,7 @@ export default class SliderCategoryComponent extends Vue {
     width: 100%;
     height: 1px;
 
-    background-color: #ffffff;
+    background-color: white;
   }
 
   &__prod-list-w {
@@ -352,7 +352,7 @@ export default class SliderCategoryComponent extends Vue {
 
     border-radius: 50%;
 
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 
     transition: 0.2s ease-in-out;
@@ -386,7 +386,7 @@ export default class SliderCategoryComponent extends Vue {
 
     border-radius: 50%;
 
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 
     transition: 0.2s ease-in-out;
@@ -450,7 +450,7 @@ export default class SliderCategoryComponent extends Vue {
     flex-shrink: 1;
     flex-grow: 2;
 
-    background-color: #ffffff;
+    background-color: white;
     overflow: hidden;
 
     padding: 0 32px;
@@ -503,7 +503,7 @@ export default class SliderCategoryComponent extends Vue {
 
     @include fontUnify(20, 30, 600);
     text-transform: uppercase;
-    color: #ffffff;
+    color: white;
 
     border-radius: 6px;
     background-color: $color-main;
@@ -539,7 +539,7 @@ export default class SliderCategoryComponent extends Vue {
     @include flex-container(row, center, center);
     gap: var(--gap);
 
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 
@@ -581,7 +581,7 @@ export default class SliderCategoryComponent extends Vue {
 
     @include set-item-count-in-row(2);
 
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
 

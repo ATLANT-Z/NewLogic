@@ -1,5 +1,5 @@
 <template>
-  <section class="banner contact-ban">
+  <section class="banner contact-banner" ref="banner">
     <div class="banner__img-w">
       <picture>
         <source
@@ -16,36 +16,60 @@
     </div>
   </section>
   <section class="contact">
-    <div class="contact__w">
+    <div class="contact__w" ref="contentWrap">
       <aside class="contact__nav">
         <div class="contact__nav-line"></div>
-        <ul class="contact__nav-list">
+        <ul
+          class="contact__nav-list"
+          ref="navList"
+        >
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">1</div>
-            <p class="contact__nav-list-title">Общий номер</p>
+            <a href="#generalPhone" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">1</div>
+              <p class="contact__nav-list-title">Общий номер</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">2</div>
-            <p class="contact__nav-list-title">Отдел продаж</p>
+            <a href="#sales" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">2</div>
+              <p class="contact__nav-list-title">Отдел продаж</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">3</div>
-            <p class="contact__nav-list-title">Магазины</p>
+            <a href="#shops" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">3</div>
+              <p class="contact__nav-list-title">Магазины</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">4</div>
-            <p class="contact__nav-list-title">Техподдержка</p>
+            <a href="#techSupport" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">4</div>
+              <p class="contact__nav-list-title">Техподдержка</p>
+            </a>
           </li>
           <li class="contact__nav-list-item">
-            <div class="contact__nav-list-count">5</div>
-            <p class="contact__nav-list-title">Бухгалтерия</p>
+            <a href="#accounting" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">5</div>
+              <p class="contact__nav-list-title">Бухгалтерия</p>
+            </a>
+          </li>
+          <li class="contact__nav-list-item">
+            <a href="#legal" class="contact__nav-list-item">
+              <div class="contact__nav-list-count">6</div>
+              <p class="contact__nav-list-title">
+                Юридический адрес и контакты
+              </p>
+            </a>
           </li>
         </ul>
       </aside>
       <div class="contact__main">
         <div class="contact__main-block">
           <div class="contact__block-title-w">
-            <h3 class="contact__block-title">Общий номер</h3>
+            <h3 class="contact__block-title">
+              <span class="ui-anchor" id="generalPhone"></span>
+              Общий номер
+            </h3>
             <div class="contact__block-line"></div>
           </div>
           <div class="contact__block-content">
@@ -90,7 +114,10 @@
         </div>
         <div class="contact__main-block">
           <div class="contact__block-title-w">
-            <h3 class="contact__block-title">Отдел продаж</h3>
+            <h3 class="contact__block-title">
+              <span class="ui-anchor" id="sales"></span>
+              Отдел продаж
+            </h3>
             <div class="contact__block-line"></div>
           </div>
           <p class="contact__block-text">
@@ -346,7 +373,10 @@
         </div>
         <div class="contact__main-block">
           <div class="contact__block-title-w">
-            <h3 class="contact__block-title">Магазины</h3>
+            <h3 class="contact__block-title">
+              <span class="ui-anchor" id="shops"></span>
+              Магазины
+            </h3>
             <div class="contact__block-line"></div>
           </div>
           <div class="contact__block-description">
@@ -412,7 +442,10 @@
         </div>
         <div class="contact__main-block">
           <div class="contact__block-title-w">
-            <h3 class="contact__block-title">Техподдержка</h3>
+            <h3 class="contact__block-title">
+              <span class="ui-anchor" id="techSupport"></span>
+              Техподдержка
+            </h3>
             <div class="contact__block-line"></div>
           </div>
           <div class="contact__block-description">
@@ -460,7 +493,10 @@
         </div>
         <div class="contact__main-block">
           <div class="contact__block-title-w">
-            <h3 class="contact__block-title">Бухгалтерия</h3>
+            <h3 class="contact__block-title">
+              <span class="ui-anchor" id="accounting"></span>
+              Бухгалтерия
+            </h3>
             <div class="contact__block-line"></div>
           </div>
           <p class="contact__block-text">
@@ -534,7 +570,10 @@
         </div>
         <div class="contact__main-block">
           <div class="contact__block-title-w">
-            <h3 class="contact__block-title">юридический адрес и контакты</h3>
+            <h3 class="contact__block-title">
+              <span class="ui-anchor" id="legal"></span>
+              юридический адрес и контакты
+            </h3>
             <div class="contact__block-line"></div>
           </div>
           <div class="contact__block-content">
@@ -567,11 +606,59 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class ContactComponent extends Vue {}
+export default class ContactComponent extends Vue {
+  declare $refs: {
+    banner: HTMLElement;
+    contentWrap: HTMLElement;
+    navList: HTMLElement;
+  };
+
+  navPosTop: number = 0;
+  navPosLeft: number = 0;
+
+  // calcNavTop() {
+  //   const bannerRect = this.$refs.banner.getBoundingClientRect();
+  //   const contentWrapRect = this.$refs.contentWrap.getBoundingClientRect();
+  //   const navListRect = this.$refs.navList.getBoundingClientRect();
+  //   const windowHeight = window.innerHeight;
+
+  //   if (bannerRect.bottom <= 0 && contentWrapRect.bottom >= 520) {
+  //     this.navPosTop = 32;
+  //   } else if (bannerRect.bottom <= 0 && contentWrapRect.bottom < 520) {
+  //     this.navPosTop = (windowHeight - 562) - navListRect.height - 64;
+  //   } else if (bannerRect.bottom > 0) this.navPosTop = bannerRect.bottom + 80;
+
+  //   console.log(contentWrapRect.bottom);
+  //   console.log(navListRect.bottom);
+  // }
+
+  // calcNavLeft() {
+  //   const windowWidth = window.innerWidth;
+  //   const contentWrapRect = this.$refs.contentWrap.getBoundingClientRect();
+
+  //   this.navPosLeft = (windowWidth - contentWrapRect.width) / 2;
+  // }
+
+  // onResize() {
+  //   this.calcNavTop();
+  //   this.calcNavLeft();
+  // }
+
+  // mounted() {
+  //   this.onResize();
+  //   window.addEventListener("resize", this.onResize);
+  //   window.addEventListener("scroll", this.calcNavTop);
+  // }
+
+  // unmounted() {
+  //   window.removeEventListener("resize", this.onResize);
+  //   window.removeEventListener("scroll", this.calcNavTop);
+  // }
+}
 </script>
 
 <style lang="scss" scoped>
-.banner.contact-ban {
+.banner.contact-banner {
   margin-bottom: 0;
 }
 
@@ -601,9 +688,9 @@ export default class ContactComponent extends Vue {}
   }
 
   &__nav {
+    --circ-r: 24px;
+
     position: relative;
-    margin-right: 201px;
-    padding-left: 20px;
 
     @include bigMobile {
       display: none;
@@ -611,28 +698,42 @@ export default class ContactComponent extends Vue {}
   }
 
   &__nav-line {
+    position: absolute;
+    left: var(--circ-r);
+    transform: translateX(-50%);
+
     height: 100%;
     width: 8px;
 
-    background-color: #ffffff;
+    border-radius: 6px;
+
+    background-color: white;
+    z-index: -1;
   }
 
   &__nav-list {
-    position: absolute;
-    top: 80px;
-    left: 0;
+    width: 100%;
+    max-width: 230px;
+
+    position: sticky;
+    top: calc(16px + var(--height-header, 0px));
+
+    @extend %flex-column;
+    gap: 32px;
+
+    padding: 16px 0;
   }
 
   &__nav-list-item {
     @include flex-container(row, flex-start, center);
-    gap: 32px;
+    gap: 16px;
 
     cursor: pointer;
   }
 
   &__nav-list-count {
-    width: 48px;
-    height: 48px;
+    min-width: calc(var(--circ-r) * 2);
+    height: calc(var(--circ-r) * 2);
 
     @include flex-container(row, center, center);
 
@@ -641,7 +742,7 @@ export default class ContactComponent extends Vue {}
     color: $color-main;
 
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: white;
 
     &:hover {
       color: $color-main-dark;
@@ -652,7 +753,7 @@ export default class ContactComponent extends Vue {}
     @include fontUnify(20, 28);
     letter-spacing: 0.02em;
 
-    color: #8a8a8a;
+    color: $color-text-lighter;
 
     &:hover {
       color: $color-main-dark;
@@ -672,14 +773,16 @@ export default class ContactComponent extends Vue {}
   }
 
   &__main-block {
+    --local-pad: 32px;
+
     @extend %flex-column;
     gap: 36px;
 
-    background: #ffffff;
+    background: white;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 
-    padding: 32px;
+    padding: var(--local-pad);
 
     @include mobile {
       gap: 16px;
@@ -940,7 +1043,7 @@ export default class ContactComponent extends Vue {}
     @extend %flex-column;
     gap: 16px;
 
-    & > .contact__block-subtitle {
+    & .contact__block-subtitle {
       text-align: left;
     }
   }

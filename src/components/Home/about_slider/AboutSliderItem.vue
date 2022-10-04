@@ -24,9 +24,8 @@
         @click="isActive = !isActive"
       >
         {{ isActive ? "Свернуть" : "Развернуть" }}
+      </div>
     </div>
-    </div>
-    <!-- <slot name="title"></slot> -->
   </li>
 </template>
 
@@ -50,7 +49,12 @@ export default class AboutSliderItemComponent extends Vue {
   isActive: boolean = false;
 
   calcItemTextHeight() {
-    this.isTextBiggerThanWrapper = this.$refs.itemText.scrollHeight > 180;
+    const rawHeight = getComputedStyle(this.$refs.itemText).getPropertyValue(
+      "--mob-height"
+    );
+    const height = parseFloat(rawHeight);
+
+    this.isTextBiggerThanWrapper = this.$refs.itemText.scrollHeight > height;
   }
 
   onResize() {
@@ -79,7 +83,7 @@ export default class AboutSliderItemComponent extends Vue {
     align-items: center;
     gap: 64px;
 
-    background-color: #ffffff;
+    background-color: white;
 
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -88,7 +92,6 @@ export default class AboutSliderItemComponent extends Vue {
 
     transform: scaleY(0.8);
     transition: 0.7s cubic-bezier(0.18, 0.17, 0.74, 0.76);
-    // cubic-bezier(0.18, 0.17, 0.74, 0.76)
     @include smallScreen {
       height: 540px;
 
@@ -168,7 +171,7 @@ export default class AboutSliderItemComponent extends Vue {
     @include bigMobile {
       gap: 8px;
 
-      padding: 0 16px;
+      padding: 0 16px 8px;
     }
   }
 
@@ -186,6 +189,8 @@ export default class AboutSliderItemComponent extends Vue {
   }
 
   &__list-item-info-text {
+    --mob-height: 180px;
+
     @include fontUnify(22, 30, 700);
     letter-spacing: 0.02em;
 
@@ -200,7 +205,7 @@ export default class AboutSliderItemComponent extends Vue {
 
       @include lineClamp(8);
 
-      height: 180px;
+      height: var(--mob-height);
     }
 
     &.active {
