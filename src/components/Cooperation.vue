@@ -168,7 +168,60 @@
         <h5 class="cooperation-product__title">
           КРОМЕ ТОГО, МЫ ПРЕДЛАГАЕМ К ПРОДАЖЕ ПРОДУКЦИЮ ТОРГОВЫХ МАРОК:
         </h5>
-        <div class="moreover__slider">СЛАЙДЕР</div>
+        <div class="cooperation-slider">
+          <div
+            class="cooperation-slider__arrow-left"
+            :class="{ disable: currentSlide <= 0 }"
+            @click="prevSlide"
+          >
+            <img
+              class="cooperation-slider__arrow-left-img"
+              src="@/assets/icons/mainNavArrowLeftIcon.svg"
+              alt=""
+            />
+          </div>
+          <div class="cooperation-slider__w" ref="slideWrap">
+            <div
+              class="cooperation-slider__cont"
+              ref="slideList"
+              @touchstart="handleTouchStart"
+              @touchmove="handleTouchMove"
+              @touchend="handleTouchEnd"
+              :style="{
+                '--translate-x': translateListX + 'px',
+                '--gap': gapLength + 'px',
+              }"
+            >
+              <a
+                hre
+                class="cooperation-slider__item"
+                v-for="(item, index) in sliderData"
+                :key="index"
+                ref="slideListItem"
+              >
+                <img
+                  class="cooperation-slider__img"
+                  :src="require(`@/assets/icons/${item.img}.png`)"
+                  alt=""
+                />
+                <span class="cooperation-slider__text">{{
+                  item.description
+                }}</span>
+              </a>
+            </div>
+          </div>
+          <div
+            class="cooperation-slider__arrow-right"
+            :class="{ disable: slideMaxCount === currentSlide }"
+            @click="nextSlide"
+          >
+            <img
+              class="cooperation-slider__arrow-right-img"
+              src="@/assets/icons/mainNavArrowRightIcon.svg"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
       <div class="cooperation__registration">
         <p class="cooperation__text">
@@ -230,13 +283,186 @@ export default class CooperationComponent extends Vue {
     },
   ];
 
+  sliderData: any = [
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+    {
+      img: "partnershipGVIcon",
+      description:
+        "— оборудование для систем видеонаблюдения и контроля доступом",
+    },
+  ];
+
+  declare $refs: {
+    slideWrap: HTMLElement;
+    slideListItem: HTMLElement;
+    slideList: HTMLElement;
+  };
+
+  currentSlide: number = 0;
+  gapLength: number = 0;
+  translateListX: number = 0;
+  slideMaxCount: number = 0;
+  startX: number = 0;
+  endX: number = 0;
+
+  get SlideCount() {
+    return this.sliderData.length;
+  }
+
+  get Step() {
+    return 100 / this.SlideCount;
+  }
+
+  get TranslateX() {
+    const slideItemRect =
+      this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
+
+    return (
+      -slideItemRect.width * this.currentSlide -
+      this.gapLength * this.currentSlide
+    );
+  }
+
+  calcItemsLength() {
+    const slideWrapRect = this.$refs.slideWrap.getBoundingClientRect();
+    const slideItemRect =
+      this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
+
+    let slideItemsCount = Math.floor(slideWrapRect.width / slideItemRect.width);
+
+    console.log(slideItemRect.width);
+    console.log(slideWrapRect.width);
+    
+    
+
+    if (slideItemsCount >= this.SlideCount) slideItemsCount = this.SlideCount;
+
+    this.gapLength =
+      (slideWrapRect.width - slideItemsCount * slideItemRect.width) /
+      (slideItemsCount - 1);
+
+    const slideMaxWidth =
+      (this.sliderData.length - slideItemsCount) * slideItemRect.width +
+      this.gapLength * (this.sliderData.length - slideItemsCount);
+
+    this.slideMaxCount = this.sliderData.length - slideItemsCount;
+    console.log(this.slideMaxCount);
+    
+
+    if (-slideMaxWidth >= this.TranslateX) {
+      this.translateListX = -slideMaxWidth;
+      this.currentSlide = this.slideMaxCount;
+    } else
+      this.translateListX =
+        -slideItemRect.width * this.currentSlide -
+        this.gapLength * this.currentSlide;
+  }
+
+  nextSlide() {
+    if (this.currentSlide + 1 >= this.SlideCount)
+      this.currentSlide = this.SlideCount;
+    else this.currentSlide = this.currentSlide + 1;
+
+    this.calcItemsLength();
+  }
+
+  prevSlide() {
+    if (this.currentSlide - 1 < 0) this.currentSlide = 0;
+    else this.currentSlide = this.currentSlide - 1;
+
+    this.calcItemsLength();
+  }
+
+  handleTouchStart(e) {
+    this.startX = e.touches[0].clientX;
+    this.endX = 0;
+  }
+
+  handleTouchMove(e) {
+    this.endX = e.touches[0].clientX;
+  }
+
+  handleTouchEnd() {
+    const slideItemRect =
+      this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
+    const slideWrapRect = this.$refs.slideWrap.getBoundingClientRect();
+
+    const mobMaxWidth = this.SlideCount * slideItemRect.width;
+
+    const mobGapStr = getComputedStyle(this.$refs.slideList).getPropertyValue(
+      "--mob-gap"
+    );
+    const mobGap = parseFloat(mobGapStr);
+
+    const mobWidthToShow =
+      mobMaxWidth + mobGap * (this.SlideCount - 1) - slideWrapRect.width;
+
+    if (this.endX > 0 && this.endX < this.startX)
+      this.translateListX -= slideWrapRect.width / 1.2;
+    else if (this.endX > 0 && this.endX > this.startX)
+      this.translateListX += slideWrapRect.width / 1.2;
+
+    if (this.translateListX >= 0) this.translateListX = 0;
+    else if (this.translateListX <= -mobWidthToShow) {
+      this.translateListX = -mobWidthToShow;
+    }
+  }
+
   shortCategoryList() {
     this.categoryListData = this.categoryListData.slice(0, 7);
-    console.log(this.categoryListData);
+  }
+
+  onResize() {
+    this.calcItemsLength();
   }
 
   mounted() {
+    this.onResize();
     this.shortCategoryList();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
   }
 }
 </script>
@@ -549,6 +775,146 @@ export default class CooperationComponent extends Vue {
       @include fontUnify;
       text-align: center;
     }
+  }
+}
+
+.moreover {
+  width: 100%;
+
+  @extend %flex-column;
+  align-items: center;
+  gap: 36px;
+}
+
+.cooperation-slider {
+  @extend %width-main;
+
+  @include flex-container(row, space-between, center);
+  gap: 24px;
+
+  &__arrow-left {
+    min-width: 48px;
+    height: 48px;
+
+    @include flex-container(row, center, center);
+
+    border-radius: 50%;
+
+    background-color: white;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.5s ease;
+
+    @include bigMobile {
+      display: none;
+    }
+
+    &.disable {
+      pointer-events: none;
+      opacity: 0.2;
+    }
+  }
+
+  &__arrow-left-img {
+  }
+
+  &__w {
+    height: 340px;
+
+    @include flex-container(row, flex-start, center);
+
+    overflow: hidden;
+    overscroll-behavior: contain;
+
+    @include bigMobile {
+      height: 260px;
+    }
+  }
+
+  &__cont {
+    --translate-x: 0;
+    --gap: 0;
+    --mob-gap: 16px;
+
+    @include flex-container;
+    gap: var(--gap);
+
+    transform: translateX(var(--translate-x));
+    transition: 0.3s ease-in-out;
+
+    @include bigMobile {
+      gap: var(--mob-gap);
+      transition: 0.35s cubic-bezier(0.08, 0.66, 0.22, 1.06);
+    }
+  }
+
+  &__item {
+    min-width: 313px;
+    height: 300px;
+
+    @extend %flex-column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+
+    background: white;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+
+    padding: 0 16px;
+
+    transition: 0.2s ease;
+
+    @include bigMobile {
+      min-width: 253px;
+      height: 220px;
+
+      gap: 24px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+  }
+
+  &__text {
+    @include fontUnify(18, 26, 500);
+    letter-spacing: 0.02em;
+    text-align: center;
+
+    @include bigMobile {
+      @include fontUnify;
+    }
+  }
+
+  &__arrow-right {
+    min-width: 48px;
+    height: 48px;
+
+    @include flex-container(row, center, center);
+
+    border-radius: 50%;
+
+    background-color: white;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    @include bigMobile {
+      display: none;
+    }
+
+    &.disable {
+      pointer-events: none;
+      opacity: 0.2;
+    }
+  }
+
+  &__arrow-right-img {
   }
 }
 </style>
