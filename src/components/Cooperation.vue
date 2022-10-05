@@ -189,25 +189,25 @@
               @touchend="handleTouchEnd"
               :style="{
                 '--translate-x': translateListX + 'px',
-                '--gap': gapLength + 'px',
               }"
             >
-              <a
-                hre
-                class="cooperation-slider__item"
+              <div
+                class="cooperation-slider__item-container"
                 v-for="(item, index) in sliderData"
                 :key="index"
                 ref="slideListItem"
               >
-                <img
-                  class="cooperation-slider__img"
-                  :src="require(`@/assets/icons/${item.img}.png`)"
-                  alt=""
-                />
-                <span class="cooperation-slider__text">{{
-                  item.description
-                }}</span>
-              </a>
+                <div class="cooperation-slider__item">
+                  <img
+                    class="cooperation-slider__img"
+                    :src="require(`@/assets/icons/${item.img}.png`)"
+                    alt=""
+                  />
+                  <span class="cooperation-slider__text">{{
+                    item.description
+                  }}</span>
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -338,7 +338,6 @@ export default class CooperationComponent extends Vue {
   };
 
   currentSlide: number = 0;
-  gapLength: number = 0;
   translateListX: number = 0;
   slideMaxCount: number = 0;
   startX: number = 0;
@@ -348,53 +347,31 @@ export default class CooperationComponent extends Vue {
     return this.sliderData.length;
   }
 
-  get Step() {
-    return 100 / this.SlideCount;
-  }
-
   get TranslateX() {
     const slideItemRect =
       this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
 
-    return (
-      -slideItemRect.width * this.currentSlide -
-      this.gapLength * this.currentSlide
-    );
+    return -slideItemRect.width * this.currentSlide - this.currentSlide;
   }
 
-  calcItemsLength() {
+  calcSlideScroll() {
     const slideWrapRect = this.$refs.slideWrap.getBoundingClientRect();
     const slideItemRect =
       this.$refs.slideListItem[this.currentSlide].getBoundingClientRect();
 
-    let slideItemsCount = Math.floor(slideWrapRect.width / slideItemRect.width);
-
-    console.log(slideItemRect.width);
-    console.log(slideWrapRect.width);
-    
-    
+    let slideItemsCount = Math.round(slideWrapRect.width / slideItemRect.width);
 
     if (slideItemsCount >= this.SlideCount) slideItemsCount = this.SlideCount;
 
-    this.gapLength =
-      (slideWrapRect.width - slideItemsCount * slideItemRect.width) /
-      (slideItemsCount - 1);
+    const slideMaxTranslateX =
+      this.SlideCount * slideItemRect.width - slideWrapRect.width;
 
-    const slideMaxWidth =
-      (this.sliderData.length - slideItemsCount) * slideItemRect.width +
-      this.gapLength * (this.sliderData.length - slideItemsCount);
+    this.slideMaxCount = this.SlideCount - slideItemsCount;
 
-    this.slideMaxCount = this.sliderData.length - slideItemsCount;
-    console.log(this.slideMaxCount);
-    
+    this.translateListX = -slideItemRect.width * this.currentSlide;
 
-    if (-slideMaxWidth >= this.TranslateX) {
-      this.translateListX = -slideMaxWidth;
-      this.currentSlide = this.slideMaxCount;
-    } else
-      this.translateListX =
-        -slideItemRect.width * this.currentSlide -
-        this.gapLength * this.currentSlide;
+    if (this.currentSlide === this.slideMaxCount)
+      this.translateListX = -slideMaxTranslateX;
   }
 
   nextSlide() {
@@ -402,14 +379,14 @@ export default class CooperationComponent extends Vue {
       this.currentSlide = this.SlideCount;
     else this.currentSlide = this.currentSlide + 1;
 
-    this.calcItemsLength();
+    this.calcSlideScroll();
   }
 
   prevSlide() {
     if (this.currentSlide - 1 < 0) this.currentSlide = 0;
     else this.currentSlide = this.currentSlide - 1;
 
-    this.calcItemsLength();
+    this.calcSlideScroll();
   }
 
   handleTouchStart(e) {
@@ -428,18 +405,13 @@ export default class CooperationComponent extends Vue {
 
     const mobMaxWidth = this.SlideCount * slideItemRect.width;
 
-    const mobGapStr = getComputedStyle(this.$refs.slideList).getPropertyValue(
-      "--mob-gap"
-    );
-    const mobGap = parseFloat(mobGapStr);
-
     const mobWidthToShow =
-      mobMaxWidth + mobGap * (this.SlideCount - 1) - slideWrapRect.width;
+      mobMaxWidth + (this.SlideCount - 1) - slideWrapRect.width;
 
     if (this.endX > 0 && this.endX < this.startX)
-      this.translateListX -= slideWrapRect.width / 1.2;
+      this.translateListX -= slideItemRect.width;
     else if (this.endX > 0 && this.endX > this.startX)
-      this.translateListX += slideWrapRect.width / 1.2;
+      this.translateListX += slideItemRect.width;
 
     if (this.translateListX >= 0) this.translateListX = 0;
     else if (this.translateListX <= -mobWidthToShow) {
@@ -452,7 +424,7 @@ export default class CooperationComponent extends Vue {
   }
 
   onResize() {
-    this.calcItemsLength();
+    this.calcSlideScroll();
   }
 
   mounted() {
@@ -469,6 +441,8 @@ export default class CooperationComponent extends Vue {
 
 <style lang="scss">
 .cooperation {
+  --gap: 16px;
+
   @extend %flex-column;
   align-items: center;
 
@@ -720,12 +694,11 @@ export default class CooperationComponent extends Vue {
 
     @include flex-container(row, center);
     flex-wrap: wrap;
-    gap: 24px 16px;
+    gap: var(--gap);
   }
 
   &__list-item {
-    max-width: 711px;
-    width: 100%;
+    @include set-item-count-in-row(2);
 
     background: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
@@ -733,9 +706,11 @@ export default class CooperationComponent extends Vue {
 
     padding: 32px 16px 32px 64px;
 
-    @include mobile {
-      max-width: 164px;
+    @include bigMobile {
+      @include set-item-count-in-row(1);
+    }
 
+    @include mobile {
       flex-direction: column;
 
       padding: 32px 16px;
@@ -744,7 +719,7 @@ export default class CooperationComponent extends Vue {
 
   &__list-item-link {
     @include flex-container(row, flex-start, center);
-    gap: 16px;
+    gap: var(--gap);
 
     @include mobile {
       flex-direction: column;
@@ -819,61 +794,45 @@ export default class CooperationComponent extends Vue {
   }
 
   &__w {
-    height: 340px;
-
     @include flex-container(row, flex-start, center);
 
     overflow: hidden;
     overscroll-behavior: contain;
-
-    @include bigMobile {
-      height: 260px;
-    }
   }
 
   &__cont {
     --translate-x: 0;
-    --gap: 0;
-    --mob-gap: 16px;
 
     @include flex-container;
-    gap: var(--gap);
 
     transform: translateX(var(--translate-x));
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease;
+  }
 
-    @include bigMobile {
-      gap: var(--mob-gap);
-      transition: 0.35s cubic-bezier(0.08, 0.66, 0.22, 1.06);
-    }
+  &__item-container {
+    padding: 16px;
   }
 
   &__item {
     min-width: 313px;
-    height: 300px;
+    min-height: 320px;
 
     @extend %flex-column;
     align-items: center;
     justify-content: center;
     gap: 48px;
 
-    background: white;
+    background-color: white;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
 
     padding: 0 16px;
 
-    transition: 0.2s ease;
-
     @include bigMobile {
       min-width: 253px;
-      height: 220px;
+      min-height: 240px;
 
       gap: 24px;
-    }
-
-    &:hover {
-      transform: scale(1.05);
     }
   }
 
