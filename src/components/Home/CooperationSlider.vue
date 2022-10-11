@@ -31,7 +31,7 @@
         >
           <img
             class="cooperation-slider__img"
-            :src="require(`../../assets/img/${item.img}.svg`)"
+            :src="require(`@/assets/img/${item.img}.svg`)"
             alt=""
           />
         </div>
@@ -192,8 +192,7 @@ export default class CooperationSliderComponent extends Vue {
 
     const mobWidthToShow =
       mobMaxWidth + mobGap * (this.SlideCount - 1) - slideWrapRect.width;
-    console.log(mobWidthToShow);
-
+ 
     if (this.endX > 0 && this.endX < this.startX)
       this.translateListX -= slideWrapRect.width / 1.2;
     else if (this.endX > 0 && this.endX > this.startX)

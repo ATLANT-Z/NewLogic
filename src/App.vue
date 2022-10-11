@@ -17,6 +17,7 @@
     <!-- <PopUpLangComponent></PopUpLangComponent> -->
     <!-- <FooterComponent></FooterComponent> -->
     <!-- <CardProductComponent></CardProductComponent> -->
+    <PopUpCartComponent></PopUpCartComponent>
   </main>
 </template>
 
@@ -38,6 +39,7 @@ import HomeComponent from "./components/Home/Home.vue";
 import PopUpLangComponent from "./components/pop-up/PopUpLang.vue";
 import FooterComponent from "./components/Footer/Footer.vue";
 import CardProductComponent from "./components/CardProduct/CardProduct.vue";
+import PopUpCartComponent from "./components/pop-up/PopUpCart.vue";
 
 @Options({
   components: {
@@ -57,6 +59,7 @@ import CardProductComponent from "./components/CardProduct/CardProduct.vue";
     PopUpLangComponent,
     FooterComponent,
     CardProductComponent,
+    PopUpCartComponent,
   },
 })
 export default class App extends Vue {}
